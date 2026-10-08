@@ -56,11 +56,11 @@ export default function MLPlayground() {
               Live Sentiment Inference Engine
             </CardTitle>
             <CardDescription>
-              Test the trained TF-IDF + Logistic Regression NLP model on custom text
+              Test the optimized Calibrated LinearSVC + Sublinear N-Gram NLP model on custom text
             </CardDescription>
           </div>
           <Badge variant="outline" className="border-sky-500/30 text-sky-300">
-            Pipeline: TF-IDF + Logistic Regression
+            Pipeline: Sublinear N-Gram + Calibrated LinearSVC
           </Badge>
         </CardHeader>
 
