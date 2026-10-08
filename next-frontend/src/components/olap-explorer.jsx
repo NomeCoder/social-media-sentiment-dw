@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from "react";
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, 
-  Tooltip, Legend, ResponsiveContainer 
+  Tooltip, Legend, ResponsiveContainer, ReferenceLine, Cell 
 } from "recharts";
-import { Database, RefreshCw, Filter, Layers } from "lucide-react";
+import { Database, RefreshCw, Layers, Sparkles } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -46,8 +46,24 @@ export default function OLAPExplorer() {
 
   useEffect(() => {
     fetchBrands().then(setBrands).catch(console.error);
+  }, []);
+
+  useEffect(() => {
     executeOperation();
-  }, [operation]);
+  }, [
+    operation,
+    rollupLevel,
+    rollupBrand,
+    rollupIndustry,
+    drillYear,
+    drillQuarter,
+    sliceDim,
+    sliceVal,
+    selectedDiceBrands,
+    selectedDiceSentiments,
+    selectedDiceYears,
+    pivotRow,
+  ]);
 
   const executeOperation = async () => {
     setLoading(true);
@@ -110,12 +126,12 @@ export default function OLAPExplorer() {
               Interactive OLAP Cube Engine
             </CardTitle>
             <CardDescription>
-              Execute dynamic slicing, dicing, rollups, and crosstabs over the Star Schema
+              Execute dynamic slicing, dicing, rollups, and crosstabs over the Star Schema Data Warehouse
             </CardDescription>
           </div>
           <Button onClick={executeOperation} disabled={loading} size="sm">
             <RefreshCw className={`mr-2 h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} />
-            {loading ? "Computing Cube..." : "Run Analysis"}
+            {loading ? "Computing Cube..." : "Refresh OLAP"}
           </Button>
         </CardHeader>
 
@@ -193,27 +209,30 @@ export default function OLAPExplorer() {
             {operation === "drilldown" && (
               <>
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-300">Year Dimension</label>
+                  <label className="text-xs font-semibold text-slate-300">Drill Year Filter</label>
                   <select
                     value={drillYear}
-                    onChange={(e) => setDrillYear(e.target.value)}
+                    onChange={(e) => {
+                      setDrillYear(e.target.value);
+                      setDrillQuarter("");
+                    }}
                     className="w-full rounded-md border border-white/10 bg-slate-950 px-3 py-2 text-xs text-slate-200 outline-none"
                   >
-                    <option value="">All Years</option>
-                    <option value="2011">2011 (SXSW Tech)</option>
-                    <option value="2015">2015 (Airline Tweets)</option>
-                    <option value="2020">2020 (Big Tech)</option>
+                    <option value="">All Years (High-Level Overview)</option>
+                    <option value="2011">2011 (SXSW Tech Events)</option>
+                    <option value="2015">2015 (Twitter Airlines)</option>
+                    <option value="2020">2020 (Big Tech Corpus)</option>
                   </select>
                 </div>
                 {drillYear && (
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-300">Quarter Dimension</label>
+                    <label className="text-xs font-semibold text-slate-300">Drill to Quarter (Optional)</label>
                     <select
                       value={drillQuarter}
                       onChange={(e) => setDrillQuarter(e.target.value)}
                       className="w-full rounded-md border border-white/10 bg-slate-950 px-3 py-2 text-xs text-slate-200 outline-none"
                     >
-                      <option value="">All Quarters</option>
+                      <option value="">All Quarters in {drillYear}</option>
                       <option value="1">Q1</option>
                       <option value="2">Q2</option>
                       <option value="3">Q3</option>
@@ -227,7 +246,7 @@ export default function OLAPExplorer() {
             {operation === "slice" && (
               <>
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-300">Slice Dimension</label>
+                  <label className="text-xs font-semibold text-slate-300">Slice Fixed Dimension</label>
                   <select
                     value={sliceDim}
                     onChange={(e) => {
@@ -299,7 +318,7 @@ export default function OLAPExplorer() {
             {operation === "dice" && (
               <div className="col-span-full space-y-3">
                 <div>
-                  <span className="text-xs font-semibold text-slate-300">Select Brands:</span>
+                  <span className="text-xs font-semibold text-slate-300">Select Sub-cube Brands:</span>
                   <div className="mt-1 flex flex-wrap gap-1.5">
                     {["Apple", "Google", "Nvidia", "Amazon", "Tesla", "United", "Delta", "Southwest"].map((b) => (
                       <button
@@ -307,7 +326,7 @@ export default function OLAPExplorer() {
                         onClick={() => toggleDiceBrand(b)}
                         className={`rounded-md border px-2.5 py-1 text-xs font-medium transition-colors ${
                           selectedDiceBrands.includes(b)
-                            ? "border-sky-500/50 bg-sky-500/20 text-sky-300"
+                            ? "border-sky-500/50 bg-sky-500/20 text-sky-300 font-semibold"
                             : "border-white/10 bg-slate-950 text-slate-400 hover:text-white"
                         }`}
                       >
@@ -327,7 +346,7 @@ export default function OLAPExplorer() {
                           onClick={() => toggleDiceSentiment(s)}
                           className={`rounded-md border px-2.5 py-1 text-xs font-medium transition-colors ${
                             selectedDiceSentiments.includes(s)
-                              ? "border-sky-500/50 bg-sky-500/20 text-sky-300"
+                              ? "border-sky-500/50 bg-sky-500/20 text-sky-300 font-semibold"
                               : "border-white/10 bg-slate-950 text-slate-400 hover:text-white"
                           }`}
                         >
@@ -346,7 +365,7 @@ export default function OLAPExplorer() {
                           onClick={() => toggleDiceYear(y)}
                           className={`rounded-md border px-2.5 py-1 text-xs font-medium transition-colors ${
                             selectedDiceYears.includes(y)
-                              ? "border-sky-500/50 bg-sky-500/20 text-sky-300"
+                              ? "border-sky-500/50 bg-sky-500/20 text-sky-300 font-semibold"
                               : "border-white/10 bg-slate-950 text-slate-400 hover:text-white"
                           }`}
                         >
@@ -361,15 +380,15 @@ export default function OLAPExplorer() {
 
             {operation === "pivot" && (
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-300">Row Dimension</label>
+                <label className="text-xs font-semibold text-slate-300">Primary Row Dimension</label>
                 <select
                   value={pivotRow}
                   onChange={(e) => setPivotRow(e.target.value)}
                   className="w-full rounded-md border border-white/10 bg-slate-950 px-3 py-2 text-xs text-slate-200 outline-none"
                 >
-                  <option value="brand">Brand</option>
-                  <option value="industry">Industry</option>
-                  <option value="year">Year</option>
+                  <option value="brand">Brand (Cross-tabulated with Sentiment)</option>
+                  <option value="industry">Industry (Cross-tabulated with Sentiment)</option>
+                  <option value="year">Year (Cross-tabulated with Sentiment)</option>
                 </select>
               </div>
             )}
@@ -377,42 +396,153 @@ export default function OLAPExplorer() {
         </CardContent>
       </Card>
 
-      {/* Visual Projection Chart */}
-      {data.length > 0 && operation !== "pivot" && (
+      {/* Visual Projection Chart - Rendered for ALL 7 Operations */}
+      {data && data.length > 0 && (
         <Card>
-          <CardHeader>
-            <CardTitle>OLAP Projection Chart</CardTitle>
-            <CardDescription>Rendered aggregation for {operation.toUpperCase()} operation</CardDescription>
+          <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <div>
+              <CardTitle className="flex items-center gap-2 text-lg">
+                <Sparkles className="h-4 w-4 text-sky-400" />
+                {operation === "rollup" && "Roll-up Temporal Aggregation Chart"}
+                {operation === "drilldown" && "Drill-down Granular Breakdown Chart"}
+                {operation === "slice" && `Slice Projection: [${sliceDim.toUpperCase()} = "${sliceVal}"]`}
+                {operation === "dice" && "Sub-cube Multi-Dimensional Dice Matrix Chart"}
+                {operation === "pivot" && `Cross-Tabulation Pivot Chart: [${pivotRow.toUpperCase()} × Sentiment]`}
+                {operation === "brand-health" && "Brand Health Index Ranking (Pos% − Neg%)"}
+                {operation === "weighted-sentiment" && "Raw Sentiment vs. Retweet-Weighted Sentiment Score"}
+              </CardTitle>
+              <CardDescription>
+                {operation === "rollup" && "Aggregated sentiment count volumes across selected time hierarchy buckets"}
+                {operation === "drilldown" && "Sub-period drilldown distribution of positive, neutral, and negative posts"}
+                {operation === "slice" && "Volume breakdown across secondary dimensions with the fixed attribute"}
+                {operation === "dice" && "Multi-attribute intersection volumes for the selected sub-cube coordinates"}
+                {operation === "pivot" && "Visual stacked breakdown of sentiment distribution across primary rows"}
+                {operation === "brand-health" && "Net promoter-style Brand Health Index ranking with zero baseline"}
+                {operation === "weighted-sentiment" && "Comparison showing impact of viral social retweets on brand score"}
+              </CardDescription>
+            </div>
+            <Badge variant="outline" className="border-sky-500/30 text-sky-400 capitalize">
+              OLAP: {operation.replace("-", " ")}
+            </Badge>
           </CardHeader>
           <CardContent>
-            <div className="h-60">
+            <div className="h-72 w-full pt-2">
               <ResponsiveContainer width="100%" height="100%">
-                {operation === "rollup" ? (
+                {/* 1. Roll-up Chart */}
+                {operation === "rollup" && (
                   <BarChart data={data}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                    <XAxis dataKey="time_bucket" stroke="#64748b" tick={{ fontSize: 11 }} />
-                    <YAxis stroke="#64748b" tick={{ fontSize: 11 }} />
-                    <Tooltip contentStyle={{ backgroundColor: "#0f172a", borderColor: "rgba(255,255,255,0.1)", borderRadius: "8px" }} />
-                    <Legend />
-                    <Bar dataKey="positive_count" name="Positive" fill="#10b981" />
-                    <Bar dataKey="neutral_count" name="Neutral" fill="#0ea5e9" />
-                    <Bar dataKey="negative_count" name="Negative" fill="#f43f5e" />
+                    <XAxis dataKey="time_bucket" stroke="#94a3b8" tick={{ fontSize: 11 }} />
+                    <YAxis stroke="#94a3b8" tick={{ fontSize: 11 }} />
+                    <Tooltip contentStyle={{ backgroundColor: "#090d16", borderColor: "rgba(255,255,255,0.15)", borderRadius: "8px" }} />
+                    <Legend wrapperStyle={{ fontSize: "12px", paddingTop: "8px" }} />
+                    <Bar dataKey="positive_count" name="Positive" fill="#10b981" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="neutral_count" name="Neutral" fill="#38bdf8" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="negative_count" name="Negative" fill="#f43f5e" radius={[4, 4, 0, 0]} />
                   </BarChart>
-                ) : operation === "brand-health" ? (
+                )}
+
+                {/* 2. Drill-down Chart */}
+                {operation === "drilldown" && (
+                  <BarChart data={data}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
+                    <XAxis dataKey="label" stroke="#94a3b8" tick={{ fontSize: 11 }} />
+                    <YAxis stroke="#94a3b8" tick={{ fontSize: 11 }} />
+                    <Tooltip contentStyle={{ backgroundColor: "#090d16", borderColor: "rgba(255,255,255,0.15)", borderRadius: "8px" }} />
+                    <Legend wrapperStyle={{ fontSize: "12px", paddingTop: "8px" }} />
+                    <Bar dataKey="positive" name="Positive" fill="#10b981" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="neutral" name="Neutral" fill="#38bdf8" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="negative" name="Negative" fill="#f43f5e" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                )}
+
+                {/* 3. Slice Chart */}
+                {operation === "slice" && (
+                  <BarChart data={data.slice(0, 16).map((d) => ({
+                    ...d,
+                    displayLabel: `${d.label || d.time_period || "Item"}${d.sentiment_label ? ` (${d.sentiment_label})` : ""}`
+                  }))}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
+                    <XAxis dataKey="displayLabel" stroke="#94a3b8" angle={-25} textAnchor="end" height={60} tick={{ fontSize: 10 }} />
+                    <YAxis stroke="#94a3b8" tick={{ fontSize: 11 }} />
+                    <Tooltip contentStyle={{ backgroundColor: "#090d16", borderColor: "rgba(255,255,255,0.15)", borderRadius: "8px" }} />
+                    <Legend wrapperStyle={{ fontSize: "12px" }} />
+                    <Bar dataKey="count" name="Mention Count" radius={[4, 4, 0, 0]}>
+                      {data.slice(0, 16).map((entry, index) => {
+                        const s = entry.sentiment_label?.toLowerCase();
+                        const color = s === "positive" ? "#10b981" : s === "negative" ? "#f43f5e" : s === "neutral" ? "#38bdf8" : "#818cf8";
+                        return <Cell key={`cell-${index}`} fill={color} />;
+                      })}
+                    </Bar>
+                  </BarChart>
+                )}
+
+                {/* 4. Dice Chart */}
+                {operation === "dice" && (
+                  <BarChart data={data.slice(0, 16).map((d) => ({
+                    ...d,
+                    diceLabel: `${d.brand_name} '${String(d.year).slice(-2)} - ${d.sentiment_label}`
+                  }))}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
+                    <XAxis dataKey="diceLabel" stroke="#94a3b8" angle={-25} textAnchor="end" height={60} tick={{ fontSize: 10 }} />
+                    <YAxis stroke="#94a3b8" tick={{ fontSize: 11 }} />
+                    <Tooltip contentStyle={{ backgroundColor: "#090d16", borderColor: "rgba(255,255,255,0.15)", borderRadius: "8px" }} />
+                    <Legend wrapperStyle={{ fontSize: "12px" }} />
+                    <Bar dataKey="count" name="Sub-cube Cell Count" radius={[4, 4, 0, 0]}>
+                      {data.slice(0, 16).map((entry, index) => {
+                        const s = entry.sentiment_label?.toLowerCase();
+                        const color = s === "positive" ? "#10b981" : s === "negative" ? "#f43f5e" : "#38bdf8";
+                        return <Cell key={`cell-${index}`} fill={color} />;
+                      })}
+                    </Bar>
+                  </BarChart>
+                )}
+
+                {/* 5. Pivot Cross-tab Chart */}
+                {operation === "pivot" && (
                   <BarChart data={data.slice(0, 12)}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                    <XAxis dataKey="brand_name" stroke="#64748b" angle={-25} textAnchor="end" tick={{ fontSize: 11 }} />
-                    <YAxis stroke="#64748b" tick={{ fontSize: 11 }} />
-                    <Tooltip contentStyle={{ backgroundColor: "#0f172a", borderColor: "rgba(255,255,255,0.1)", borderRadius: "8px" }} />
-                    <Bar dataKey="brand_health_index" name="Brand Health Index (Pos% - Neg%)" fill="#38bdf8" radius={[4, 4, 0, 0]} />
+                    <XAxis dataKey="row_name" stroke="#94a3b8" angle={-20} textAnchor="end" height={50} tick={{ fontSize: 11 }} />
+                    <YAxis stroke="#94a3b8" tick={{ fontSize: 11 }} />
+                    <Tooltip contentStyle={{ backgroundColor: "#090d16", borderColor: "rgba(255,255,255,0.15)", borderRadius: "8px" }} />
+                    <Legend wrapperStyle={{ fontSize: "12px", paddingTop: "8px" }} />
+                    <Bar dataKey="positive" name="Positive" fill="#10b981" stackId="a" radius={[0, 0, 0, 0]} />
+                    <Bar dataKey="neutral" name="Neutral" fill="#38bdf8" stackId="a" radius={[0, 0, 0, 0]} />
+                    <Bar dataKey="negative" name="Negative" fill="#f43f5e" stackId="a" radius={[4, 4, 0, 0]} />
                   </BarChart>
-                ) : (
-                  <BarChart data={data.slice(0, 15)}>
+                )}
+
+                {/* 6. Brand Health Index Chart */}
+                {operation === "brand-health" && (
+                  <BarChart data={data.slice(0, 14)}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-                    <XAxis dataKey={data[0]?.label ? "label" : data[0]?.time_bucket ? "time_bucket" : data[0]?.brand_name ? "brand_name" : "drill_key"} stroke="#64748b" angle={-20} textAnchor="end" tick={{ fontSize: 11 }} />
-                    <YAxis stroke="#64748b" tick={{ fontSize: 11 }} />
-                    <Tooltip contentStyle={{ backgroundColor: "#0f172a", borderColor: "rgba(255,255,255,0.1)", borderRadius: "8px" }} />
-                    <Bar dataKey="count" name="Count" fill="#818cf8" radius={[4, 4, 0, 0]} />
+                    <XAxis dataKey="brand_name" stroke="#94a3b8" angle={-25} textAnchor="end" height={60} tick={{ fontSize: 10 }} />
+                    <YAxis domain={[-100, 100]} stroke="#94a3b8" tick={{ fontSize: 11 }} />
+                    <ReferenceLine y={0} stroke="rgba(255,255,255,0.25)" strokeWidth={1.5} />
+                    <Tooltip contentStyle={{ backgroundColor: "#090d16", borderColor: "rgba(255,255,255,0.15)", borderRadius: "8px" }} />
+                    <Legend wrapperStyle={{ fontSize: "12px" }} />
+                    <Bar dataKey="brand_health_index" name="Health Index (Pos% − Neg%)" radius={[4, 4, 0, 0]}>
+                      {data.slice(0, 14).map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={entry.brand_health_index >= 0 ? "#10b981" : "#f43f5e"}
+                        />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                )}
+
+                {/* 7. Engagement-Weighted Sentiment Chart */}
+                {operation === "weighted-sentiment" && (
+                  <BarChart data={data.slice(0, 14)}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
+                    <XAxis dataKey="brand_name" stroke="#94a3b8" angle={-25} textAnchor="end" height={60} tick={{ fontSize: 10 }} />
+                    <YAxis domain={[-1, 1]} stroke="#94a3b8" tick={{ fontSize: 11 }} />
+                    <ReferenceLine y={0} stroke="rgba(255,255,255,0.25)" strokeWidth={1.5} />
+                    <Tooltip contentStyle={{ backgroundColor: "#090d16", borderColor: "rgba(255,255,255,0.15)", borderRadius: "8px" }} />
+                    <Legend wrapperStyle={{ fontSize: "12px", paddingTop: "8px" }} />
+                    <Bar dataKey="raw_avg_sentiment" name="Raw Avg Sentiment (-1 to +1)" fill="#94a3b8" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="weighted_sentiment_score" name="Engagement-Weighted Sentiment" fill="#38bdf8" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 )}
               </ResponsiveContainer>
@@ -424,8 +554,8 @@ export default function OLAPExplorer() {
       {/* Dynamic Results Table */}
       <Card>
         <CardHeader>
-          <CardTitle>Results Table ({data.length} records)</CardTitle>
-          <CardDescription>Dynamic SQL analytical query tuples returned from Star Schema</CardDescription>
+          <CardTitle>OLAP Query Result Table ({data?.length || 0} records)</CardTitle>
+          <CardDescription>Dynamic SQL analytical query tuples returned directly from Star Schema</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
@@ -450,6 +580,15 @@ export default function OLAPExplorer() {
                   <TableHead>Negative %</TableHead>
                   <TableHead>Avg Sentiment</TableHead>
                 </TableRow>
+              ) : operation === "drilldown" ? (
+                <TableRow>
+                  <TableHead>Time Period / Unit</TableHead>
+                  <TableHead>Total Mentions</TableHead>
+                  <TableHead>Positive</TableHead>
+                  <TableHead>Neutral</TableHead>
+                  <TableHead>Negative</TableHead>
+                  <TableHead>Avg Sentiment</TableHead>
+                </TableRow>
               ) : operation === "brand-health" ? (
                 <TableRow>
                   <TableHead>Brand</TableHead>
@@ -472,7 +611,7 @@ export default function OLAPExplorer() {
                 </TableRow>
               ) : (
                 <TableRow>
-                  {data.length > 0 &&
+                  {data && data.length > 0 &&
                     Object.keys(data[0]).map((k) => (
                       <TableHead key={k}>{k.replace(/_/g, " ").toUpperCase()}</TableHead>
                     ))}
@@ -480,7 +619,7 @@ export default function OLAPExplorer() {
               )}
             </TableHeader>
             <TableBody>
-              {data.map((row, idx) => (
+              {data && data.map((row, idx) => (
                 <TableRow key={idx}>
                   {operation === "pivot" ? (
                     <>
@@ -502,6 +641,15 @@ export default function OLAPExplorer() {
                       <TableCell><Badge variant="negative">{row.negative_pct}%</Badge></TableCell>
                       <TableCell>{row.avg_sentiment > 0 ? `+${row.avg_sentiment}` : row.avg_sentiment}</TableCell>
                     </>
+                  ) : operation === "drilldown" ? (
+                    <>
+                      <TableCell className="font-bold text-sky-400">{row.label || row.drill_key}</TableCell>
+                      <TableCell className="font-semibold text-white">{row.mentions?.toLocaleString()}</TableCell>
+                      <TableCell><Badge variant="positive">{row.positive?.toLocaleString()}</Badge></TableCell>
+                      <TableCell><Badge variant="neutral">{row.neutral?.toLocaleString()}</Badge></TableCell>
+                      <TableCell><Badge variant="negative">{row.negative?.toLocaleString()}</Badge></TableCell>
+                      <TableCell>{row.avg_sentiment > 0 ? `+${row.avg_sentiment}` : row.avg_sentiment}</TableCell>
+                    </>
                   ) : operation === "brand-health" ? (
                     <>
                       <TableCell className="font-semibold text-white">{row.brand_name}</TableCell>
@@ -518,7 +666,7 @@ export default function OLAPExplorer() {
                   ) : operation === "weighted-sentiment" ? (
                     <>
                       <TableCell className="font-semibold text-white">{row.brand_name}</TableCell>
-                      <TableCell>{row.industry}</TableCell>
+                      <TableCell className="text-xs text-slate-400">{row.industry}</TableCell>
                       <TableCell>{row.mentions?.toLocaleString()}</TableCell>
                       <TableCell>{row.total_retweets?.toLocaleString()}</TableCell>
                       <TableCell>{row.raw_avg_sentiment}</TableCell>
