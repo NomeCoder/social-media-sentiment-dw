@@ -1,0 +1,16 @@
+.git
+.gitignore
+.env
+__pycache__
+*.pyc
+.pytest_cache
+node_modules
+next-frontend/node_modules
+next-frontend/.next
+frontend/node_modules
+frontend/dist
+.RDataTmp
+.Rhistory
+.Rproj.user
+~$*.pptx
+*.log

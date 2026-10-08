@@ -1,0 +1,11 @@
+year,sentiment_label,post_count
+2011,Negative,519
+2011,Neutral,5389
+2011,Positive,2672
+2011,Unknown,9
+2015,Negative,9178
+2015,Neutral,3099
+2015,Positive,2363
+2020,Negative,39856
+2020,Neutral,105394
+2020,Positive,120799

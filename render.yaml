@@ -1,0 +1,16 @@
+# Render Blueprint Configuration (Infrastructure-as-Code)
+# Documentation: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: social-media-sentiment-dw
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: DATABASE_URL
+        value: sqlite:///database/warehouse.db

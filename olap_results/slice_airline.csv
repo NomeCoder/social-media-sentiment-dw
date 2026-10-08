@@ -1,0 +1,19 @@
+brand_name,sentiment_label,post_count
+United,Negative,2633
+US Airways,Negative,2263
+American,Negative,1960
+Southwest,Negative,1186
+Delta,Negative,955
+Delta,Neutral,723
+United,Neutral,697
+Southwest,Neutral,664
+Southwest,Positive,570
+Delta,Positive,544
+United,Positive,492
+American,Neutral,463
+US Airways,Neutral,381
+American,Positive,336
+US Airways,Positive,269
+Virgin America,Negative,181
+Virgin America,Neutral,171
+Virgin America,Positive,152
