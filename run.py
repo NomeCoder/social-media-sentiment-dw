@@ -4,11 +4,23 @@ import time
 import os
 import signal
 
+import socket
+
+def is_port_in_use(port: int) -> bool:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        return s.connect_ex(('127.0.0.1', port)) == 0
+
 def run():
     print("=" * 65)
     print("Social Media Brand Sentiment & OLAP Analytics Platform")
     print("Next.js + Tailwind CSS v3 + shadcn/ui + FastAPI Backend")
     print("=" * 65)
+
+    if is_port_in_use(8000):
+        print("\n[WARNING] Port 8000 is already in use by an active server.")
+        print("FastAPI server is already running on http://localhost:8000")
+        print("If you want to restart it, please stop the existing process or task first.\n")
+        return
     
     # 1. Check if database exists
     if not os.path.exists("database/warehouse.db"):
