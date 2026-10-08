@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3000",
     "build": "next build",
-    "start": "next start"
+    "start": "npx serve out -l 3000",
+    "preview": "npx serve out -l 3000"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.4.0",

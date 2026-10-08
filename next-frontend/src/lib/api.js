@@ -1,4 +1,8 @@
-const API_BASE = '/api';
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_URL ||
+  (typeof window !== 'undefined' && (window.location.port === '3000' || window.location.port === '5173')
+    ? 'http://127.0.0.1:8000/api'
+    : '/api');
 
 export async function fetchOverview() {
   const res = await fetch(`${API_BASE}/dashboard/overview`);

@@ -24,20 +24,26 @@ def run():
     else:
         print("\n[OK] Sentiment model & TF-IDF vectorizer verified.")
         
+    # Set UTF-8 encoding for Windows terminals
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
     # 3. Inform endpoints
     print("\n[ENDPOINTS]")
-    print("  ⭐ Next.js + shadcn/ui UI: http://localhost:3000")
-    print("  ⚙️  FastAPI REST API:      http://localhost:8000")
-    print("  📖 Swagger Documentation:  http://localhost:8000/docs")
+    print("  [*] Next.js + shadcn/ui UI: http://localhost:3000")
+    print("  [*] FastAPI REST API:      http://localhost:8000")
+    print("  [*] Swagger Documentation:  http://localhost:8000/docs")
     print("=" * 65)
     
-    # Start Next.js frontend in background if built
+    # Start Next.js frontend in background
     next_proc = None
-    if os.path.exists("next-frontend/.next"):
+    if os.path.exists("next-frontend"):
         try:
-            print("\nStarting Next.js Server on port 3000...")
+            print("\nStarting Next.js Dev Server on port 3000...")
             next_proc = subprocess.Popen(
-                ["npm", "start", "--", "-p", "3000"],
+                ["npm", "run", "dev"],
                 cwd="next-frontend",
                 shell=True
             )
