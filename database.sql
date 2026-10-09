@@ -1079,3 +1079,169 @@ JOIN DIM_SOURCE s
     ON f.source_key = s.source_key
 GROUP BY s.dataset_name
 ORDER BY s.dataset_name;
+
+
+-- ============================================================
+-- 21. OLAP ROLL-UP (Temporal Aggregation: Quarter Level)
+-- Aggregates sentiment data up the time hierarchy (Day -> Month -> Quarter -> Year)
+-- ============================================================
+
+SELECT
+    d.year || '-Q' || d.quarter AS time_bucket,
+    d.year,
+    d.quarter,
+    COUNT(*) AS total_mentions,
+    SUM(CASE WHEN s.sentiment_label = 'Positive' THEN 1 ELSE 0 END) AS positive_count,
+    SUM(CASE WHEN s.sentiment_label = 'Neutral' THEN 1 ELSE 0 END) AS neutral_count,
+    SUM(CASE WHEN s.sentiment_label = 'Negative' THEN 1 ELSE 0 END) AS negative_count,
+    ROUND(AVG(f.sentiment_score), 4) AS avg_sentiment,
+    ROUND(100.0 * SUM(CASE WHEN s.sentiment_label = 'Positive' THEN 1 ELSE 0 END) / COUNT(*), 2) AS positive_pct,
+    ROUND(100.0 * SUM(CASE WHEN s.sentiment_label = 'Negative' THEN 1 ELSE 0 END) / COUNT(*), 2) AS negative_pct
+
+FROM FACT_POST f
+JOIN DIM_DATE d ON f.date_key = d.date_key
+JOIN DIM_BRAND b ON f.brand_key = b.brand_key
+JOIN DIM_SENTIMENT s ON f.sentiment_key = s.sentiment_key
+WHERE d.date_key <> 0
+GROUP BY d.year, d.quarter
+ORDER BY d.year, d.quarter;
+
+
+-- ============================================================
+-- 22. OLAP DRILL-DOWN (Hierarchical Granularity: Year 2020 to Month)
+-- Drills down from Year to Quarter to Month level
+-- ============================================================
+
+SELECT
+    d.year || '-' || LPAD(d.month, 2, '0') AS drill_key,
+    d.month_name AS label,
+    COUNT(*) AS mentions,
+    SUM(CASE WHEN s.sentiment_label = 'Positive' THEN 1 ELSE 0 END) AS positive,
+    SUM(CASE WHEN s.sentiment_label = 'Neutral' THEN 1 ELSE 0 END) AS neutral,
+    SUM(CASE WHEN s.sentiment_label = 'Negative' THEN 1 ELSE 0 END) AS negative,
+    ROUND(AVG(f.sentiment_score), 4) AS avg_sentiment
+
+FROM FACT_POST f
+JOIN DIM_DATE d ON f.date_key = d.date_key
+JOIN DIM_SENTIMENT s ON f.sentiment_key = s.sentiment_key
+WHERE d.date_key <> 0 AND d.year = 2020
+GROUP BY d.year, d.month, d.month_name
+ORDER BY d.month;
+
+
+-- ============================================================
+-- 23. OLAP SLICE (Fixing Brand Dimension = 'Apple')
+-- Fixes one dimension and analyzes across time & sentiment
+-- ============================================================
+
+SELECT
+    d.year || '-' || LPAD(d.month, 2, '0') AS time_period,
+    s.sentiment_label,
+    COUNT(*) AS count,
+    ROUND(AVG(f.sentiment_score), 4) AS avg_sentiment
+
+FROM FACT_POST f
+JOIN DIM_BRAND b ON f.brand_key = b.brand_key
+JOIN DIM_SENTIMENT s ON f.sentiment_key = s.sentiment_key
+JOIN DIM_DATE d ON f.date_key = d.date_key
+WHERE LOWER(b.brand_name) = 'apple'
+GROUP BY d.year, d.month, s.sentiment_label
+ORDER BY d.year, d.month, s.sentiment_label;
+
+
+-- ============================================================
+-- 24. OLAP DICE (Sub-Cube Matrix Filtering)
+-- Filters sub-cube across multiple dimensions: Brands in ('Apple', 'Google'), Sentiments in ('Positive', 'Negative'), Year=2020
+-- ============================================================
+
+SELECT
+    b.brand_name,
+    b.industry,
+    d.year,
+    s.sentiment_label,
+    COUNT(*) AS count,
+    ROUND(AVG(f.sentiment_score), 4) AS avg_sentiment,
+    SUM(f.retweet_count) AS total_retweets
+
+FROM FACT_POST f
+JOIN DIM_BRAND b ON f.brand_key = b.brand_key
+JOIN DIM_SENTIMENT s ON f.sentiment_key = s.sentiment_key
+JOIN DIM_DATE d ON f.date_key = d.date_key
+WHERE LOWER(b.brand_name) IN ('apple', 'google')
+  AND LOWER(s.sentiment_label) IN ('positive', 'negative')
+  AND d.year = 2020
+GROUP BY b.brand_name, b.industry, d.year, s.sentiment_label
+ORDER BY b.brand_name, d.year, s.sentiment_label;
+
+
+-- ============================================================
+-- 25. OLAP PIVOT (Cross-Tabulation Matrix: Brand x Sentiment)
+-- Pivots sentiment categories into columns per brand
+-- ============================================================
+
+SELECT
+    b.brand_name AS row_name,
+    SUM(CASE WHEN s.sentiment_label = 'Positive' THEN 1 ELSE 0 END) AS positive,
+    SUM(CASE WHEN s.sentiment_label = 'Neutral' THEN 1 ELSE 0 END) AS neutral,
+    SUM(CASE WHEN s.sentiment_label = 'Negative' THEN 1 ELSE 0 END) AS negative,
+    COUNT(*) AS total,
+    ROUND(AVG(f.sentiment_score), 4) AS avg_sentiment
+
+FROM FACT_POST f
+JOIN DIM_BRAND b ON f.brand_key = b.brand_key
+JOIN DIM_SENTIMENT s ON f.sentiment_key = s.sentiment_key
+JOIN DIM_DATE d ON f.date_key = d.date_key
+GROUP BY b.brand_name
+ORDER BY total DESC;
+
+
+-- ============================================================
+-- 26. BRAND HEALTH INDEX (Net Promoter Sentiment: Pos% - Neg%)
+-- Calculates Brand Health Score (-100% to +100%)
+-- ============================================================
+
+SELECT
+    b.brand_key,
+    b.brand_name,
+    b.industry,
+    COUNT(*) AS total_mentions,
+    SUM(CASE WHEN s.sentiment_label = 'Positive' THEN 1 ELSE 0 END) AS positive_count,
+    SUM(CASE WHEN s.sentiment_label = 'Neutral' THEN 1 ELSE 0 END) AS neutral_count,
+    SUM(CASE WHEN s.sentiment_label = 'Negative' THEN 1 ELSE 0 END) AS negative_count,
+    ROUND(100.0 * SUM(CASE WHEN s.sentiment_label = 'Positive' THEN 1 ELSE 0 END) / COUNT(*), 2) AS positive_pct,
+    ROUND(100.0 * SUM(CASE WHEN s.sentiment_label = 'Neutral' THEN 1 ELSE 0 END) / COUNT(*), 2) AS neutral_pct,
+    ROUND(100.0 * SUM(CASE WHEN s.sentiment_label = 'Negative' THEN 1 ELSE 0 END) / COUNT(*), 2) AS negative_pct,
+    ROUND(
+        (100.0 * SUM(CASE WHEN s.sentiment_label = 'Positive' THEN 1 ELSE 0 END) / COUNT(*)) -
+        (100.0 * SUM(CASE WHEN s.sentiment_label = 'Negative' THEN 1 ELSE 0 END) / COUNT(*)), 2
+    ) AS brand_health_index,
+    ROUND(AVG(f.sentiment_score), 4) AS avg_sentiment
+
+FROM FACT_POST f
+JOIN DIM_BRAND b ON f.brand_key = b.brand_key
+JOIN DIM_SENTIMENT s ON f.sentiment_key = s.sentiment_key
+GROUP BY b.brand_key, b.brand_name, b.industry
+ORDER BY brand_health_index DESC;
+
+
+-- ============================================================
+-- 27. ENGAGEMENT-WEIGHTED SENTIMENT SCORE
+-- Weights sentiment score by social retweets amplification impact
+-- ============================================================
+
+SELECT
+    b.brand_name,
+    b.industry,
+    COUNT(*) AS mentions,
+    SUM(f.retweet_count) AS total_retweets,
+    ROUND(AVG(f.sentiment_score), 4) AS raw_avg_sentiment,
+    ROUND(
+        SUM(f.sentiment_score * (1 + LOG(10, GREATEST(f.retweet_count, 1)))) / 
+        SUM(1 + LOG(10, GREATEST(f.retweet_count, 1))), 4
+    ) AS weighted_sentiment_score
+
+FROM FACT_POST f
+JOIN DIM_BRAND b ON f.brand_key = b.brand_key
+GROUP BY b.brand_name, b.industry
+HAVING COUNT(*) > 10
+ORDER BY mentions DESC;
