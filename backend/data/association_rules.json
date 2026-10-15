@@ -1,0 +1,2770 @@
+{
+  "total_rules": 170,
+  "rules": [
+    {
+      "id": 0,
+      "antecedents": [
+        "deals",
+        "ganga"
+      ],
+      "consequents": [
+        "deal"
+      ],
+      "antecedents_str": "deals, ganga",
+      "consequents_str": "deal",
+      "support": 0.0124,
+      "support_pct": 1.24,
+      "confidence": 1.0,
+      "confidence_pct": 100.0,
+      "lift": 42.26
+    },
+    {
+      "id": 1,
+      "antecedents": [
+        "ganga"
+      ],
+      "consequents": [
+        "deal"
+      ],
+      "antecedents_str": "ganga",
+      "consequents_str": "deal",
+      "support": 0.0216,
+      "support_pct": 2.16,
+      "confidence": 0.986,
+      "confidence_pct": 98.6,
+      "lift": 41.67
+    },
+    {
+      "id": 2,
+      "antecedents": [
+        "amazon",
+        "ganga"
+      ],
+      "consequents": [
+        "deal"
+      ],
+      "antecedents_str": "amazon, ganga",
+      "consequents_str": "deal",
+      "support": 0.0154,
+      "support_pct": 1.54,
+      "confidence": 0.9804,
+      "confidence_pct": 98.0,
+      "lift": 41.43
+    },
+    {
+      "id": 3,
+      "antecedents": [
+        "aws"
+      ],
+      "consequents": [
+        "cloud"
+      ],
+      "antecedents_str": "aws",
+      "consequents_str": "cloud",
+      "support": 0.0105,
+      "support_pct": 1.05,
+      "confidence": 0.636,
+      "confidence_pct": 63.6,
+      "lift": 24.65
+    },
+    {
+      "id": 4,
+      "antecedents": [
+        "game"
+      ],
+      "consequents": [
+        "games"
+      ],
+      "antecedents_str": "game",
+      "consequents_str": "games",
+      "support": 0.0107,
+      "support_pct": 1.07,
+      "confidence": 0.504,
+      "confidence_pct": 50.4,
+      "lift": 20.8
+    },
+    {
+      "id": 5,
+      "antecedents": [
+        "amazon",
+        "disney"
+      ],
+      "consequents": [
+        "netflix"
+      ],
+      "antecedents_str": "amazon, disney",
+      "consequents_str": "netflix",
+      "support": 0.0137,
+      "support_pct": 1.37,
+      "confidence": 0.9858,
+      "confidence_pct": 98.6,
+      "lift": 19.87
+    },
+    {
+      "id": 6,
+      "antecedents": [
+        "apple",
+        "disney"
+      ],
+      "consequents": [
+        "netflix"
+      ],
+      "antecedents_str": "apple, disney",
+      "consequents_str": "netflix",
+      "support": 0.0133,
+      "support_pct": 1.33,
+      "confidence": 0.9634,
+      "confidence_pct": 96.3,
+      "lift": 19.42
+    },
+    {
+      "id": 7,
+      "antecedents": [
+        "cod"
+      ],
+      "consequents": [
+        "warzone"
+      ],
+      "antecedents_str": "cod",
+      "consequents_str": "warzone",
+      "support": 0.0109,
+      "support_pct": 1.09,
+      "confidence": 0.5823,
+      "confidence_pct": 58.2,
+      "lift": 18.48
+    },
+    {
+      "id": 8,
+      "antecedents": [
+        "disney"
+      ],
+      "consequents": [
+        "netflix"
+      ],
+      "antecedents_str": "disney",
+      "consequents_str": "netflix",
+      "support": 0.0157,
+      "support_pct": 1.57,
+      "confidence": 0.9003,
+      "confidence_pct": 90.0,
+      "lift": 18.15
+    },
+    {
+      "id": 9,
+      "antecedents": [
+        "callofduty"
+      ],
+      "consequents": [
+        "warzone"
+      ],
+      "antecedents_str": "callofduty",
+      "consequents_str": "warzone",
+      "support": 0.0149,
+      "support_pct": 1.49,
+      "confidence": 0.5221,
+      "confidence_pct": 52.2,
+      "lift": 16.56
+    },
+    {
+      "id": 10,
+      "antecedents": [
+        "ganga"
+      ],
+      "consequents": [
+        "deals"
+      ],
+      "antecedents_str": "ganga",
+      "consequents_str": "deals",
+      "support": 0.0124,
+      "support_pct": 1.24,
+      "confidence": 0.5659,
+      "confidence_pct": 56.6,
+      "lift": 16.38
+    },
+    {
+      "id": 11,
+      "antecedents": [
+        "deal"
+      ],
+      "consequents": [
+        "deals"
+      ],
+      "antecedents_str": "deal",
+      "consequents_str": "deals",
+      "support": 0.0128,
+      "support_pct": 1.28,
+      "confidence": 0.5404,
+      "confidence_pct": 54.0,
+      "lift": 15.64
+    },
+    {
+      "id": 12,
+      "antecedents": [
+        "playstation"
+      ],
+      "consequents": [
+        "xbox"
+      ],
+      "antecedents_str": "playstation",
+      "consequents_str": "xbox",
+      "support": 0.0104,
+      "support_pct": 1.04,
+      "confidence": 0.5509,
+      "confidence_pct": 55.1,
+      "lift": 13.73
+    },
+    {
+      "id": 13,
+      "antecedents": [
+        "instagram"
+      ],
+      "consequents": [
+        "facebook"
+      ],
+      "antecedents_str": "instagram",
+      "consequents_str": "facebook",
+      "support": 0.0104,
+      "support_pct": 1.04,
+      "confidence": 0.5297,
+      "confidence_pct": 53.0,
+      "lift": 12.69
+    },
+    {
+      "id": 14,
+      "antecedents": [
+        "twitter"
+      ],
+      "consequents": [
+        "facebook"
+      ],
+      "antecedents_str": "twitter",
+      "consequents_str": "facebook",
+      "support": 0.0116,
+      "support_pct": 1.16,
+      "confidence": 0.5192,
+      "confidence_pct": 51.9,
+      "lift": 12.44
+    },
+    {
+      "id": 15,
+      "antecedents": [
+        "game"
+      ],
+      "consequents": [
+        "gamer"
+      ],
+      "antecedents_str": "game",
+      "consequents_str": "gamer",
+      "support": 0.0107,
+      "support_pct": 1.07,
+      "confidence": 0.5077,
+      "confidence_pct": 50.8,
+      "lift": 10.15
+    },
+    {
+      "id": 16,
+      "antecedents": [
+        "games"
+      ],
+      "consequents": [
+        "gamer"
+      ],
+      "antecedents_str": "games",
+      "consequents_str": "gamer",
+      "support": 0.0114,
+      "support_pct": 1.14,
+      "confidence": 0.4686,
+      "confidence_pct": 46.9,
+      "lift": 9.37
+    },
+    {
+      "id": 17,
+      "antecedents": [
+        "gamer",
+        "videogames"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "gamer, videogames",
+      "consequents_str": "gaming",
+      "support": 0.0108,
+      "support_pct": 1.08,
+      "confidence": 0.865,
+      "confidence_pct": 86.5,
+      "lift": 8.91
+    },
+    {
+      "id": 18,
+      "antecedents": [
+        "azure"
+      ],
+      "consequents": [
+        "microsoft"
+      ],
+      "antecedents_str": "azure",
+      "consequents_str": "microsoft",
+      "support": 0.0258,
+      "support_pct": 2.58,
+      "confidence": 0.8845,
+      "confidence_pct": 88.4,
+      "lift": 8.76
+    },
+    {
+      "id": 19,
+      "antecedents": [
+        "gamer",
+        "xbox"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "gamer, xbox",
+      "consequents_str": "gaming",
+      "support": 0.01,
+      "support_pct": 1.0,
+      "confidence": 0.815,
+      "confidence_pct": 81.5,
+      "lift": 8.39
+    },
+    {
+      "id": 20,
+      "antecedents": [
+        "deals",
+        "ganga"
+      ],
+      "consequents": [
+        "amazon"
+      ],
+      "antecedents_str": "deals, ganga",
+      "consequents_str": "amazon",
+      "support": 0.0124,
+      "support_pct": 1.24,
+      "confidence": 1.0,
+      "confidence_pct": 100.0,
+      "lift": 8.14
+    },
+    {
+      "id": 21,
+      "antecedents": [
+        "technology"
+      ],
+      "consequents": [
+        "tech"
+      ],
+      "antecedents_str": "technology",
+      "consequents_str": "tech",
+      "support": 0.0106,
+      "support_pct": 1.06,
+      "confidence": 0.3039,
+      "confidence_pct": 30.4,
+      "lift": 8.14
+    },
+    {
+      "id": 22,
+      "antecedents": [
+        "deal",
+        "deals"
+      ],
+      "consequents": [
+        "amazon"
+      ],
+      "antecedents_str": "deal, deals",
+      "consequents_str": "amazon",
+      "support": 0.0127,
+      "support_pct": 1.27,
+      "confidence": 0.996,
+      "confidence_pct": 99.6,
+      "lift": 8.11
+    },
+    {
+      "id": 23,
+      "antecedents": [
+        "videogames"
+      ],
+      "consequents": [
+        "gamer"
+      ],
+      "antecedents_str": "videogames",
+      "consequents_str": "gamer",
+      "support": 0.0125,
+      "support_pct": 1.25,
+      "confidence": 0.4039,
+      "confidence_pct": 40.4,
+      "lift": 8.08
+    },
+    {
+      "id": 24,
+      "antecedents": [
+        "apple",
+        "disney"
+      ],
+      "consequents": [
+        "amazon"
+      ],
+      "antecedents_str": "apple, disney",
+      "consequents_str": "amazon",
+      "support": 0.0132,
+      "support_pct": 1.32,
+      "confidence": 0.9548,
+      "confidence_pct": 95.5,
+      "lift": 7.77
+    },
+    {
+      "id": 25,
+      "antecedents": [
+        "ipad"
+      ],
+      "consequents": [
+        "iphone"
+      ],
+      "antecedents_str": "ipad",
+      "consequents_str": "iphone",
+      "support": 0.0109,
+      "support_pct": 1.09,
+      "confidence": 0.6004,
+      "confidence_pct": 60.0,
+      "lift": 7.63
+    },
+    {
+      "id": 26,
+      "antecedents": [
+        "gamer",
+        "youtube"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "gamer, youtube",
+      "consequents_str": "gaming",
+      "support": 0.0161,
+      "support_pct": 1.61,
+      "confidence": 0.7401,
+      "confidence_pct": 74.0,
+      "lift": 7.62
+    },
+    {
+      "id": 27,
+      "antecedents": [
+        "games",
+        "twitch"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "games, twitch",
+      "consequents_str": "gaming",
+      "support": 0.0102,
+      "support_pct": 1.02,
+      "confidence": 0.7302,
+      "confidence_pct": 73.0,
+      "lift": 7.52
+    },
+    {
+      "id": 28,
+      "antecedents": [
+        "twitchtv"
+      ],
+      "consequents": [
+        "twitchaffiliate"
+      ],
+      "antecedents_str": "twitchtv",
+      "consequents_str": "twitchaffiliate",
+      "support": 0.0137,
+      "support_pct": 1.37,
+      "confidence": 0.3376,
+      "confidence_pct": 33.8,
+      "lift": 7.43
+    },
+    {
+      "id": 29,
+      "antecedents": [
+        "deals"
+      ],
+      "consequents": [
+        "amazon"
+      ],
+      "antecedents_str": "deals",
+      "consequents_str": "amazon",
+      "support": 0.0311,
+      "support_pct": 3.11,
+      "confidence": 0.9002,
+      "confidence_pct": 90.0,
+      "lift": 7.33
+    },
+    {
+      "id": 30,
+      "antecedents": [
+        "apple",
+        "netflix"
+      ],
+      "consequents": [
+        "amazon"
+      ],
+      "antecedents_str": "apple, netflix",
+      "consequents_str": "amazon",
+      "support": 0.0142,
+      "support_pct": 1.42,
+      "confidence": 0.8829,
+      "confidence_pct": 88.3,
+      "lift": 7.19
+    },
+    {
+      "id": 31,
+      "antecedents": [
+        "ios14"
+      ],
+      "consequents": [
+        "iphone"
+      ],
+      "antecedents_str": "ios14",
+      "consequents_str": "iphone",
+      "support": 0.0132,
+      "support_pct": 1.32,
+      "confidence": 0.5641,
+      "confidence_pct": 56.4,
+      "lift": 7.17
+    },
+    {
+      "id": 32,
+      "antecedents": [
+        "memes"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "memes",
+      "consequents_str": "gaming",
+      "support": 0.0107,
+      "support_pct": 1.07,
+      "confidence": 0.6739,
+      "confidence_pct": 67.4,
+      "lift": 6.94
+    },
+    {
+      "id": 33,
+      "antecedents": [
+        "twitchtv"
+      ],
+      "consequents": [
+        "twitchstreamer"
+      ],
+      "antecedents_str": "twitchtv",
+      "consequents_str": "twitchstreamer",
+      "support": 0.0211,
+      "support_pct": 2.11,
+      "confidence": 0.5214,
+      "confidence_pct": 52.1,
+      "lift": 6.74
+    },
+    {
+      "id": 34,
+      "antecedents": [
+        "cloud"
+      ],
+      "consequents": [
+        "microsoft"
+      ],
+      "antecedents_str": "cloud",
+      "consequents_str": "microsoft",
+      "support": 0.0174,
+      "support_pct": 1.74,
+      "confidence": 0.6738,
+      "confidence_pct": 67.4,
+      "lift": 6.68
+    },
+    {
+      "id": 35,
+      "antecedents": [
+        "gamer"
+      ],
+      "consequents": [
+        "streamer"
+      ],
+      "antecedents_str": "gamer",
+      "consequents_str": "streamer",
+      "support": 0.0217,
+      "support_pct": 2.17,
+      "confidence": 0.4333,
+      "confidence_pct": 43.3,
+      "lift": 6.63
+    },
+    {
+      "id": 36,
+      "antecedents": [
+        "seo"
+      ],
+      "consequents": [
+        "google"
+      ],
+      "antecedents_str": "seo",
+      "consequents_str": "google",
+      "support": 0.0225,
+      "support_pct": 2.25,
+      "confidence": 0.9138,
+      "confidence_pct": 91.4,
+      "lift": 6.57
+    },
+    {
+      "id": 37,
+      "antecedents": [
+        "twitchaffiliate"
+      ],
+      "consequents": [
+        "twitchstreamer"
+      ],
+      "antecedents_str": "twitchaffiliate",
+      "consequents_str": "twitchstreamer",
+      "support": 0.0229,
+      "support_pct": 2.29,
+      "confidence": 0.5035,
+      "confidence_pct": 50.3,
+      "lift": 6.5
+    },
+    {
+      "id": 38,
+      "antecedents": [
+        "disney"
+      ],
+      "consequents": [
+        "amazon"
+      ],
+      "antecedents_str": "disney",
+      "consequents_str": "amazon",
+      "support": 0.0139,
+      "support_pct": 1.39,
+      "confidence": 0.7977,
+      "confidence_pct": 79.8,
+      "lift": 6.49
+    },
+    {
+      "id": 39,
+      "antecedents": [
+        "gamer",
+        "streamer"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "gamer, streamer",
+      "consequents_str": "gaming",
+      "support": 0.0135,
+      "support_pct": 1.35,
+      "confidence": 0.6237,
+      "confidence_pct": 62.4,
+      "lift": 6.42
+    },
+    {
+      "id": 40,
+      "antecedents": [
+        "streamer",
+        "youtube"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "streamer, youtube",
+      "consequents_str": "gaming",
+      "support": 0.0114,
+      "support_pct": 1.14,
+      "confidence": 0.6084,
+      "confidence_pct": 60.8,
+      "lift": 6.27
+    },
+    {
+      "id": 41,
+      "antecedents": [
+        "pcgaming"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "pcgaming",
+      "consequents_str": "gaming",
+      "support": 0.0102,
+      "support_pct": 1.02,
+      "confidence": 0.5987,
+      "confidence_pct": 59.9,
+      "lift": 6.17
+    },
+    {
+      "id": 42,
+      "antecedents": [
+        "xbox"
+      ],
+      "consequents": [
+        "gamer"
+      ],
+      "antecedents_str": "xbox",
+      "consequents_str": "gamer",
+      "support": 0.0123,
+      "support_pct": 1.23,
+      "confidence": 0.306,
+      "confidence_pct": 30.6,
+      "lift": 6.12
+    },
+    {
+      "id": 43,
+      "antecedents": [
+        "pc"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "pc",
+      "consequents_str": "gaming",
+      "support": 0.0118,
+      "support_pct": 1.18,
+      "confidence": 0.5905,
+      "confidence_pct": 59.1,
+      "lift": 6.08
+    },
+    {
+      "id": 44,
+      "antecedents": [
+        "gamer"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "gamer",
+      "consequents_str": "gaming",
+      "support": 0.0295,
+      "support_pct": 2.95,
+      "confidence": 0.5891,
+      "confidence_pct": 58.9,
+      "lift": 6.07
+    },
+    {
+      "id": 45,
+      "antecedents": [
+        "ios"
+      ],
+      "consequents": [
+        "iphone"
+      ],
+      "antecedents_str": "ios",
+      "consequents_str": "iphone",
+      "support": 0.0179,
+      "support_pct": 1.79,
+      "confidence": 0.477,
+      "confidence_pct": 47.7,
+      "lift": 6.07
+    },
+    {
+      "id": 46,
+      "antecedents": [
+        "games"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "games",
+      "consequents_str": "gaming",
+      "support": 0.0142,
+      "support_pct": 1.42,
+      "confidence": 0.5877,
+      "confidence_pct": 58.8,
+      "lift": 6.05
+    },
+    {
+      "id": 47,
+      "antecedents": [
+        "game"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "game",
+      "consequents_str": "gaming",
+      "support": 0.0122,
+      "support_pct": 1.22,
+      "confidence": 0.5792,
+      "confidence_pct": 57.9,
+      "lift": 5.96
+    },
+    {
+      "id": 48,
+      "antecedents": [
+        "gamers"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "gamers",
+      "consequents_str": "gaming",
+      "support": 0.0106,
+      "support_pct": 1.06,
+      "confidence": 0.5707,
+      "confidence_pct": 57.1,
+      "lift": 5.88
+    },
+    {
+      "id": 49,
+      "antecedents": [
+        "ganga"
+      ],
+      "consequents": [
+        "amazon"
+      ],
+      "antecedents_str": "ganga",
+      "consequents_str": "amazon",
+      "support": 0.0157,
+      "support_pct": 1.57,
+      "confidence": 0.7153,
+      "confidence_pct": 71.5,
+      "lift": 5.82
+    },
+    {
+      "id": 50,
+      "antecedents": [
+        "playstation"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "playstation",
+      "consequents_str": "gaming",
+      "support": 0.0106,
+      "support_pct": 1.06,
+      "confidence": 0.564,
+      "confidence_pct": 56.4,
+      "lift": 5.81
+    },
+    {
+      "id": 51,
+      "antecedents": [
+        "stream"
+      ],
+      "consequents": [
+        "streamer"
+      ],
+      "antecedents_str": "stream",
+      "consequents_str": "streamer",
+      "support": 0.0149,
+      "support_pct": 1.49,
+      "confidence": 0.3774,
+      "confidence_pct": 37.7,
+      "lift": 5.77
+    },
+    {
+      "id": 52,
+      "antecedents": [
+        "digitalmarketing"
+      ],
+      "consequents": [
+        "google"
+      ],
+      "antecedents_str": "digitalmarketing",
+      "consequents_str": "google",
+      "support": 0.0123,
+      "support_pct": 1.23,
+      "confidence": 0.7889,
+      "confidence_pct": 78.9,
+      "lift": 5.68
+    },
+    {
+      "id": 53,
+      "antecedents": [
+        "deal"
+      ],
+      "consequents": [
+        "amazon"
+      ],
+      "antecedents_str": "deal",
+      "consequents_str": "amazon",
+      "support": 0.0163,
+      "support_pct": 1.63,
+      "confidence": 0.6908,
+      "confidence_pct": 69.1,
+      "lift": 5.62
+    },
+    {
+      "id": 54,
+      "antecedents": [
+        "streaming"
+      ],
+      "consequents": [
+        "streamer"
+      ],
+      "antecedents_str": "streaming",
+      "consequents_str": "streamer",
+      "support": 0.0145,
+      "support_pct": 1.45,
+      "confidence": 0.3645,
+      "confidence_pct": 36.5,
+      "lift": 5.58
+    },
+    {
+      "id": 55,
+      "antecedents": [
+        "videogames"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "videogames",
+      "consequents_str": "gaming",
+      "support": 0.0164,
+      "support_pct": 1.64,
+      "confidence": 0.5278,
+      "confidence_pct": 52.8,
+      "lift": 5.44
+    },
+    {
+      "id": 56,
+      "antecedents": [
+        "kindle"
+      ],
+      "consequents": [
+        "amazon"
+      ],
+      "antecedents_str": "kindle",
+      "consequents_str": "amazon",
+      "support": 0.0124,
+      "support_pct": 1.24,
+      "confidence": 0.6129,
+      "confidence_pct": 61.3,
+      "lift": 4.99
+    },
+    {
+      "id": 57,
+      "antecedents": [
+        "twitchtv"
+      ],
+      "consequents": [
+        "streamer"
+      ],
+      "antecedents_str": "twitchtv",
+      "consequents_str": "streamer",
+      "support": 0.013,
+      "support_pct": 1.3,
+      "confidence": 0.3222,
+      "confidence_pct": 32.2,
+      "lift": 4.93
+    },
+    {
+      "id": 58,
+      "antecedents": [
+        "android"
+      ],
+      "consequents": [
+        "iphone"
+      ],
+      "antecedents_str": "android",
+      "consequents_str": "iphone",
+      "support": 0.0151,
+      "support_pct": 1.51,
+      "confidence": 0.3834,
+      "confidence_pct": 38.3,
+      "lift": 4.87
+    },
+    {
+      "id": 59,
+      "antecedents": [
+        "disney"
+      ],
+      "consequents": [
+        "apple"
+      ],
+      "antecedents_str": "disney",
+      "consequents_str": "apple",
+      "support": 0.0138,
+      "support_pct": 1.38,
+      "confidence": 0.7923,
+      "confidence_pct": 79.2,
+      "lift": 4.72
+    },
+    {
+      "id": 60,
+      "antecedents": [
+        "giveaway"
+      ],
+      "consequents": [
+        "amazon"
+      ],
+      "antecedents_str": "giveaway",
+      "consequents_str": "amazon",
+      "support": 0.0121,
+      "support_pct": 1.21,
+      "confidence": 0.5348,
+      "confidence_pct": 53.5,
+      "lift": 4.35
+    },
+    {
+      "id": 61,
+      "antecedents": [
+        "xbox"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "xbox",
+      "consequents_str": "gaming",
+      "support": 0.0165,
+      "support_pct": 1.65,
+      "confidence": 0.412,
+      "confidence_pct": 41.2,
+      "lift": 4.24
+    },
+    {
+      "id": 62,
+      "antecedents": [
+        "facebook"
+      ],
+      "consequents": [
+        "google"
+      ],
+      "antecedents_str": "facebook",
+      "consequents_str": "google",
+      "support": 0.0238,
+      "support_pct": 2.38,
+      "confidence": 0.5714,
+      "confidence_pct": 57.1,
+      "lift": 4.11
+    },
+    {
+      "id": 63,
+      "antecedents": [
+        "xbox"
+      ],
+      "consequents": [
+        "microsoft"
+      ],
+      "antecedents_str": "xbox",
+      "consequents_str": "microsoft",
+      "support": 0.0165,
+      "support_pct": 1.65,
+      "confidence": 0.4116,
+      "confidence_pct": 41.2,
+      "lift": 4.08
+    },
+    {
+      "id": 64,
+      "antecedents": [
+        "fortnite"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "fortnite",
+      "consequents_str": "gaming",
+      "support": 0.0104,
+      "support_pct": 1.04,
+      "confidence": 0.3901,
+      "confidence_pct": 39.0,
+      "lift": 4.02
+    },
+    {
+      "id": 65,
+      "antecedents": [
+        "smallstreamer"
+      ],
+      "consequents": [
+        "twitchstreamer"
+      ],
+      "antecedents_str": "smallstreamer",
+      "consequents_str": "twitchstreamer",
+      "support": 0.0104,
+      "support_pct": 1.04,
+      "confidence": 0.3103,
+      "confidence_pct": 31.0,
+      "lift": 4.01
+    },
+    {
+      "id": 66,
+      "antecedents": [
+        "dreamordie"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "dreamordie",
+      "consequents_str": "youtube",
+      "support": 0.0497,
+      "support_pct": 4.97,
+      "confidence": 1.0,
+      "confidence_pct": 100.0,
+      "lift": 4.0
+    },
+    {
+      "id": 67,
+      "antecedents": [
+        "streamer"
+      ],
+      "consequents": [
+        "twitchstreamer"
+      ],
+      "antecedents_str": "streamer",
+      "consequents_str": "twitchstreamer",
+      "support": 0.02,
+      "support_pct": 2.0,
+      "confidence": 0.3053,
+      "confidence_pct": 30.5,
+      "lift": 3.94
+    },
+    {
+      "id": 68,
+      "antecedents": [
+        "gamer"
+      ],
+      "consequents": [
+        "twitchstreamer"
+      ],
+      "antecedents_str": "gamer",
+      "consequents_str": "twitchstreamer",
+      "support": 0.0152,
+      "support_pct": 1.52,
+      "confidence": 0.3044,
+      "confidence_pct": 30.4,
+      "lift": 3.93
+    },
+    {
+      "id": 69,
+      "antecedents": [
+        "samsung"
+      ],
+      "consequents": [
+        "apple"
+      ],
+      "antecedents_str": "samsung",
+      "consequents_str": "apple",
+      "support": 0.0103,
+      "support_pct": 1.03,
+      "confidence": 0.6526,
+      "confidence_pct": 65.3,
+      "lift": 3.89
+    },
+    {
+      "id": 70,
+      "antecedents": [
+        "youtubechannel"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "youtubechannel",
+      "consequents_str": "youtube",
+      "support": 0.0147,
+      "support_pct": 1.47,
+      "confidence": 0.9684,
+      "confidence_pct": 96.8,
+      "lift": 3.88
+    },
+    {
+      "id": 71,
+      "antecedents": [
+        "ios14"
+      ],
+      "consequents": [
+        "apple"
+      ],
+      "antecedents_str": "ios14",
+      "consequents_str": "apple",
+      "support": 0.015,
+      "support_pct": 1.5,
+      "confidence": 0.6417,
+      "confidence_pct": 64.2,
+      "lift": 3.83
+    },
+    {
+      "id": 72,
+      "antecedents": [
+        "callofduty"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "callofduty",
+      "consequents_str": "gaming",
+      "support": 0.0105,
+      "support_pct": 1.05,
+      "confidence": 0.3681,
+      "confidence_pct": 36.8,
+      "lift": 3.79
+    },
+    {
+      "id": 73,
+      "antecedents": [
+        "streaming"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "streaming",
+      "consequents_str": "gaming",
+      "support": 0.0146,
+      "support_pct": 1.46,
+      "confidence": 0.3656,
+      "confidence_pct": 36.6,
+      "lift": 3.77
+    },
+    {
+      "id": 74,
+      "antecedents": [
+        "youtuber"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "youtuber",
+      "consequents_str": "youtube",
+      "support": 0.0333,
+      "support_pct": 3.33,
+      "confidence": 0.9402,
+      "confidence_pct": 94.0,
+      "lift": 3.76
+    },
+    {
+      "id": 75,
+      "antecedents": [
+        "ios"
+      ],
+      "consequents": [
+        "apple"
+      ],
+      "antecedents_str": "ios",
+      "consequents_str": "apple",
+      "support": 0.0232,
+      "support_pct": 2.32,
+      "confidence": 0.6199,
+      "confidence_pct": 62.0,
+      "lift": 3.7
+    },
+    {
+      "id": 76,
+      "antecedents": [
+        "ipad"
+      ],
+      "consequents": [
+        "apple"
+      ],
+      "antecedents_str": "ipad",
+      "consequents_str": "apple",
+      "support": 0.0109,
+      "support_pct": 1.09,
+      "confidence": 0.6027,
+      "confidence_pct": 60.3,
+      "lift": 3.59
+    },
+    {
+      "id": 77,
+      "antecedents": [
+        "subscribe"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "subscribe",
+      "consequents_str": "youtube",
+      "support": 0.0169,
+      "support_pct": 1.69,
+      "confidence": 0.8953,
+      "confidence_pct": 89.5,
+      "lift": 3.58
+    },
+    {
+      "id": 78,
+      "antecedents": [
+        "amazon",
+        "google"
+      ],
+      "consequents": [
+        "apple"
+      ],
+      "antecedents_str": "amazon, google",
+      "consequents_str": "apple",
+      "support": 0.012,
+      "support_pct": 1.2,
+      "confidence": 0.6008,
+      "confidence_pct": 60.1,
+      "lift": 3.58
+    },
+    {
+      "id": 79,
+      "antecedents": [
+        "streamer"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "streamer",
+      "consequents_str": "gaming",
+      "support": 0.0225,
+      "support_pct": 2.25,
+      "confidence": 0.3442,
+      "confidence_pct": 34.4,
+      "lift": 3.55
+    },
+    {
+      "id": 80,
+      "antecedents": [
+        "stream"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "stream",
+      "consequents_str": "gaming",
+      "support": 0.0131,
+      "support_pct": 1.31,
+      "confidence": 0.3321,
+      "confidence_pct": 33.2,
+      "lift": 3.42
+    },
+    {
+      "id": 81,
+      "antecedents": [
+        "twitchtv"
+      ],
+      "consequents": [
+        "gaming"
+      ],
+      "antecedents_str": "twitchtv",
+      "consequents_str": "gaming",
+      "support": 0.013,
+      "support_pct": 1.3,
+      "confidence": 0.3215,
+      "confidence_pct": 32.2,
+      "lift": 3.31
+    },
+    {
+      "id": 82,
+      "antecedents": [
+        "wizebot"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "wizebot",
+      "consequents_str": "twitch",
+      "support": 0.0183,
+      "support_pct": 1.83,
+      "confidence": 1.0,
+      "confidence_pct": 100.0,
+      "lift": 3.24
+    },
+    {
+      "id": 83,
+      "antecedents": [
+        "stream",
+        "twitchstreamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "stream, twitchstreamer",
+      "consequents_str": "twitch",
+      "support": 0.0103,
+      "support_pct": 1.03,
+      "confidence": 0.9934,
+      "confidence_pct": 99.3,
+      "lift": 3.21
+    },
+    {
+      "id": 84,
+      "antecedents": [
+        "streaming",
+        "twitchstreamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "streaming, twitchstreamer",
+      "consequents_str": "twitch",
+      "support": 0.0105,
+      "support_pct": 1.05,
+      "confidence": 0.9903,
+      "confidence_pct": 99.0,
+      "lift": 3.2
+    },
+    {
+      "id": 85,
+      "antecedents": [
+        "streamer",
+        "twitchstreamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "streamer, twitchstreamer",
+      "consequents_str": "twitch",
+      "support": 0.0197,
+      "support_pct": 1.97,
+      "confidence": 0.9885,
+      "confidence_pct": 98.8,
+      "lift": 3.2
+    },
+    {
+      "id": 86,
+      "antecedents": [
+        "gamer",
+        "twitchstreamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gamer, twitchstreamer",
+      "consequents_str": "twitch",
+      "support": 0.015,
+      "support_pct": 1.5,
+      "confidence": 0.9854,
+      "confidence_pct": 98.5,
+      "lift": 3.19
+    },
+    {
+      "id": 87,
+      "antecedents": [
+        "gaming",
+        "twitchaffiliate"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gaming, twitchaffiliate",
+      "consequents_str": "twitch",
+      "support": 0.01,
+      "support_pct": 1.0,
+      "confidence": 0.9849,
+      "confidence_pct": 98.5,
+      "lift": 3.19
+    },
+    {
+      "id": 88,
+      "antecedents": [
+        "twitchaffiliate",
+        "twitchstreamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "twitchaffiliate, twitchstreamer",
+      "consequents_str": "twitch",
+      "support": 0.0225,
+      "support_pct": 2.25,
+      "confidence": 0.9847,
+      "confidence_pct": 98.5,
+      "lift": 3.19
+    },
+    {
+      "id": 89,
+      "antecedents": [
+        "streamer",
+        "twitchaffiliate"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "streamer, twitchaffiliate",
+      "consequents_str": "twitch",
+      "support": 0.0122,
+      "support_pct": 1.22,
+      "confidence": 0.9842,
+      "confidence_pct": 98.4,
+      "lift": 3.18
+    },
+    {
+      "id": 90,
+      "antecedents": [
+        "twitchaffiliate",
+        "twitchtv"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "twitchaffiliate, twitchtv",
+      "consequents_str": "twitch",
+      "support": 0.0134,
+      "support_pct": 1.34,
+      "confidence": 0.9831,
+      "confidence_pct": 98.3,
+      "lift": 3.18
+    },
+    {
+      "id": 91,
+      "antecedents": [
+        "streamer",
+        "twitchtv"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "streamer, twitchtv",
+      "consequents_str": "twitch",
+      "support": 0.0128,
+      "support_pct": 1.28,
+      "confidence": 0.9817,
+      "confidence_pct": 98.2,
+      "lift": 3.18
+    },
+    {
+      "id": 92,
+      "antecedents": [
+        "twitchstreamer",
+        "twitchtv"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "twitchstreamer, twitchtv",
+      "consequents_str": "twitch",
+      "support": 0.0207,
+      "support_pct": 2.07,
+      "confidence": 0.9814,
+      "confidence_pct": 98.1,
+      "lift": 3.17
+    },
+    {
+      "id": 93,
+      "antecedents": [
+        "twitchaffiliate"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "twitchaffiliate",
+      "consequents_str": "twitch",
+      "support": 0.0446,
+      "support_pct": 4.46,
+      "confidence": 0.9808,
+      "confidence_pct": 98.1,
+      "lift": 3.17
+    },
+    {
+      "id": 94,
+      "antecedents": [
+        "gaming",
+        "twitchtv"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gaming, twitchtv",
+      "consequents_str": "twitch",
+      "support": 0.0127,
+      "support_pct": 1.27,
+      "confidence": 0.9777,
+      "confidence_pct": 97.8,
+      "lift": 3.16
+    },
+    {
+      "id": 95,
+      "antecedents": [
+        "smallstreamer",
+        "twitchstreamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "smallstreamer, twitchstreamer",
+      "consequents_str": "twitch",
+      "support": 0.0102,
+      "support_pct": 1.02,
+      "confidence": 0.9755,
+      "confidence_pct": 97.5,
+      "lift": 3.16
+    },
+    {
+      "id": 96,
+      "antecedents": [
+        "twitchstreamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "twitchstreamer",
+      "consequents_str": "twitch",
+      "support": 0.0752,
+      "support_pct": 7.52,
+      "confidence": 0.9718,
+      "confidence_pct": 97.2,
+      "lift": 3.14
+    },
+    {
+      "id": 97,
+      "antecedents": [
+        "twitchtv"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "twitchtv",
+      "consequents_str": "twitch",
+      "support": 0.0391,
+      "support_pct": 3.91,
+      "confidence": 0.9669,
+      "confidence_pct": 96.7,
+      "lift": 3.13
+    },
+    {
+      "id": 98,
+      "antecedents": [
+        "stream",
+        "streamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "stream, streamer",
+      "consequents_str": "twitch",
+      "support": 0.0144,
+      "support_pct": 1.44,
+      "confidence": 0.9634,
+      "confidence_pct": 96.3,
+      "lift": 3.12
+    },
+    {
+      "id": 99,
+      "antecedents": [
+        "gaming",
+        "twitchstreamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gaming, twitchstreamer",
+      "consequents_str": "twitch",
+      "support": 0.0176,
+      "support_pct": 1.76,
+      "confidence": 0.9622,
+      "confidence_pct": 96.2,
+      "lift": 3.11
+    },
+    {
+      "id": 100,
+      "antecedents": [
+        "supportsmallstreamers"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "supportsmallstreamers",
+      "consequents_str": "twitch",
+      "support": 0.0318,
+      "support_pct": 3.18,
+      "confidence": 0.9595,
+      "confidence_pct": 96.0,
+      "lift": 3.1
+    },
+    {
+      "id": 101,
+      "antecedents": [
+        "twitchstreamers"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "twitchstreamers",
+      "consequents_str": "twitch",
+      "support": 0.0304,
+      "support_pct": 3.04,
+      "confidence": 0.959,
+      "confidence_pct": 95.9,
+      "lift": 3.1
+    },
+    {
+      "id": 102,
+      "antecedents": [
+        "twitchaffilate"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "twitchaffilate",
+      "consequents_str": "twitch",
+      "support": 0.0153,
+      "support_pct": 1.53,
+      "confidence": 0.9578,
+      "confidence_pct": 95.8,
+      "lift": 3.1
+    },
+    {
+      "id": 103,
+      "antecedents": [
+        "gaming",
+        "stream"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gaming, stream",
+      "consequents_str": "twitch",
+      "support": 0.0125,
+      "support_pct": 1.25,
+      "confidence": 0.9545,
+      "confidence_pct": 95.5,
+      "lift": 3.09
+    },
+    {
+      "id": 104,
+      "antecedents": [
+        "video"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "video",
+      "consequents_str": "youtube",
+      "support": 0.0169,
+      "support_pct": 1.69,
+      "confidence": 0.7704,
+      "confidence_pct": 77.0,
+      "lift": 3.08
+    },
+    {
+      "id": 105,
+      "antecedents": [
+        "gamer",
+        "streamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gamer, streamer",
+      "consequents_str": "twitch",
+      "support": 0.0206,
+      "support_pct": 2.06,
+      "confidence": 0.9488,
+      "confidence_pct": 94.9,
+      "lift": 3.07
+    },
+    {
+      "id": 106,
+      "antecedents": [
+        "stream",
+        "streaming"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "stream, streaming",
+      "consequents_str": "twitch",
+      "support": 0.0109,
+      "support_pct": 1.09,
+      "confidence": 0.9481,
+      "confidence_pct": 94.8,
+      "lift": 3.07
+    },
+    {
+      "id": 107,
+      "antecedents": [
+        "gaming",
+        "streamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gaming, streamer",
+      "consequents_str": "twitch",
+      "support": 0.0213,
+      "support_pct": 2.13,
+      "confidence": 0.9458,
+      "confidence_pct": 94.6,
+      "lift": 3.06
+    },
+    {
+      "id": 108,
+      "antecedents": [
+        "smallstreamercommunity"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "smallstreamercommunity",
+      "consequents_str": "twitch",
+      "support": 0.0162,
+      "support_pct": 1.62,
+      "confidence": 0.9439,
+      "confidence_pct": 94.4,
+      "lift": 3.05
+    },
+    {
+      "id": 109,
+      "antecedents": [
+        "smallstreamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "smallstreamer",
+      "consequents_str": "twitch",
+      "support": 0.0317,
+      "support_pct": 3.17,
+      "confidence": 0.9427,
+      "confidence_pct": 94.3,
+      "lift": 3.05
+    },
+    {
+      "id": 110,
+      "antecedents": [
+        "streamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "streamer",
+      "consequents_str": "twitch",
+      "support": 0.0616,
+      "support_pct": 6.16,
+      "confidence": 0.9416,
+      "confidence_pct": 94.2,
+      "lift": 3.05
+    },
+    {
+      "id": 111,
+      "antecedents": [
+        "smallstreamersconnect"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "smallstreamersconnect",
+      "consequents_str": "twitch",
+      "support": 0.0215,
+      "support_pct": 2.15,
+      "confidence": 0.9392,
+      "confidence_pct": 93.9,
+      "lift": 3.04
+    },
+    {
+      "id": 112,
+      "antecedents": [
+        "gaming",
+        "streaming"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gaming, streaming",
+      "consequents_str": "twitch",
+      "support": 0.0136,
+      "support_pct": 1.36,
+      "confidence": 0.9309,
+      "confidence_pct": 93.1,
+      "lift": 3.01
+    },
+    {
+      "id": 113,
+      "antecedents": [
+        "streamer",
+        "streaming"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "streamer, streaming",
+      "consequents_str": "twitch",
+      "support": 0.0135,
+      "support_pct": 1.35,
+      "confidence": 0.9284,
+      "confidence_pct": 92.8,
+      "lift": 3.0
+    },
+    {
+      "id": 114,
+      "antecedents": [
+        "stream"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "stream",
+      "consequents_str": "twitch",
+      "support": 0.0365,
+      "support_pct": 3.65,
+      "confidence": 0.9215,
+      "confidence_pct": 92.1,
+      "lift": 2.98
+    },
+    {
+      "id": 115,
+      "antecedents": [
+        "netflix"
+      ],
+      "consequents": [
+        "amazon"
+      ],
+      "antecedents_str": "netflix",
+      "consequents_str": "amazon",
+      "support": 0.0182,
+      "support_pct": 1.82,
+      "confidence": 0.366,
+      "confidence_pct": 36.6,
+      "lift": 2.98
+    },
+    {
+      "id": 116,
+      "antecedents": [
+        "warzone"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "warzone",
+      "consequents_str": "twitch",
+      "support": 0.0285,
+      "support_pct": 2.85,
+      "confidence": 0.9055,
+      "confidence_pct": 90.5,
+      "lift": 2.93
+    },
+    {
+      "id": 117,
+      "antecedents": [
+        "android"
+      ],
+      "consequents": [
+        "google"
+      ],
+      "antecedents_str": "android",
+      "consequents_str": "google",
+      "support": 0.016,
+      "support_pct": 1.6,
+      "confidence": 0.4068,
+      "confidence_pct": 40.7,
+      "lift": 2.93
+    },
+    {
+      "id": 118,
+      "antecedents": [
+        "memes"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "memes",
+      "consequents_str": "youtube",
+      "support": 0.0114,
+      "support_pct": 1.14,
+      "confidence": 0.723,
+      "confidence_pct": 72.3,
+      "lift": 2.89
+    },
+    {
+      "id": 119,
+      "antecedents": [
+        "callofduty",
+        "warzone"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "callofduty, warzone",
+      "consequents_str": "twitch",
+      "support": 0.0134,
+      "support_pct": 1.34,
+      "confidence": 0.8937,
+      "confidence_pct": 89.4,
+      "lift": 2.89
+    },
+    {
+      "id": 120,
+      "antecedents": [
+        "twitchstreamer",
+        "youtube"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "twitchstreamer, youtube",
+      "consequents_str": "twitch",
+      "support": 0.0127,
+      "support_pct": 1.27,
+      "confidence": 0.876,
+      "confidence_pct": 87.6,
+      "lift": 2.83
+    },
+    {
+      "id": 121,
+      "antecedents": [
+        "cod"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "cod",
+      "consequents_str": "twitch",
+      "support": 0.0162,
+      "support_pct": 1.62,
+      "confidence": 0.8678,
+      "confidence_pct": 86.8,
+      "lift": 2.81
+    },
+    {
+      "id": 122,
+      "antecedents": [
+        "gamer",
+        "videogames"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gamer, videogames",
+      "consequents_str": "twitch",
+      "support": 0.0107,
+      "support_pct": 1.07,
+      "confidence": 0.8575,
+      "confidence_pct": 85.8,
+      "lift": 2.77
+    },
+    {
+      "id": 123,
+      "antecedents": [
+        "callofduty"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "callofduty",
+      "consequents_str": "twitch",
+      "support": 0.0243,
+      "support_pct": 2.43,
+      "confidence": 0.849,
+      "confidence_pct": 84.9,
+      "lift": 2.75
+    },
+    {
+      "id": 124,
+      "antecedents": [
+        "gamer",
+        "xbox"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gamer, xbox",
+      "consequents_str": "twitch",
+      "support": 0.0103,
+      "support_pct": 1.03,
+      "confidence": 0.8428,
+      "confidence_pct": 84.3,
+      "lift": 2.73
+    },
+    {
+      "id": 125,
+      "antecedents": [
+        "live"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "live",
+      "consequents_str": "twitch",
+      "support": 0.0246,
+      "support_pct": 2.46,
+      "confidence": 0.8372,
+      "confidence_pct": 83.7,
+      "lift": 2.71
+    },
+    {
+      "id": 126,
+      "antecedents": [
+        "streamer",
+        "youtube"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "streamer, youtube",
+      "consequents_str": "twitch",
+      "support": 0.0156,
+      "support_pct": 1.56,
+      "confidence": 0.8276,
+      "confidence_pct": 82.8,
+      "lift": 2.68
+    },
+    {
+      "id": 127,
+      "antecedents": [
+        "streaming"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "streaming",
+      "consequents_str": "twitch",
+      "support": 0.0318,
+      "support_pct": 3.18,
+      "confidence": 0.7973,
+      "confidence_pct": 79.7,
+      "lift": 2.58
+    },
+    {
+      "id": 128,
+      "antecedents": [
+        "gamer"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gamer",
+      "consequents_str": "twitch",
+      "support": 0.0398,
+      "support_pct": 3.98,
+      "confidence": 0.7962,
+      "confidence_pct": 79.6,
+      "lift": 2.58
+    },
+    {
+      "id": 129,
+      "antecedents": [
+        "livestream"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "livestream",
+      "consequents_str": "twitch",
+      "support": 0.0141,
+      "support_pct": 1.41,
+      "confidence": 0.792,
+      "confidence_pct": 79.2,
+      "lift": 2.56
+    },
+    {
+      "id": 130,
+      "antecedents": [
+        "amongus"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "amongus",
+      "consequents_str": "twitch",
+      "support": 0.0134,
+      "support_pct": 1.34,
+      "confidence": 0.7894,
+      "confidence_pct": 78.9,
+      "lift": 2.55
+    },
+    {
+      "id": 131,
+      "antecedents": [
+        "gamer",
+        "gaming"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gamer, gaming",
+      "consequents_str": "twitch",
+      "support": 0.0232,
+      "support_pct": 2.32,
+      "confidence": 0.7864,
+      "confidence_pct": 78.6,
+      "lift": 2.54
+    },
+    {
+      "id": 132,
+      "antecedents": [
+        "tech"
+      ],
+      "consequents": [
+        "apple"
+      ],
+      "antecedents_str": "tech",
+      "consequents_str": "apple",
+      "support": 0.0156,
+      "support_pct": 1.56,
+      "confidence": 0.417,
+      "confidence_pct": 41.7,
+      "lift": 2.49
+    },
+    {
+      "id": 133,
+      "antecedents": [
+        "fortnite"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "fortnite",
+      "consequents_str": "twitch",
+      "support": 0.0204,
+      "support_pct": 2.04,
+      "confidence": 0.764,
+      "confidence_pct": 76.4,
+      "lift": 2.47
+    },
+    {
+      "id": 134,
+      "antecedents": [
+        "music"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "music",
+      "consequents_str": "youtube",
+      "support": 0.0203,
+      "support_pct": 2.03,
+      "confidence": 0.6045,
+      "confidence_pct": 60.5,
+      "lift": 2.42
+    },
+    {
+      "id": 135,
+      "antecedents": [
+        "gaming",
+        "videogames"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gaming, videogames",
+      "consequents_str": "twitch",
+      "support": 0.0122,
+      "support_pct": 1.22,
+      "confidence": 0.7454,
+      "confidence_pct": 74.5,
+      "lift": 2.41
+    },
+    {
+      "id": 136,
+      "antecedents": [
+        "spotify"
+      ],
+      "consequents": [
+        "apple"
+      ],
+      "antecedents_str": "spotify",
+      "consequents_str": "apple",
+      "support": 0.0115,
+      "support_pct": 1.15,
+      "confidence": 0.3971,
+      "confidence_pct": 39.7,
+      "lift": 2.37
+    },
+    {
+      "id": 137,
+      "antecedents": [
+        "iphone"
+      ],
+      "consequents": [
+        "apple"
+      ],
+      "antecedents_str": "iphone",
+      "consequents_str": "apple",
+      "support": 0.0312,
+      "support_pct": 3.12,
+      "confidence": 0.3965,
+      "confidence_pct": 39.7,
+      "lift": 2.36
+    },
+    {
+      "id": 138,
+      "antecedents": [
+        "pcgaming"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "pcgaming",
+      "consequents_str": "twitch",
+      "support": 0.0122,
+      "support_pct": 1.22,
+      "confidence": 0.719,
+      "confidence_pct": 71.9,
+      "lift": 2.33
+    },
+    {
+      "id": 139,
+      "antecedents": [
+        "gamers"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gamers",
+      "consequents_str": "twitch",
+      "support": 0.0133,
+      "support_pct": 1.33,
+      "confidence": 0.7149,
+      "confidence_pct": 71.5,
+      "lift": 2.31
+    },
+    {
+      "id": 140,
+      "antecedents": [
+        "technology"
+      ],
+      "consequents": [
+        "google"
+      ],
+      "antecedents_str": "technology",
+      "consequents_str": "google",
+      "support": 0.0111,
+      "support_pct": 1.11,
+      "confidence": 0.3201,
+      "confidence_pct": 32.0,
+      "lift": 2.3
+    },
+    {
+      "id": 141,
+      "antecedents": [
+        "instagram"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "instagram",
+      "consequents_str": "youtube",
+      "support": 0.0112,
+      "support_pct": 1.12,
+      "confidence": 0.5747,
+      "confidence_pct": 57.5,
+      "lift": 2.3
+    },
+    {
+      "id": 142,
+      "antecedents": [
+        "memes"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "memes",
+      "consequents_str": "twitch",
+      "support": 0.0111,
+      "support_pct": 1.11,
+      "confidence": 0.7003,
+      "confidence_pct": 70.0,
+      "lift": 2.27
+    },
+    {
+      "id": 143,
+      "antecedents": [
+        "ps4"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "ps4",
+      "consequents_str": "twitch",
+      "support": 0.0135,
+      "support_pct": 1.35,
+      "confidence": 0.6985,
+      "confidence_pct": 69.8,
+      "lift": 2.26
+    },
+    {
+      "id": 144,
+      "antecedents": [
+        "gamer",
+        "youtube"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gamer, youtube",
+      "consequents_str": "twitch",
+      "support": 0.015,
+      "support_pct": 1.5,
+      "confidence": 0.688,
+      "confidence_pct": 68.8,
+      "lift": 2.23
+    },
+    {
+      "id": 145,
+      "antecedents": [
+        "gaming",
+        "xbox"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gaming, xbox",
+      "consequents_str": "twitch",
+      "support": 0.0112,
+      "support_pct": 1.12,
+      "confidence": 0.6803,
+      "confidence_pct": 68.0,
+      "lift": 2.2
+    },
+    {
+      "id": 146,
+      "antecedents": [
+        "pc"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "pc",
+      "consequents_str": "twitch",
+      "support": 0.0134,
+      "support_pct": 1.34,
+      "confidence": 0.6712,
+      "confidence_pct": 67.1,
+      "lift": 2.17
+    },
+    {
+      "id": 147,
+      "antecedents": [
+        "game"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "game",
+      "consequents_str": "youtube",
+      "support": 0.0112,
+      "support_pct": 1.12,
+      "confidence": 0.5291,
+      "confidence_pct": 52.9,
+      "lift": 2.12
+    },
+    {
+      "id": 148,
+      "antecedents": [
+        "gaming"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gaming",
+      "consequents_str": "twitch",
+      "support": 0.0634,
+      "support_pct": 6.34,
+      "confidence": 0.6528,
+      "confidence_pct": 65.3,
+      "lift": 2.11
+    },
+    {
+      "id": 149,
+      "antecedents": [
+        "follow"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "follow",
+      "consequents_str": "youtube",
+      "support": 0.0103,
+      "support_pct": 1.03,
+      "confidence": 0.5235,
+      "confidence_pct": 52.4,
+      "lift": 2.1
+    },
+    {
+      "id": 150,
+      "antecedents": [
+        "android"
+      ],
+      "consequents": [
+        "apple"
+      ],
+      "antecedents_str": "android",
+      "consequents_str": "apple",
+      "support": 0.0132,
+      "support_pct": 1.32,
+      "confidence": 0.3346,
+      "confidence_pct": 33.5,
+      "lift": 2.0
+    },
+    {
+      "id": 151,
+      "antecedents": [
+        "technology"
+      ],
+      "consequents": [
+        "apple"
+      ],
+      "antecedents_str": "technology",
+      "consequents_str": "apple",
+      "support": 0.0115,
+      "support_pct": 1.15,
+      "confidence": 0.3321,
+      "confidence_pct": 33.2,
+      "lift": 1.98
+    },
+    {
+      "id": 152,
+      "antecedents": [
+        "follow"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "follow",
+      "consequents_str": "twitch",
+      "support": 0.0121,
+      "support_pct": 1.21,
+      "confidence": 0.6108,
+      "confidence_pct": 61.1,
+      "lift": 1.98
+    },
+    {
+      "id": 153,
+      "antecedents": [
+        "game"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "game",
+      "consequents_str": "twitch",
+      "support": 0.0129,
+      "support_pct": 1.29,
+      "confidence": 0.609,
+      "confidence_pct": 60.9,
+      "lift": 1.97
+    },
+    {
+      "id": 154,
+      "antecedents": [
+        "twitter"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "twitter",
+      "consequents_str": "youtube",
+      "support": 0.0109,
+      "support_pct": 1.09,
+      "confidence": 0.4889,
+      "confidence_pct": 48.9,
+      "lift": 1.96
+    },
+    {
+      "id": 155,
+      "antecedents": [
+        "netflix"
+      ],
+      "consequents": [
+        "apple"
+      ],
+      "antecedents_str": "netflix",
+      "consequents_str": "apple",
+      "support": 0.016,
+      "support_pct": 1.6,
+      "confidence": 0.3233,
+      "confidence_pct": 32.3,
+      "lift": 1.93
+    },
+    {
+      "id": 156,
+      "antecedents": [
+        "spotify"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "spotify",
+      "consequents_str": "youtube",
+      "support": 0.0139,
+      "support_pct": 1.39,
+      "confidence": 0.4813,
+      "confidence_pct": 48.1,
+      "lift": 1.93
+    },
+    {
+      "id": 157,
+      "antecedents": [
+        "fortnite"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "fortnite",
+      "consequents_str": "youtube",
+      "support": 0.0126,
+      "support_pct": 1.26,
+      "confidence": 0.4692,
+      "confidence_pct": 46.9,
+      "lift": 1.88
+    },
+    {
+      "id": 158,
+      "antecedents": [
+        "gaming",
+        "youtube"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "gaming, youtube",
+      "consequents_str": "twitch",
+      "support": 0.0263,
+      "support_pct": 2.63,
+      "confidence": 0.5805,
+      "confidence_pct": 58.1,
+      "lift": 1.88
+    },
+    {
+      "id": 159,
+      "antecedents": [
+        "gaming"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "gaming",
+      "consequents_str": "youtube",
+      "support": 0.0454,
+      "support_pct": 4.54,
+      "confidence": 0.4672,
+      "confidence_pct": 46.7,
+      "lift": 1.87
+    },
+    {
+      "id": 160,
+      "antecedents": [
+        "games"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "games",
+      "consequents_str": "twitch",
+      "support": 0.014,
+      "support_pct": 1.4,
+      "confidence": 0.5772,
+      "confidence_pct": 57.7,
+      "lift": 1.87
+    },
+    {
+      "id": 161,
+      "antecedents": [
+        "playstation"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "playstation",
+      "consequents_str": "twitch",
+      "support": 0.0108,
+      "support_pct": 1.08,
+      "confidence": 0.5745,
+      "confidence_pct": 57.4,
+      "lift": 1.86
+    },
+    {
+      "id": 162,
+      "antecedents": [
+        "games"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "games",
+      "consequents_str": "youtube",
+      "support": 0.0111,
+      "support_pct": 1.11,
+      "confidence": 0.4598,
+      "confidence_pct": 46.0,
+      "lift": 1.84
+    },
+    {
+      "id": 163,
+      "antecedents": [
+        "videogames"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "videogames",
+      "consequents_str": "twitch",
+      "support": 0.0167,
+      "support_pct": 1.67,
+      "confidence": 0.5391,
+      "confidence_pct": 53.9,
+      "lift": 1.74
+    },
+    {
+      "id": 164,
+      "antecedents": [
+        "gamer"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "gamer",
+      "consequents_str": "youtube",
+      "support": 0.0218,
+      "support_pct": 2.18,
+      "confidence": 0.4355,
+      "confidence_pct": 43.5,
+      "lift": 1.74
+    },
+    {
+      "id": 165,
+      "antecedents": [
+        "xbox"
+      ],
+      "consequents": [
+        "twitch"
+      ],
+      "antecedents_str": "xbox",
+      "consequents_str": "twitch",
+      "support": 0.0203,
+      "support_pct": 2.03,
+      "confidence": 0.5061,
+      "confidence_pct": 50.6,
+      "lift": 1.64
+    },
+    {
+      "id": 166,
+      "antecedents": [
+        "videogames"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "videogames",
+      "consequents_str": "youtube",
+      "support": 0.0126,
+      "support_pct": 1.26,
+      "confidence": 0.4061,
+      "confidence_pct": 40.6,
+      "lift": 1.63
+    },
+    {
+      "id": 167,
+      "antecedents": [
+        "callofduty"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "callofduty",
+      "consequents_str": "youtube",
+      "support": 0.0114,
+      "support_pct": 1.14,
+      "confidence": 0.3986,
+      "confidence_pct": 39.9,
+      "lift": 1.6
+    },
+    {
+      "id": 168,
+      "antecedents": [
+        "facebook"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "facebook",
+      "consequents_str": "youtube",
+      "support": 0.0132,
+      "support_pct": 1.32,
+      "confidence": 0.3175,
+      "confidence_pct": 31.8,
+      "lift": 1.27
+    },
+    {
+      "id": 169,
+      "antecedents": [
+        "xbox"
+      ],
+      "consequents": [
+        "youtube"
+      ],
+      "antecedents_str": "xbox",
+      "consequents_str": "youtube",
+      "support": 0.0121,
+      "support_pct": 1.21,
+      "confidence": 0.3005,
+      "confidence_pct": 30.0,
+      "lift": 1.2
+    }
+  ]
+}

@@ -33,13 +33,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy backend, ml, database, scripts
+# Copy backend, ml, database, scripts, data files
 COPY backend/ ./backend/
 COPY ml/ ./ml/
 COPY database/ ./database/
 COPY scripts/ ./scripts/
 COPY tests/ ./tests/
 COPY README.md ./
+COPY hashtag_association_rules_bigtech.csv ./
 
 # Copy built Next.js static files from Stage 1
 COPY --from=frontend-builder /app/next-frontend/out ./next-frontend/out

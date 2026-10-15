@@ -101,3 +101,49 @@ export const fetchModelMetrics = async () => {
   if (!res.ok) throw new Error('Failed to fetch model metrics');
   return res.json();
 };
+
+export const fetchAssociationRules = async (params = {}) => {
+  const searchParams = new URLSearchParams();
+  if (params.search) searchParams.append('search', params.search);
+  if (params.min_support !== undefined) searchParams.append('min_support', params.min_support);
+  if (params.min_confidence !== undefined) searchParams.append('min_confidence', params.min_confidence);
+  if (params.min_lift !== undefined) searchParams.append('min_lift', params.min_lift);
+  if (params.sort_by) searchParams.append('sort_by', params.sort_by);
+  if (params.order) searchParams.append('order', params.order);
+  if (params.limit) searchParams.append('limit', params.limit);
+  if (params.offset) searchParams.append('offset', params.offset);
+
+  const queryStr = searchParams.toString();
+  const url = `${API_BASE}/association-rules${queryStr ? `?${queryStr}` : ''}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to fetch association rules');
+  return res.json();
+};
+
+export const fetchTopicClusters = async () => {
+  const res = await fetch(`${API_BASE}/topics/clusters`);
+  if (!res.ok) throw new Error('Failed to fetch topic clusters');
+  return res.json();
+};
+
+export const predictPostTopic = async (text) => {
+  const res = await fetch(`${API_BASE}/topics/predict`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text }),
+  });
+  if (!res.ok) throw new Error('Failed to predict topic');
+  return res.json();
+};
+
+export const fetchSentimentTrendForecast = async (brand = '', horizon = 14) => {
+  const searchParams = new URLSearchParams();
+  if (brand && brand !== 'All Brands' && brand !== 'all') {
+    searchParams.append('brand', brand);
+  }
+  searchParams.append('horizon', horizon);
+  const url = `${API_BASE}/prediction/trend-forecast?${searchParams.toString()}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to fetch sentiment trend forecast');
+  return res.json();
+};

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { 
   BarChart3, Database, Award, Sparkles, 
-  Layers, HardDrive, ShieldCheck 
+  Layers, GitFork 
 } from 'lucide-react';
 
 import ExecutiveOverview from './components/ExecutiveOverview';
 import OLAPExplorer from './components/OLAPExplorer';
 import BrandBenchmarks from './components/BrandBenchmarks';
 import MLPlayground from './components/MLPlayground';
+import AssociationRules from './components/AssociationRules';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -55,7 +56,14 @@ export default function App() {
               className={`nav-tab-btn ${activeTab === 'ml' ? 'active' : ''}`}
             >
               <Sparkles size={16} />
-              ML Predictor & Evaluation
+              ML Sentiment Studio
+            </button>
+            <button
+              onClick={() => setActiveTab('rules')}
+              className={`nav-tab-btn ${activeTab === 'rules' ? 'active' : ''}`}
+            >
+              <GitFork size={16} />
+              Association Rules
             </button>
           </nav>
 
@@ -73,6 +81,7 @@ export default function App() {
         {activeTab === 'olap' && <OLAPExplorer />}
         {activeTab === 'brands' && <BrandBenchmarks />}
         {activeTab === 'ml' && <MLPlayground />}
+        {activeTab === 'rules' && <AssociationRules />}
       </main>
     </div>
   );
