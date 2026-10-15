@@ -120,5 +120,46 @@ All 10 tests verify database integrity, row counts (289,324), OLAP operations, a
 | `/api/olap/pivot` | `GET` | Cross-tabulation matrix |
 | `/api/olap/brand-health` | `GET` | Complete Brand Health Index ranking |
 | `/api/olap/weighted-sentiment` | `GET` | Retweet-weighted sentiment rankings |
-| `/api/predict` | `POST` | Real-time tweet sentiment inference |
+| `/api/predict` | `POST` | Real-time tweet sentiment inference (Positive / Neutral / Negative) |
 | `/api/model/metrics` | `GET` | Test accuracy, macro F1, and confusion matrix |
+| `/api/topics/clusters` | `GET` | Unsupervised MiniBatchKMeans (k=6) topic clusters with centroid terms & sentiment |
+| `/api/topics/predict` | `POST` | Real-time post topic categorization via centroid cosine distance |
+| `/api/association-rules` | `GET` | Apriori mined hashtag/keyword co-occurrence rules (Support, Confidence, Lift) |
+| `/api/prediction/trend-forecast` | `GET` | Holt's linear exponential smoothing sentiment forecasting with 95% confidence intervals |
+
+---
+
+## 6. Advanced Machine Learning & Data Mining Modules
+
+### 1. Sentiment Classification Engine
+- **Architecture**: Sublinear Word + Char N-Gram Feature Union paired with Calibrated Linear Support Vector Classifier (`CalibratedClassifierCV(LinearSVC)`).
+- **Classes**: `Positive`, `Neutral`, `Negative` with calibrated posterior probability distribution.
+- **Performance**: 88.76% Accuracy, 82.49% Macro F1, evaluated on an 80/20 stratified split of 13,743 ground-truth labeled social media posts.
+
+### 2. Unsupervised Topic Clustering
+- **Architecture**: `MiniBatchKMeans` with $k=6$ topic clusters and sublinear TF-IDF text representations.
+- **Discovered Topics**:
+  1. *E-Commerce, Prime & Retail Deals* (`#amazon`, `#deals`, `#kindle`, `#ganga`)
+  2. *Gaming & Live Stream Communities* (`#twitch`, `#streamer`, `#gaming`, `#apex`)
+  3. *Entertainment & Video Streaming* (`#netflix`, `#movie`, `#series`, `#watch`)
+  4. *Search, Digital Marketing & Android* (`#google`, `#seo`, `#pixel`, `#android`)
+  5. *Enterprise Cloud & Infrastructure* (`#microsoft`, `#azure`, `#cloud`, `#windows`)
+  6. *Smartphones, iOS & Apple Devices* (`#apple`, `#iphone`, `#ipad`, `#ios`)
+- **Live Inference**: Supports classifying any custom post or tweet to its closest conversational centroid in real-time.
+
+### 3. Hashtag & Keyword Association Rule Mining
+- **Data Source**: `hashtag_association_rules_bigtech.csv` (170 association rules).
+- **Core Metrics**:
+  - **Support**: Frequency of itemset co-occurrence across the corpus (up to 7.52% for `#twitchstreamer \rightarrow #twitch`).
+  - **Confidence**: Conditional probability $P(\text{Consequent} \mid \text{Antecedent})$ reaching 100%.
+  - **Lift**: Correlation ratio above independent baseline (reaching **42.26x** for deal hashtags `{deals, ganga} \rightarrow {deal}`).
+- **Webpage Features**: Interactive keyword filtering, minimum Lift/Confidence sliders, sorting, top lift horizontal bar chart, and curated synergy cards.
+
+### 4. Sentiment Trend Prediction & Time-Series Forecasting
+- **Algorithm**: Double Exponential Smoothing (Holt's Linear Trend model) with $95\%$ Prediction Confidence Intervals.
+- **Outputs**:
+  - Trajectory Direction: `Improving (Bullish)`, `Stable (Neutral)`, `Declining (Bearish)`.
+  - Velocity & Rate of Change (daily slope).
+  - Continuous Historical-to-Forecast interactive timeline with shaded upper/lower prediction bounds envelope.
+  - Multi-Horizon selector (7, 14, 21, 30 days) with brand-level drilldown (Apple, Amazon, Google, Microsoft, Netflix, Twitch, YouTube, Tesla).
+

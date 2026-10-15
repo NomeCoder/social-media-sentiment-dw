@@ -1,0 +1,309 @@
+{
+  "algorithm": "MiniBatchKMeans + Sublinear TF-IDF (k=6)",
+  "total_posts_sampled": 24977,
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "name": "Content Creators & Video Channels",
+      "category": "Creator Economy",
+      "color": "#3b82f6",
+      "count": 3159,
+      "share_pct": 12.65,
+      "top_terms": [
+        "youtube",
+        "video",
+        "youtuber",
+        "channel",
+        "subscribe",
+        "check",
+        "twitch",
+        "music",
+        "gaming",
+        "youtube video",
+        "youtube channel",
+        "watch"
+      ],
+      "avg_sentiment_score": 0.197,
+      "sentiment_distribution": {
+        "positive": 44.6,
+        "neutral": 43.7,
+        "negative": 11.8
+      },
+      "top_brands": {
+        "Youtube": 2821,
+        "Twitch": 194,
+        "Google": 63,
+        "Apple": 30
+      },
+      "sample_posts": [
+        {
+          "text": "Win an iPad 2! via @mention Video ClipCon! See intro reel at {link} #sxsw #suasxsw #sxswaccel #entrepreneur #smallbiz #ceokidschat",
+          "sentiment_label": "Positive",
+          "brand_name": "iPad"
+        },
+        {
+          "text": "\ud83d\udcf9 New GAME SHOW VIDEO!  YOU CAN WIN AN AMAZON GIFT CARD!  \ud83d\udcf8Caption the funny pic \ud83d\udc49Funniest line will WIN \ud83c\udfab \ud83d\ude2eTop prize on the wheel: $64.50!!  \ud83d\udc49Click YouTube link to play &amp; join the fun NOW!  https://t.co/dsHXKxjmEJ  #CaptionThis #YouTube #YouTuber https://t.co/YO7xrOrNQU",
+          "sentiment_label": "Positive",
+          "brand_name": "Youtube"
+        },
+        {
+          "text": "O LOVERS. MUSIC. FROM  THE UNSEEN \ud83d\udd39\u2728 WORLD by @SamiYusuf  We find such beautiful music. You are a talented perfect singer  #Samiyusuf Amazing.  Great Album  Watch on #YouTube \u2728\ud83d\udd39 This sound goes down to the heart stunning melodies perfect \ud83e\udd29 https://t.co/rtelPYdYRs",
+          "sentiment_label": "Positive",
+          "brand_name": "Youtube"
+        }
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "name": "Enterprise Cloud & Infrastructure",
+      "category": "Enterprise & Cloud",
+      "color": "#6366f1",
+      "count": 2306,
+      "share_pct": 9.23,
+      "top_terms": [
+        "microsoft",
+        "azure",
+        "cloud",
+        "xbox",
+        "windows",
+        "microsoft azure",
+        "how",
+        "office",
+        "bethesda",
+        "teams",
+        "learn",
+        "data"
+      ],
+      "avg_sentiment_score": 0.187,
+      "sentiment_distribution": {
+        "positive": 48.3,
+        "neutral": 38.8,
+        "negative": 13.0
+      },
+      "top_brands": {
+        "Microsoft": 2140,
+        "Google": 66,
+        "Amazon": 46,
+        "Apple": 33
+      },
+      "sample_posts": [
+        {
+          "text": "Top 5 Best Free Linux Cloud Servers [2020]. https://t.co/6YShhW5Zq6 Looking for free cloud Linux server to test your web-app or service? Here are the best cloud servers with free credits options.... #Google #Kubernetes #Linux #Microsoft #linux #servers",
+          "sentiment_label": "Positive",
+          "brand_name": "Microsoft"
+        },
+        {
+          "text": "Our Secret Ingredient for Work-From-Home Success We at #AudioCodes stand completely behind our advanced communications software, products and productivity solutions, confident that we offer the best quality and the best value in to... https://t.co/MzqdW6Bru3 #teamwork #microsoft https://t.co/ESt4YGNyJl",
+          "sentiment_label": "Positive",
+          "brand_name": "Microsoft"
+        },
+        {
+          "text": "HireRight Wins 2020 NICE inContact CX Excellence Award for Best Cloud Implementation   READ MORE: https://t.co/cwFUQ5yhT0  #AWS #Cloud #CloudComputing #Computers #Computing #DataScience #Future #Intranet #IoT #Microsoft+ https://t.co/WRSRlmQ6O2",
+          "sentiment_label": "Positive",
+          "brand_name": "Amazon"
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "name": "E-Commerce, Prime & Retail Deals",
+      "category": "Retail & E-Commerce",
+      "color": "#f59e0b",
+      "count": 14253,
+      "share_pct": 57.06,
+      "top_terms": [
+        "google",
+        "twitch",
+        "apple",
+        "amazon",
+        "tesla",
+        "live",
+        "stream",
+        "come",
+        "twitchstreamer",
+        "link",
+        "some",
+        "streamer"
+      ],
+      "avg_sentiment_score": 0.133,
+      "sentiment_distribution": {
+        "positive": 43.0,
+        "neutral": 38.8,
+        "negative": 18.2
+      },
+      "top_brands": {
+        "Twitch": 3298,
+        "Google": 2886,
+        "Amazon": 2076,
+        "Apple": 1901
+      },
+      "sample_posts": [
+        {
+          "text": "RT @mention Saving up for iPad2 photo at Apple Store, #SXSW {link}  by @mention @mention @mention @Dr_Black @jerranalley @tbalinas",
+          "sentiment_label": "Positive",
+          "brand_name": "iPad"
+        },
+        {
+          "text": "I'm in a frontend dev talk at #SXSW, by the way. I just turned my head as far as I could, and I couldn't see a single non-Apple device. Cor.",
+          "sentiment_label": "Positive",
+          "brand_name": "Apple"
+        },
+        {
+          "text": "A lot of love for Google APIs in session on visualizing government data @mention #sxsw, including My Maps, Maps API, Fusion Tables and Refine.",
+          "sentiment_label": "Positive",
+          "brand_name": "Other Google product or service"
+        }
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "name": "Content Creators & Video Channels",
+      "category": "Creator Economy",
+      "color": "#3b82f6",
+      "count": 516,
+      "share_pct": 2.07,
+      "top_terms": [
+        "subscribe dreamordie",
+        "dreamordie",
+        "body check",
+        "youtube subscribe",
+        "body",
+        "check youtube",
+        "subscribe",
+        "check",
+        "youtube",
+        "video",
+        "channel",
+        "youtube channel"
+      ],
+      "avg_sentiment_score": 0.0,
+      "sentiment_distribution": {
+        "positive": 0.0,
+        "neutral": 100.0,
+        "negative": 0.0
+      },
+      "top_brands": {
+        "Youtube": 516
+      },
+      "sample_posts": [
+        {
+          "text": "@SeanDeloach7 'BODY' OUT NOW!! \ud83d\udd25\ud83d\udd25 CHECK IT OUT ON #YOUTUBE &amp; SUBSCRIBE #DreamOrDie : https://t.co/PKrwVbtZOn",
+          "sentiment_label": "Neutral",
+          "brand_name": "Youtube"
+        },
+        {
+          "text": "@mamamkatok 'BODY' OUT NOW!! \ud83d\udd25\ud83d\udd25 CHECK IT OUT ON #YOUTUBE &amp; SUBSCRIBE #DreamOrDie : https://t.co/PKrwVbtZOn",
+          "sentiment_label": "Neutral",
+          "brand_name": "Youtube"
+        },
+        {
+          "text": "@GTom42 'BODY' OUT NOW!! \ud83d\udd25\ud83d\udd25 CHECK IT OUT ON #YOUTUBE &amp; SUBSCRIBE #DreamOrDie : https://t.co/PKrwVbtZOn",
+          "sentiment_label": "Neutral",
+          "brand_name": "Youtube"
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "name": "Entertainment & Video Streaming",
+      "category": "Digital Media & OTT",
+      "color": "#ec4899",
+      "count": 3207,
+      "share_pct": 12.84,
+      "top_terms": [
+        "netflix",
+        "watching",
+        "watch",
+        "season",
+        "series",
+        "movie",
+        "pez",
+        "show",
+        "disney",
+        "film",
+        "pez outlaw",
+        "outlaw"
+      ],
+      "avg_sentiment_score": 0.131,
+      "sentiment_distribution": {
+        "positive": 44.3,
+        "neutral": 32.5,
+        "negative": 23.2
+      },
+      "top_brands": {
+        "Netflix": 3118,
+        "Apple": 46,
+        "Amazon": 33,
+        "Youtube": 4
+      },
+      "sample_posts": [
+        {
+          "text": "#RatchedNetflix just a few episodes in but i think its pretty good. Great cast. I love that there are a good amount of middle aged female stars who havent been 'Hollywooded' with just their acting on show!  Well done #Netflix it makes up a little for other controversial shows \ud83d\ude10",
+          "sentiment_label": "Positive",
+          "brand_name": "Netflix"
+        },
+        {
+          "text": "Just have to send out some praise to @Netflix_CA @netflix ... thanks for amazing customer service with your chat feature!  Wow love it, great response #CustomerExperience #customerservice #netflix",
+          "sentiment_label": "Positive",
+          "brand_name": "Netflix"
+        },
+        {
+          "text": "#rocks loved the raw beauty of improvisation loved the single camera that complimented the raw beauty of freedom to act. #netflix  #sarahgavron",
+          "sentiment_label": "Positive",
+          "brand_name": "Netflix"
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "name": "Smartphones, iOS & Apple Devices",
+      "category": "Consumer Electronics",
+      "color": "#06b6d4",
+      "count": 1536,
+      "share_pct": 6.15,
+      "top_terms": [
+        "iphone",
+        "apple",
+        "ios",
+        "apple iphone",
+        "android",
+        "iphone ios",
+        "ipad",
+        "pro",
+        "iphone iphone",
+        "app",
+        "iphone pro",
+        "phone"
+      ],
+      "avg_sentiment_score": 0.158,
+      "sentiment_distribution": {
+        "positive": 39.8,
+        "neutral": 46.0,
+        "negative": 14.3
+      },
+      "top_brands": {
+        "Apple": 1363,
+        "Tech (Unspecified)": 57,
+        "Google": 32,
+        "iPad or iPhone App": 24
+      },
+      "sample_posts": [
+        {
+          "text": "Yai!!! RT @mention New #UberSocial for #iPhone now in the App Store includes UberGuide to #SXSW sponsored by (cont) {link}",
+          "sentiment_label": "Positive",
+          "brand_name": "iPhone"
+        },
+        {
+          "text": "The most valuable device at #sxsw so far is the #apple #iPod #iPhone charger.",
+          "sentiment_label": "Positive",
+          "brand_name": "Other Apple product or service"
+        },
+        {
+          "text": "RT @mention #blackberry users must feel like such losers here at #sxsw. clearly. #iphone crowd, baby.",
+          "sentiment_label": "Positive",
+          "brand_name": "iPhone"
+        }
+      ]
+    }
+  ]
+}

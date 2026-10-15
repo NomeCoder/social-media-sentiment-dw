@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
-from backend.routes import dashboard, brands, sentiment, olap, prediction, model_metrics
+from backend.routes import dashboard, brands, sentiment, olap, prediction, model_metrics, topics, association_rules
 
 app = FastAPI(
     title="Social Media Brand Sentiment & OLAP Analytics API",
@@ -28,6 +28,8 @@ app.include_router(sentiment.router)
 app.include_router(olap.router)
 app.include_router(prediction.router)
 app.include_router(model_metrics.router)
+app.include_router(topics.router)
+app.include_router(association_rules.router)
 
 @app.get("/api/health")
 def health_check():

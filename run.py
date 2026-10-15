@@ -35,6 +35,12 @@ def run():
         subprocess.run([sys.executable, "-m", "ml.train"], check=True)
     else:
         print("\n[OK] Sentiment model & TF-IDF vectorizer verified.")
+
+    if not os.path.exists("ml/models/topic_clusters.json"):
+        print("\n[ML] Running topic clustering...")
+        subprocess.run([sys.executable, "-m", "ml.topic_clustering"], check=True)
+    else:
+        print("\n[OK] Unsupervised topic clusters verified.")
         
     # Set UTF-8 encoding for Windows terminals
     if hasattr(sys.stdout, "reconfigure"):
