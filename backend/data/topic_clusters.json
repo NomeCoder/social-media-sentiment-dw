@@ -1,0 +1,2764 @@
+{
+  "algorithm": "MiniBatchKMeans + Sublinear TF-IDF",
+  "total_posts_sampled": 24981,
+  "available_k": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "default_k": 6,
+  "elbow_curve": [
+    {
+      "k": 1,
+      "inertia": 24776.75,
+      "pct_inertia_reduction": 0.0
+    },
+    {
+      "k": 2,
+      "inertia": 24698.61,
+      "pct_inertia_reduction": 0.3
+    },
+    {
+      "k": 3,
+      "inertia": 24749.34,
+      "pct_inertia_reduction": 0.1
+    },
+    {
+      "k": 4,
+      "inertia": 24772.19,
+      "pct_inertia_reduction": 0.0
+    },
+    {
+      "k": 5,
+      "inertia": 24771.98,
+      "pct_inertia_reduction": 0.0
+    },
+    {
+      "k": 6,
+      "inertia": 24717.28,
+      "pct_inertia_reduction": 0.2
+    },
+    {
+      "k": 7,
+      "inertia": 24769.03,
+      "pct_inertia_reduction": 0.0
+    },
+    {
+      "k": 8,
+      "inertia": 24754.66,
+      "pct_inertia_reduction": 0.1
+    },
+    {
+      "k": 9,
+      "inertia": 24262.63,
+      "pct_inertia_reduction": 2.1
+    },
+    {
+      "k": 10,
+      "inertia": 24754.93,
+      "pct_inertia_reduction": 0.1
+    }
+  ],
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "name": "Search, Digital Marketing & Android",
+      "category": "Search & AdTech",
+      "color": "#0ea5e9",
+      "count": 1,
+      "share_pct": 0.0,
+      "top_terms": [
+        "nursing",
+        "google",
+        "zoo",
+        "zone",
+        "zombies",
+        "zombie",
+        "zerologon",
+        "zero",
+        "zenimax media",
+        "zenimax",
+        "zen",
+        "zelda"
+      ],
+      "avg_sentiment_score": 0.0,
+      "sentiment_distribution": {
+        "positive": 0.0,
+        "neutral": 100.0,
+        "negative": 0.0
+      },
+      "top_brands": {
+        "Google": 1
+      },
+      "sample_posts": [
+        {
+          "text": "Mannat Nursing Academy Chandigarh on #Google https://t.co/Bd3SGv3lGu",
+          "sentiment_label": "Neutral",
+          "brand_name": "Google"
+        }
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "name": "Gaming & Live Stream Communities",
+      "category": "Gaming & Esports",
+      "color": "#8b5cf6",
+      "count": 24881,
+      "share_pct": 99.6,
+      "top_terms": [
+        "google",
+        "netflix",
+        "youtube",
+        "twitch",
+        "apple",
+        "microsoft",
+        "amazon",
+        "tesla",
+        "live",
+        "check",
+        "iphone",
+        "subscribe"
+      ],
+      "avg_sentiment_score": 0.147,
+      "sentiment_distribution": {
+        "positive": 43.4,
+        "neutral": 39.4,
+        "negative": 17.2
+      },
+      "top_brands": {
+        "Youtube": 3506,
+        "Twitch": 3457,
+        "Netflix": 3327,
+        "Apple": 3286
+      },
+      "sample_posts": [
+        {
+          "text": "RT @mention RT @mention In my next life I'm coming back as an iPad 2. Women can't keep their hands off this thing. #SXSW",
+          "sentiment_label": "Positive",
+          "brand_name": "iPad"
+        },
+        {
+          "text": "amusing long lines at the temp apple store, the starbu cks acrosse the street is where most people seem to unpack theirs ;) #sxsw",
+          "sentiment_label": "Positive",
+          "brand_name": "Apple"
+        },
+        {
+          "text": "Need a few #android loving volunteers from 10:45am-3 at #sxsw",
+          "sentiment_label": "Positive",
+          "brand_name": "Android"
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "name": "E-Commerce, Prime & Retail Deals",
+      "category": "Retail & E-Commerce",
+      "color": "#f59e0b",
+      "count": 14,
+      "share_pct": 0.06,
+      "top_terms": [
+        "jacket",
+        "reduced coupon",
+        "coupon code",
+        "newdeals savings",
+        "savings amazon",
+        "coupon",
+        "savings",
+        "deals newdeals",
+        "newdeals",
+        "men",
+        "reduced",
+        "code"
+      ],
+      "avg_sentiment_score": 0.059,
+      "sentiment_distribution": {
+        "positive": 21.4,
+        "neutral": 78.6,
+        "negative": 0.0
+      },
+      "top_brands": {
+        "Amazon": 14
+      },
+      "sample_posts": [
+        {
+          "text": "***New Deal*** Sony X900H 4K Ultra HD Smart L... New price from $919 https://t.co/gtnmy5EFuY #Deals #newDeals #savings #Amazon https://t.co/JBNHmGxE2A",
+          "sentiment_label": "Positive",
+          "brand_name": "Amazon"
+        },
+        {
+          "text": "***New Deal*** Grabber Warmers Peel N' Stick ... Reduced from $40 to $31 https://t.co/f3KEmOc0cl #Deals #newDeals #savings #Amazon https://t.co/7iZB9hoDDH",
+          "sentiment_label": "Positive",
+          "brand_name": "Amazon"
+        },
+        {
+          "text": "***New Deal*** Office Essentials at Amazon New price up to 58% off https://t.co/QdudBcGX8l #Deals #newDeals #savings #Amazon https://t.co/8kf5ltJi5R",
+          "sentiment_label": "Positive",
+          "brand_name": "Amazon"
+        }
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "name": "Topic Cluster #4 (Sega & Remake)",
+      "category": "Specialized Discussion",
+      "color": "#ec4899",
+      "count": 1,
+      "share_pct": 0.0,
+      "top_terms": [
+        "sega",
+        "remake",
+        "exclusive",
+        "radio",
+        "buy",
+        "episode",
+        "also",
+        "next",
+        "why",
+        "xbox",
+        "microsoft",
+        "zombie"
+      ],
+      "avg_sentiment_score": 0.128,
+      "sentiment_distribution": {
+        "positive": 100.0,
+        "neutral": 0.0,
+        "negative": 0.0
+      },
+      "top_brands": {
+        "Microsoft": 1
+      },
+      "sample_posts": [
+        {
+          "text": "Why should #Microsoft buy #Sega?  Also, I predict that the #MassEffect remake will be an Xbox exclusive. On the next episode of \u201cGH Radio.\u201d @GamerHusbands",
+          "sentiment_label": "Positive",
+          "brand_name": "Microsoft"
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "name": "Topic Cluster #5 (Photography Ico & Contest Amazing)",
+      "category": "Specialized Discussion",
+      "color": "#10b981",
+      "count": 14,
+      "share_pct": 0.06,
+      "top_terms": [
+        "photography ico",
+        "contest amazing",
+        "medicaid",
+        "followme medicaid",
+        "traveltuesday bitcoin",
+        "traveltuesday",
+        "pets followme",
+        "girl competition",
+        "ico traveltuesday",
+        "movies girl",
+        "giveaway boywithluv",
+        "medicaid love"
+      ],
+      "avg_sentiment_score": 0.0,
+      "sentiment_distribution": {
+        "positive": 0.0,
+        "neutral": 100.0,
+        "negative": 0.0
+      },
+      "top_brands": {
+        "Netflix": 14
+      },
+      "sample_posts": [
+        {
+          "text": "It's : 2020-10-03T16:12:26.6179538Z   #merrychristmas #funny #pets #followme #f4f #c4c #medicaid #love #win #netflix #like #movies #girl #competition #pornography #contest #amazing #style #photography #ico #traveltuesday #bitcoin #giveaway #BoyWithLuv",
+          "sentiment_label": "Neutral",
+          "brand_name": "Netflix"
+        },
+        {
+          "text": "It's : 2020-10-03T16:02:25.6651314Z   #merrychristmas #funny #pets #followme #f4f #c4c #medicaid #love #win #netflix #like #movies #girl #competition #pornography #contest #amazing #style #photography #ico #traveltuesday #bitcoin #giveaway #BoyWithLuv",
+          "sentiment_label": "Neutral",
+          "brand_name": "Netflix"
+        },
+        {
+          "text": "It's : 2020-10-09T17:06:52.4026686Z   #merrychristmas #funny #pets #followme #f4f #c4c #medicaid #love #win #netflix #like #movies #girl #competition #pornography #contest #amazing #style #photography #ico #traveltuesday #bitcoin #giveaway #BoyWithLuv",
+          "sentiment_label": "Neutral",
+          "brand_name": "Netflix"
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "name": "Smartphones, iOS & Apple Devices",
+      "category": "Consumer Electronics",
+      "color": "#06b6d4",
+      "count": 70,
+      "share_pct": 0.28,
+      "top_terms": [
+        "liquidart",
+        "user liquidart",
+        "portrait iphone",
+        "dynamic portrait",
+        "iphone user",
+        "dynamic",
+        "portrait",
+        "user",
+        "iphone",
+        "user art",
+        "user digitalart",
+        "digitalart"
+      ],
+      "avg_sentiment_score": 0.375,
+      "sentiment_distribution": {
+        "positive": 85.7,
+        "neutral": 2.9,
+        "negative": 11.4
+      },
+      "top_brands": {
+        "Apple": 70
+      },
+      "sample_posts": [
+        {
+          "text": "A beautiful dynamic portrait of #iPhone user #digitalart https://t.co/bFQg79bB1Y",
+          "sentiment_label": "Positive",
+          "brand_name": "Apple"
+        },
+        {
+          "text": "A beautiful dynamic portrait of #iPhone user #digitalart https://t.co/EnoNdQR0RK",
+          "sentiment_label": "Positive",
+          "brand_name": "Apple"
+        },
+        {
+          "text": "A beautiful dynamic portrait of #iPhone user #cyberart https://t.co/e5Y3Lg1TPT",
+          "sentiment_label": "Positive",
+          "brand_name": "Apple"
+        }
+      ]
+    }
+  ],
+  "k_clusters": {
+    "1": [
+      {
+        "cluster_id": 0,
+        "name": "Overall Social Media Macro Discourse",
+        "category": "Macro Corpus",
+        "color": "#0ea5e9",
+        "count": 24981,
+        "share_pct": 100.0,
+        "top_terms": [
+          "google",
+          "netflix",
+          "youtube",
+          "twitch",
+          "apple",
+          "microsoft",
+          "amazon",
+          "tesla",
+          "iphone",
+          "live",
+          "check",
+          "subscribe"
+        ],
+        "avg_sentiment_score": 0.147,
+        "sentiment_distribution": {
+          "positive": 43.5,
+          "neutral": 39.3,
+          "negative": 17.1
+        },
+        "top_brands": {
+          "Youtube": 3506,
+          "Twitch": 3457,
+          "Apple": 3356,
+          "Netflix": 3341
+        },
+        "sample_posts": [
+          {
+            "text": ".@USAirways thanks!",
+            "sentiment_label": "Positive",
+            "brand_name": "US Airways"
+          },
+          {
+            "text": "RT @mention RT @mention In my next life I'm coming back as an iPad 2. Women can't keep their hands off this thing. #SXSW",
+            "sentiment_label": "Positive",
+            "brand_name": "iPad"
+          },
+          {
+            "text": "#SXSW crowd swarms for iPad 2 launch - {link} (via @mention",
+            "sentiment_label": "Positive",
+            "brand_name": "iPad"
+          }
+        ]
+      }
+    ],
+    "2": [
+      {
+        "cluster_id": 0,
+        "name": "Gaming & Live Stream Communities",
+        "category": "Gaming & Esports",
+        "color": "#8b5cf6",
+        "count": 22504,
+        "share_pct": 90.08,
+        "top_terms": [
+          "youtube",
+          "google",
+          "netflix",
+          "twitch",
+          "apple",
+          "microsoft",
+          "tesla",
+          "iphone",
+          "live",
+          "check",
+          "subscribe",
+          "how"
+        ],
+        "avg_sentiment_score": 0.141,
+        "sentiment_distribution": {
+          "positive": 42.8,
+          "neutral": 39.7,
+          "negative": 17.6
+        },
+        "top_brands": {
+          "Youtube": 3494,
+          "Twitch": 3440,
+          "Netflix": 3213,
+          "Apple": 3114
+        },
+        "sample_posts": [
+          {
+            "text": "RT @mention RT @mention In my next life I'm coming back as an iPad 2. Women can't keep their hands off this thing. #SXSW",
+            "sentiment_label": "Positive",
+            "brand_name": "iPad"
+          },
+          {
+            "text": ".@USAirways thanks!",
+            "sentiment_label": "Positive",
+            "brand_name": "US Airways"
+          },
+          {
+            "text": "@AmericanAir I wish I could remember all of their names!",
+            "sentiment_label": "Positive",
+            "brand_name": "American"
+          }
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "name": "E-Commerce, Prime & Retail Deals",
+        "category": "Retail & E-Commerce",
+        "color": "#f59e0b",
+        "count": 2477,
+        "share_pct": 9.92,
+        "top_terms": [
+          "amazon",
+          "deals",
+          "deal",
+          "apple",
+          "pez",
+          "ganga",
+          "deal ganga",
+          "pez outlaw",
+          "outlaw",
+          "book",
+          "disney",
+          "books"
+        ],
+        "avg_sentiment_score": 0.205,
+        "sentiment_distribution": {
+          "positive": 50.3,
+          "neutral": 36.4,
+          "negative": 13.3
+        },
+        "top_brands": {
+          "Amazon": 1883,
+          "Apple": 242,
+          "Netflix": 128,
+          "Google": 126
+        },
+        "sample_posts": [
+          {
+            "text": "#Amazon #Apple #iPhone #IPL2020 I played this interesting Guess and Win on Amazon-Try your luck for a chance to win exciting rewards. https://t.co/7VeLbQER3e",
+            "sentiment_label": "Positive",
+            "brand_name": "Apple"
+          },
+          {
+            "text": "Wow, the first review is in for I Don't Do Mondays! and it's a fabulous 5* one :) https://t.co/bEkGjYwsHX is now live on #Amazon and so if you are a fan of #ChickLit and want an excuse to #smile #laugh and maybe even #cry click the link :). Happy #reading all :) https://t.co/q6YloBBbGo",
+            "sentiment_label": "Positive",
+            "brand_name": "Amazon"
+          },
+          {
+            "text": "As Diwali is around the corner and it is a festival to share happiness and gifts.   Do visit https://t.co/XUJUf19bo7 to stay updated with the latest products and reviews, so that you can give the best gift to your loved ones.   #Diwali #DiwaliGifts #Amazon #Onlineshopping https://t.co/tAuX9qmBSV",
+            "sentiment_label": "Positive",
+            "brand_name": "Amazon"
+          }
+        ]
+      }
+    ],
+    "3": [
+      {
+        "cluster_id": 0,
+        "name": "Automotive & Electric Vehicles",
+        "category": "Mobility & Tech",
+        "color": "#14b8a6",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "everywhere",
+          "seeing",
+          "tesla",
+          "zoo",
+          "zone",
+          "zombies",
+          "zombie",
+          "zerologon",
+          "zero",
+          "zenimax media",
+          "zenimax",
+          "zen"
+        ],
+        "avg_sentiment_score": 0.0,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 100.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Tesla": 1
+        },
+        "sample_posts": [
+          {
+            "text": "#ThereIsNothingWorseThan not owning a #Tesla and seeing Teslas everywhere.  #LifesHard",
+            "sentiment_label": "Neutral",
+            "brand_name": "Tesla"
+          }
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "name": "Gaming & Live Stream Communities",
+        "category": "Gaming & Esports",
+        "color": "#8b5cf6",
+        "count": 24842,
+        "share_pct": 99.44,
+        "top_terms": [
+          "google",
+          "netflix",
+          "youtube",
+          "twitch",
+          "apple",
+          "microsoft",
+          "amazon",
+          "tesla",
+          "iphone",
+          "check",
+          "live",
+          "subscribe"
+        ],
+        "avg_sentiment_score": 0.149,
+        "sentiment_distribution": {
+          "positive": 43.7,
+          "neutral": 39.3,
+          "negative": 17.1
+        },
+        "top_brands": {
+          "Youtube": 3506,
+          "Twitch": 3457,
+          "Apple": 3302,
+          "Netflix": 3278
+        },
+        "sample_posts": [
+          {
+            "text": "RT @mention RT @mention In my next life I'm coming back as an iPad 2. Women can't keep their hands off this thing. #SXSW",
+            "sentiment_label": "Positive",
+            "brand_name": "iPad"
+          },
+          {
+            "text": "@AmericanAir I wish I could remember all of their names!",
+            "sentiment_label": "Positive",
+            "brand_name": "American"
+          },
+          {
+            "text": "It's like the Ipoo app for iphone!  @mention Ha! RT @mention 4chan is the Internet's bathroom wall. #sxswmoot #SXSW",
+            "sentiment_label": "Positive",
+            "brand_name": "iPad or iPhone App"
+          }
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "name": "Topic Cluster #3 (Persona & Rain)",
+        "category": "Specialized Discussion",
+        "color": "#f59e0b",
+        "count": 138,
+        "share_pct": 0.55,
+        "top_terms": [
+          "persona",
+          "rain",
+          "pez",
+          "pez outlaw",
+          "outlaw",
+          "disney amazon",
+          "apple disney",
+          "amazon netflix",
+          "disney",
+          "put",
+          "everything",
+          "netflix"
+        ],
+        "avg_sentiment_score": -0.108,
+        "sentiment_distribution": {
+          "positive": 15.2,
+          "neutral": 53.6,
+          "negative": 31.2
+        },
+        "top_brands": {
+          "Netflix": 63,
+          "Apple": 54,
+          "Amazon": 21
+        },
+        "sample_posts": [
+          {
+            "text": "Pez Outlaw, \"The only truth is kindness. The gift we can truly give each other is love\" #Apple #Disney #Amazon #Netflix: If you're not in the circus, stay in the bleachers... https://t.co/xb6PjfM7IC",
+            "sentiment_label": "Positive",
+            "brand_name": "Netflix"
+          },
+          {
+            "text": "Pez Outlaw, \"Notes From The Asylum\" #Apple #Disney #Amazon #Netflix: The Care n Feeding of Your Dreams #Netflix #quibi ... https://t.co/kd7rnfNdv9",
+            "sentiment_label": "Positive",
+            "brand_name": "Amazon"
+          },
+          {
+            "text": "Pez Outlaw, \"Notes From The Asylum\" #Apple #Disney #Amazon #Netflix: \"Nobody Wins Afraid Of Losin\" - Chris Stapleton #p... https://t.co/3mSHA4eTVz",
+            "sentiment_label": "Positive",
+            "brand_name": "Apple"
+          }
+        ]
+      }
+    ],
+    "4": [
+      {
+        "cluster_id": 0,
+        "name": "Topic Cluster #1 (Architecture & Data)",
+        "category": "Specialized Discussion",
+        "color": "#8b5cf6",
+        "count": 3,
+        "share_pct": 0.01,
+        "top_terms": [
+          "architecture",
+          "data",
+          "vault",
+          "datavault",
+          "beginners",
+          "watch here",
+          "third",
+          "explore",
+          "analytics",
+          "short",
+          "does",
+          "videos"
+        ],
+        "avg_sentiment_score": 0.361,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Youtube": 3
+        },
+        "sample_posts": [
+          {
+            "text": "What does #DataVault2 architecture look like? In the third of our short videos for beginners, we explore the architecture of Data Vault 2.0. #DataLake #DataMart and more. Watch here https://t.co/xDwOLSB3BJ #EnterpriseData #Datamodelling @WhereScape #Analytics #data #YouTube #IBM https://t.co/YUpHeTwTob",
+            "sentiment_label": "Positive",
+            "brand_name": "Youtube"
+          },
+          {
+            "text": "What does #DataVault2 architecture look like? In the third of our short videos for beginners, we explore the architecture of Data Vault 2.0. #DataLake #DataMart and more. Watch here https://t.co/xDwOLSB3BJ #EnterpriseData #DataModelling #AgileDW #Analytics #data #YouTube #EDW https://t.co/2pQj0GEkBv",
+            "sentiment_label": "Positive",
+            "brand_name": "Youtube"
+          },
+          {
+            "text": "What does #DataVault2 architecture look like? In the third of our short videos for beginners, we explore the architecture of Data Vault 2.0. #DataLake #DataMart and more. Watch here https://t.co/xDwOLSB3BJ #EnterpriseData #DataModelling #AgileDW #Analytics #data #YouTube #EDW https://t.co/A5gb5L43Ww",
+            "sentiment_label": "Positive",
+            "brand_name": "Youtube"
+          }
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "name": "Gaming & Live Stream Communities",
+        "category": "Gaming & Esports",
+        "color": "#8b5cf6",
+        "count": 24975,
+        "share_pct": 99.98,
+        "top_terms": [
+          "google",
+          "netflix",
+          "youtube",
+          "twitch",
+          "apple",
+          "microsoft",
+          "amazon",
+          "tesla",
+          "iphone",
+          "live",
+          "check",
+          "subscribe"
+        ],
+        "avg_sentiment_score": 0.147,
+        "sentiment_distribution": {
+          "positive": 43.5,
+          "neutral": 39.4,
+          "negative": 17.1
+        },
+        "top_brands": {
+          "Youtube": 3503,
+          "Twitch": 3457,
+          "Apple": 3356,
+          "Netflix": 3341
+        },
+        "sample_posts": [
+          {
+            "text": "@AmericanAir I wish I could remember all of their names!",
+            "sentiment_label": "Positive",
+            "brand_name": "American"
+          },
+          {
+            "text": ".@USAirways thanks!",
+            "sentiment_label": "Positive",
+            "brand_name": "US Airways"
+          },
+          {
+            "text": "Fantastico! RT @mention Marissa Mayer: Google Will Connect the Digital &amp; Physical Worlds Through Mobile - {link} #sxsw",
+            "sentiment_label": "Positive",
+            "brand_name": "Google"
+          }
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "name": "Topic Cluster #3 (Verified & Scalpers)",
+        "category": "Specialized Discussion",
+        "color": "#f59e0b",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "verified",
+          "scalpers",
+          "allowing",
+          "rating",
+          "msrp",
+          "twice",
+          "purchases",
+          "reviews",
+          "sell",
+          "product",
+          "customer",
+          "rtx"
+        ],
+        "avg_sentiment_score": -0.026,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 100.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Amazon": 1
+        },
+        "sample_posts": [
+          {
+            "text": "@amazon @nvidia @asus is allowing  scalpers 1ComputerOutlet to sell rtx3090 for twice #msrp and preventing customer rating and reviews to verified purchases of product https://t.co/FwpdaznpgW #Amazon",
+            "sentiment_label": "Neutral",
+            "brand_name": "Amazon"
+          }
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "name": "Topic Cluster #4 (Hand & Goes)",
+        "category": "Specialized Discussion",
+        "color": "#ec4899",
+        "count": 2,
+        "share_pct": 0.01,
+        "top_terms": [
+          "hand",
+          "goes",
+          "innovation",
+          "where",
+          "tesla",
+          "advanced",
+          "amazon",
+          "zerologon",
+          "zero",
+          "zenimax media",
+          "zenimax",
+          "zen"
+        ],
+        "avg_sentiment_score": 0.826,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Tesla": 1,
+          "Amazon": 1
+        },
+        "sample_posts": [
+          {
+            "text": "@Elastos_Houston @chen2rong2 @elonmusk @Tesla @ElastosInfo #Tesla &amp; #Elastos Where innovation goes hand in hand.",
+            "sentiment_label": "Positive",
+            "brand_name": "Tesla"
+          },
+          {
+            "text": "PURELL Advanced Hand Sanitizer, Refreshing Gel, 8 fl oz Hand Sanit... https://t.co/d1UJyEi40T #Amazon",
+            "sentiment_label": "Positive",
+            "brand_name": "Amazon"
+          }
+        ]
+      }
+    ],
+    "5": [
+      {
+        "cluster_id": 0,
+        "name": "Topic Cluster #1 (Indieauthor & Nightmare)",
+        "category": "Specialized Discussion",
+        "color": "#8b5cf6",
+        "count": 3,
+        "share_pct": 0.01,
+        "top_terms": [
+          "indieauthor",
+          "nightmare",
+          "vampire",
+          "supernatural",
+          "ghosts",
+          "zombies",
+          "thriller",
+          "fantasy",
+          "far",
+          "horror",
+          "books",
+          "halloween"
+        ],
+        "avg_sentiment_score": 0.355,
+        "sentiment_distribution": {
+          "positive": 66.7,
+          "neutral": 33.3,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Amazon": 3
+        },
+        "sample_posts": [
+          {
+            "text": "\"Love #HPLovecraft? Chances are you'll love NIGHTMARE ESCAPADE, too!\" https://t.co/BtpK14yTyc #Horror #IndieAuthor #Halloween #Amazon #Kindle #Vampire #Zombies #Supernatural #Thriller #Books #Ghosts #HalloweenReads",
+            "sentiment_label": "Positive",
+            "brand_name": "Amazon"
+          },
+          {
+            "text": "#Vampires think they top the food chain, but they may be wrong... APEX PREDATOR! https://t.co/UShKTdVxsf ##Horror #IndieAuthor #Halloween #Amazon #Kindle #Vampire #Pulp #Supernatural #Zombies #Thriller #Books #Ghosts #HalloweenReads",
+            "sentiment_label": "Positive",
+            "brand_name": "Amazon"
+          },
+          {
+            "text": "\"By far the scariest book on my #Kindle!\" NIGHTMARE ESCAPADE! https://t.co/BtpK14yTyc #Horror #IndieAuthor #Halloween #Amazon #Vampire #Zombies #Thriller #Books #Ghosts #Supernatural #Fantasy #HalloweenReads",
+            "sentiment_label": "Neutral",
+            "brand_name": "Amazon"
+          }
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "name": "Gaming & Live Stream Communities",
+        "category": "Gaming & Esports",
+        "color": "#8b5cf6",
+        "count": 24975,
+        "share_pct": 99.98,
+        "top_terms": [
+          "google",
+          "netflix",
+          "youtube",
+          "twitch",
+          "apple",
+          "microsoft",
+          "amazon",
+          "tesla",
+          "iphone",
+          "live",
+          "check",
+          "subscribe"
+        ],
+        "avg_sentiment_score": 0.147,
+        "sentiment_distribution": {
+          "positive": 43.5,
+          "neutral": 39.3,
+          "negative": 17.1
+        },
+        "top_brands": {
+          "Youtube": 3506,
+          "Twitch": 3456,
+          "Apple": 3356,
+          "Netflix": 3341
+        },
+        "sample_posts": [
+          {
+            "text": "Very excited about this. Marissa Mayer of Google. #SXSW #sxtxstate  {link}",
+            "sentiment_label": "Positive",
+            "brand_name": "Google"
+          },
+          {
+            "text": "RT @mention RT @mention The iPad 2 Takes Over #SXSW [VIDEO] {link}",
+            "sentiment_label": "Positive",
+            "brand_name": "iPad"
+          },
+          {
+            "text": ".@USAirways thanks!",
+            "sentiment_label": "Positive",
+            "brand_name": "US Airways"
+          }
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "name": "Gaming & Live Stream Communities",
+        "category": "Gaming & Esports",
+        "color": "#8b5cf6",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "fallguys fallguysgame",
+          "fallguysgame",
+          "twitch memes",
+          "gamer twitch",
+          "fallguys",
+          "meme",
+          "gaming gamer",
+          "pcgaming",
+          "memes",
+          "funny",
+          "fun",
+          "videogames"
+        ],
+        "avg_sentiment_score": 0.0,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 100.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Twitch": 1
+        },
+        "sample_posts": [
+          {
+            "text": "\u201cThis is....SPARTA!\u201d  #fallguys #fallguysgame #fallguysultimateknockout #fallguysclips #fallguyscommunity #fallguysmeme #gaming #gamer #twitch #memes #twitchstreamer #games #meme #youtube #game #fun #streamer #pc #funny #videogames #pcgaming #streaming #twitchaffiliate https://t.co/YKgSSHp8L0",
+            "sentiment_label": "Neutral",
+            "brand_name": "Twitch"
+          }
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "name": "Topic Cluster #4 (Ccp & Dogs)",
+        "category": "Specialized Discussion",
+        "color": "#ec4899",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "ccp",
+          "dogs",
+          "explain",
+          "pls",
+          "privacy",
+          "facebook google",
+          "internet",
+          "facebook",
+          "google",
+          "zenimax media",
+          "zenimax",
+          "zen"
+        ],
+        "avg_sentiment_score": -0.372,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 100.0
+        },
+        "top_brands": {
+          "Google": 1
+        },
+        "sample_posts": [
+          {
+            "text": "@zerazumi @Facebook and @Google pls explain #FreeomOfSpeech #CCP #Facebook #Google Is there no more internet privacy?! Are you dogs for CCP?",
+            "sentiment_label": "Negative",
+            "brand_name": "Google"
+          }
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "name": "Automotive & Electric Vehicles",
+        "category": "Mobility & Tech",
+        "color": "#14b8a6",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "agreement",
+          "ten",
+          "initiative",
+          "carbon",
+          "net",
+          "supports",
+          "zero",
+          "paris",
+          "reach",
+          "early",
+          "years",
+          "amazon"
+        ],
+        "avg_sentiment_score": 0.813,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Amazon": 1
+        },
+        "sample_posts": [
+          {
+            "text": "The new initiative supports #Amazon's commitment to reach the Paris Agreement ten years early and be net zero carbon by 2040. https://t.co/OAKkT29MT3",
+            "sentiment_label": "Positive",
+            "brand_name": "Amazon"
+          }
+        ]
+      }
+    ],
+    "6": [
+      {
+        "cluster_id": 0,
+        "name": "Search, Digital Marketing & Android",
+        "category": "Search & AdTech",
+        "color": "#0ea5e9",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "nursing",
+          "google",
+          "zoo",
+          "zone",
+          "zombies",
+          "zombie",
+          "zerologon",
+          "zero",
+          "zenimax media",
+          "zenimax",
+          "zen",
+          "zelda"
+        ],
+        "avg_sentiment_score": 0.0,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 100.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Google": 1
+        },
+        "sample_posts": [
+          {
+            "text": "Mannat Nursing Academy Chandigarh on #Google https://t.co/Bd3SGv3lGu",
+            "sentiment_label": "Neutral",
+            "brand_name": "Google"
+          }
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "name": "Gaming & Live Stream Communities",
+        "category": "Gaming & Esports",
+        "color": "#8b5cf6",
+        "count": 24881,
+        "share_pct": 99.6,
+        "top_terms": [
+          "google",
+          "netflix",
+          "youtube",
+          "twitch",
+          "apple",
+          "microsoft",
+          "amazon",
+          "tesla",
+          "live",
+          "check",
+          "iphone",
+          "subscribe"
+        ],
+        "avg_sentiment_score": 0.147,
+        "sentiment_distribution": {
+          "positive": 43.4,
+          "neutral": 39.4,
+          "negative": 17.2
+        },
+        "top_brands": {
+          "Youtube": 3506,
+          "Twitch": 3457,
+          "Netflix": 3327,
+          "Apple": 3286
+        },
+        "sample_posts": [
+          {
+            "text": "RT @mention RT @mention In my next life I'm coming back as an iPad 2. Women can't keep their hands off this thing. #SXSW",
+            "sentiment_label": "Positive",
+            "brand_name": "iPad"
+          },
+          {
+            "text": "amusing long lines at the temp apple store, the starbu cks acrosse the street is where most people seem to unpack theirs ;) #sxsw",
+            "sentiment_label": "Positive",
+            "brand_name": "Apple"
+          },
+          {
+            "text": "Need a few #android loving volunteers from 10:45am-3 at #sxsw",
+            "sentiment_label": "Positive",
+            "brand_name": "Android"
+          }
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "name": "E-Commerce, Prime & Retail Deals",
+        "category": "Retail & E-Commerce",
+        "color": "#f59e0b",
+        "count": 14,
+        "share_pct": 0.06,
+        "top_terms": [
+          "jacket",
+          "reduced coupon",
+          "coupon code",
+          "newdeals savings",
+          "savings amazon",
+          "coupon",
+          "savings",
+          "deals newdeals",
+          "newdeals",
+          "men",
+          "reduced",
+          "code"
+        ],
+        "avg_sentiment_score": 0.059,
+        "sentiment_distribution": {
+          "positive": 21.4,
+          "neutral": 78.6,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Amazon": 14
+        },
+        "sample_posts": [
+          {
+            "text": "***New Deal*** Sony X900H 4K Ultra HD Smart L... New price from $919 https://t.co/gtnmy5EFuY #Deals #newDeals #savings #Amazon https://t.co/JBNHmGxE2A",
+            "sentiment_label": "Positive",
+            "brand_name": "Amazon"
+          },
+          {
+            "text": "***New Deal*** Grabber Warmers Peel N' Stick ... Reduced from $40 to $31 https://t.co/f3KEmOc0cl #Deals #newDeals #savings #Amazon https://t.co/7iZB9hoDDH",
+            "sentiment_label": "Positive",
+            "brand_name": "Amazon"
+          },
+          {
+            "text": "***New Deal*** Office Essentials at Amazon New price up to 58% off https://t.co/QdudBcGX8l #Deals #newDeals #savings #Amazon https://t.co/8kf5ltJi5R",
+            "sentiment_label": "Positive",
+            "brand_name": "Amazon"
+          }
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "name": "Topic Cluster #4 (Sega & Remake)",
+        "category": "Specialized Discussion",
+        "color": "#ec4899",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "sega",
+          "remake",
+          "exclusive",
+          "radio",
+          "buy",
+          "episode",
+          "also",
+          "next",
+          "why",
+          "xbox",
+          "microsoft",
+          "zombie"
+        ],
+        "avg_sentiment_score": 0.128,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Microsoft": 1
+        },
+        "sample_posts": [
+          {
+            "text": "Why should #Microsoft buy #Sega?  Also, I predict that the #MassEffect remake will be an Xbox exclusive. On the next episode of \u201cGH Radio.\u201d @GamerHusbands",
+            "sentiment_label": "Positive",
+            "brand_name": "Microsoft"
+          }
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "name": "Topic Cluster #5 (Photography Ico & Contest Amazing)",
+        "category": "Specialized Discussion",
+        "color": "#10b981",
+        "count": 14,
+        "share_pct": 0.06,
+        "top_terms": [
+          "photography ico",
+          "contest amazing",
+          "medicaid",
+          "followme medicaid",
+          "traveltuesday bitcoin",
+          "traveltuesday",
+          "pets followme",
+          "girl competition",
+          "ico traveltuesday",
+          "movies girl",
+          "giveaway boywithluv",
+          "medicaid love"
+        ],
+        "avg_sentiment_score": 0.0,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 100.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Netflix": 14
+        },
+        "sample_posts": [
+          {
+            "text": "It's : 2020-10-03T16:12:26.6179538Z   #merrychristmas #funny #pets #followme #f4f #c4c #medicaid #love #win #netflix #like #movies #girl #competition #pornography #contest #amazing #style #photography #ico #traveltuesday #bitcoin #giveaway #BoyWithLuv",
+            "sentiment_label": "Neutral",
+            "brand_name": "Netflix"
+          },
+          {
+            "text": "It's : 2020-10-03T16:02:25.6651314Z   #merrychristmas #funny #pets #followme #f4f #c4c #medicaid #love #win #netflix #like #movies #girl #competition #pornography #contest #amazing #style #photography #ico #traveltuesday #bitcoin #giveaway #BoyWithLuv",
+            "sentiment_label": "Neutral",
+            "brand_name": "Netflix"
+          },
+          {
+            "text": "It's : 2020-10-09T17:06:52.4026686Z   #merrychristmas #funny #pets #followme #f4f #c4c #medicaid #love #win #netflix #like #movies #girl #competition #pornography #contest #amazing #style #photography #ico #traveltuesday #bitcoin #giveaway #BoyWithLuv",
+            "sentiment_label": "Neutral",
+            "brand_name": "Netflix"
+          }
+        ]
+      },
+      {
+        "cluster_id": 5,
+        "name": "Smartphones, iOS & Apple Devices",
+        "category": "Consumer Electronics",
+        "color": "#06b6d4",
+        "count": 70,
+        "share_pct": 0.28,
+        "top_terms": [
+          "liquidart",
+          "user liquidart",
+          "portrait iphone",
+          "dynamic portrait",
+          "iphone user",
+          "dynamic",
+          "portrait",
+          "user",
+          "iphone",
+          "user art",
+          "user digitalart",
+          "digitalart"
+        ],
+        "avg_sentiment_score": 0.375,
+        "sentiment_distribution": {
+          "positive": 85.7,
+          "neutral": 2.9,
+          "negative": 11.4
+        },
+        "top_brands": {
+          "Apple": 70
+        },
+        "sample_posts": [
+          {
+            "text": "A beautiful dynamic portrait of #iPhone user #digitalart https://t.co/bFQg79bB1Y",
+            "sentiment_label": "Positive",
+            "brand_name": "Apple"
+          },
+          {
+            "text": "A beautiful dynamic portrait of #iPhone user #digitalart https://t.co/EnoNdQR0RK",
+            "sentiment_label": "Positive",
+            "brand_name": "Apple"
+          },
+          {
+            "text": "A beautiful dynamic portrait of #iPhone user #cyberart https://t.co/e5Y3Lg1TPT",
+            "sentiment_label": "Positive",
+            "brand_name": "Apple"
+          }
+        ]
+      }
+    ],
+    "7": [
+      {
+        "cluster_id": 0,
+        "name": "Smartphones, iOS & Apple Devices",
+        "category": "Consumer Electronics",
+        "color": "#06b6d4",
+        "count": 3,
+        "share_pct": 0.01,
+        "top_terms": [
+          "iphone game",
+          "convention",
+          "fam",
+          "center",
+          "showing",
+          "austin",
+          "game",
+          "iphone",
+          "quot",
+          "great",
+          "see",
+          "zenimax"
+        ],
+        "avg_sentiment_score": 0.667,
+        "sentiment_distribution": {
+          "positive": 66.7,
+          "neutral": 33.3,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "iPad or iPhone App": 2,
+          "Tech (Unspecified)": 1
+        },
+        "sample_posts": [
+          {
+            "text": "Great! See u there  RT @mention I'll be at the Austin Convention Center today w/ my @mention fam... showing my new iPhone game. #SXSW",
+            "sentiment_label": "Positive",
+            "brand_name": "iPad or iPhone App"
+          },
+          {
+            "text": "I'll be at the Austin Convention Center today w/ my @mention fam... showing my new iPhone game. #SXSW&quot; \ufffd\ufffdwhat's sxsw? @mention",
+            "sentiment_label": "Positive",
+            "brand_name": "iPad or iPhone App"
+          },
+          {
+            "text": "@mention fyi  RT @mention I'll be at the Austin Convention Center today w/ my @mention fam... showing my new iPhone game. #SXSW",
+            "sentiment_label": "Neutral",
+            "brand_name": "Tech (Unspecified)"
+          }
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "name": "Gaming & Live Stream Communities",
+        "category": "Gaming & Esports",
+        "color": "#8b5cf6",
+        "count": 24973,
+        "share_pct": 99.97,
+        "top_terms": [
+          "google",
+          "netflix",
+          "youtube",
+          "twitch",
+          "apple",
+          "microsoft",
+          "amazon",
+          "tesla",
+          "iphone",
+          "live",
+          "check",
+          "subscribe"
+        ],
+        "avg_sentiment_score": 0.147,
+        "sentiment_distribution": {
+          "positive": 43.5,
+          "neutral": 39.4,
+          "negative": 17.1
+        },
+        "top_brands": {
+          "Youtube": 3504,
+          "Twitch": 3456,
+          "Apple": 3356,
+          "Netflix": 3339
+        },
+        "sample_posts": [
+          {
+            "text": "amusing long lines at the temp apple store, the starbu cks acrosse the street is where most people seem to unpack theirs ;) #sxsw",
+            "sentiment_label": "Positive",
+            "brand_name": "Apple"
+          },
+          {
+            "text": "If you prefer your news on iPhone, iPad or Droid, @mention has apps for that. @mention @mention &amp; @mention all on mobile apps now. #SXSW",
+            "sentiment_label": "Positive",
+            "brand_name": "iPad or iPhone App"
+          },
+          {
+            "text": "@VirginAmerica first time flying Virgin, went to #SanFrancisco .Thanks for the smooth ride. Easily my new fav airline!",
+            "sentiment_label": "Positive",
+            "brand_name": "Virgin America"
+          }
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "name": "Topic Cluster #3 (Christmas & React)",
+        "category": "Specialized Discussion",
+        "color": "#f59e0b",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "christmas",
+          "react",
+          "excited",
+          "trailer",
+          "tomorrow",
+          "full",
+          "netflix",
+          "zombies",
+          "zombie",
+          "zerologon",
+          "zero",
+          "zenimax media"
+        ],
+        "avg_sentiment_score": 0.695,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Netflix": 1
+        },
+        "sample_posts": [
+          {
+            "text": "I AM SO EXCITED FOR #jinglejangle   Will react to the full trailer tomorrow!!  #Netflix #Christmas https://t.co/Yf7MsNB6UC",
+            "sentiment_label": "Positive",
+            "brand_name": "Netflix"
+          }
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "name": "Entertainment & Video Streaming",
+        "category": "Digital Media & OTT",
+        "color": "#ec4899",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "craig",
+          "why netflix",
+          "why",
+          "hasn",
+          "demand",
+          "taken",
+          "type",
+          "research",
+          "cuties",
+          "someone",
+          "yet",
+          "doing"
+        ],
+        "avg_sentiment_score": -0.128,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 100.0
+        },
+        "top_brands": {
+          "Netflix": 1
+        },
+        "sample_posts": [
+          {
+            "text": "@Qanon76 @craigtimberg Craig while we are doing research can someone find out why #Netflix hasn\u2019t taken down #cuties yet and why there is a demand for that type of content?",
+            "sentiment_label": "Negative",
+            "brand_name": "Netflix"
+          }
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "name": "Topic Cluster #5 (Unless & Ain)",
+        "category": "Specialized Discussion",
+        "color": "#10b981",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "unless",
+          "ain",
+          "least",
+          "cool",
+          "people",
+          "twitch",
+          "zone",
+          "zombies",
+          "zombie",
+          "zerologon",
+          "zero",
+          "zenimax media"
+        ],
+        "avg_sentiment_score": 0.318,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Twitch": 1
+        },
+        "sample_posts": [
+          {
+            "text": "\u201cYou ain\u2019t cool unless you raiding with at least 5 people\u201d - #twitch",
+            "sentiment_label": "Positive",
+            "brand_name": "Twitch"
+          }
+        ]
+      },
+      {
+        "cluster_id": 5,
+        "name": "Topic Cluster #6 (Week & Cinematic)",
+        "category": "Specialized Discussion",
+        "color": "#06b6d4",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "week",
+          "cinematic",
+          "zombie",
+          "cap",
+          "posts",
+          "moviereview",
+          "previous",
+          "next week",
+          "red",
+          "history",
+          "night",
+          "next"
+        ],
+        "avg_sentiment_score": -0.599,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 100.0
+        },
+        "top_brands": {
+          "Youtube": 1
+        },
+        "sample_posts": [
+          {
+            "text": "Red Capers #46 -- This is our re-cap #video of the previous week and tease next week's posts: cinematic history of the #zombie #MovieReview Fright Night (1985) Day of the Triffids #YouTube  https://t.co/dCEQYM7a9L via @CaptYaleTalon",
+            "sentiment_label": "Negative",
+            "brand_name": "Youtube"
+          }
+        ]
+      },
+      {
+        "cluster_id": 6,
+        "name": "Topic Cluster #7 (Hanging & Island)",
+        "category": "Specialized Discussion",
+        "color": "#3b82f6",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "hanging",
+          "island",
+          "kinda",
+          "celebrating",
+          "subscribers",
+          "link bio",
+          "bio",
+          "bit",
+          "playing",
+          "link",
+          "live",
+          "youtube"
+        ],
+        "avg_sentiment_score": 0.727,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Youtube": 1
+        },
+        "sample_posts": [
+          {
+            "text": "\ud83d\udd34 IM LIVE!! \ud83d\udd34 Hanging out for a bit kinda sorta playing @ffxiv and celebrating 1k subscribers!! Link in my bio! #hylianfox #youtube #1ksubscribers @ Providence, Rhode Island https://t.co/GXPoRuY2BS",
+            "sentiment_label": "Positive",
+            "brand_name": "Youtube"
+          }
+        ]
+      }
+    ],
+    "8": [
+      {
+        "cluster_id": 0,
+        "name": "Content Creators & Video Channels",
+        "category": "Creator Economy",
+        "color": "#3b82f6",
+        "count": 13,
+        "share_pct": 0.05,
+        "top_terms": [
+          "foxnews abcnews",
+          "youtube globalnews",
+          "nbcnews cnn",
+          "nbcnews",
+          "newsvideo breakingnews",
+          "newsvideo",
+          "globalnews",
+          "globalnews cbsn",
+          "abcnews nbcnews",
+          "cbsn",
+          "cbsn foxnews",
+          "breakingnews youtube"
+        ],
+        "avg_sentiment_score": -0.211,
+        "sentiment_distribution": {
+          "positive": 15.4,
+          "neutral": 23.1,
+          "negative": 61.5
+        },
+        "top_brands": {
+          "Youtube": 13
+        },
+        "sample_posts": [
+          {
+            "text": "\"Proposed rail line provides hope in Alberta's oilpatch #NewsVideo #BreakingNews #Youtube #GlobalNews #CBSN #FoxNews #ABCNews #NBCNews #CNN\" : https://t.co/A8qNqwGH6I",
+            "sentiment_label": "Positive",
+            "brand_name": "Youtube"
+          },
+          {
+            "text": "\"Coronavirus: \"Historic milestone\" reached as more than 1M Albertans tested at least once | FULL #NewsVideo #BreakingNews #Youtube #GlobalNews #CBSN #FoxNews #ABCNews #NBCNews #CNN\" : https://t.co/DaOKDvDdc7",
+            "sentiment_label": "Positive",
+            "brand_name": "Youtube"
+          },
+          {
+            "text": "\"Coronavirus: Ontario introduces stricter measures to curb COVID-19 spike #NewsVideo #BreakingNews #Youtube #GlobalNews #CBSN #FoxNews #ABCNews #NBCNews #CNN\" : https://t.co/csdHf4bkAl",
+            "sentiment_label": "Neutral",
+            "brand_name": "Youtube"
+          }
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "name": "Gaming & Live Stream Communities",
+        "category": "Gaming & Esports",
+        "color": "#8b5cf6",
+        "count": 24926,
+        "share_pct": 99.78,
+        "top_terms": [
+          "google",
+          "netflix",
+          "youtube",
+          "twitch",
+          "apple",
+          "microsoft",
+          "amazon",
+          "tesla",
+          "iphone",
+          "live",
+          "check",
+          "subscribe"
+        ],
+        "avg_sentiment_score": 0.148,
+        "sentiment_distribution": {
+          "positive": 43.6,
+          "neutral": 39.3,
+          "negative": 17.1
+        },
+        "top_brands": {
+          "Youtube": 3493,
+          "Twitch": 3456,
+          "Apple": 3344,
+          "Netflix": 3324
+        },
+        "sample_posts": [
+          {
+            "text": "@JetBlue The Magic eight ball has never steered me wrong  :)",
+            "sentiment_label": "Positive",
+            "brand_name": "Delta"
+          },
+          {
+            "text": ".@USAirways thanks!",
+            "sentiment_label": "Positive",
+            "brand_name": "US Airways"
+          },
+          {
+            "text": "It's like 10pm at night and there is a line around the block at the popup apple stores selling iPad2s. #sxsw",
+            "sentiment_label": "Positive",
+            "brand_name": "iPad"
+          }
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "name": "Gaming & Live Stream Communities",
+        "category": "Gaming & Esports",
+        "color": "#8b5cf6",
+        "count": 2,
+        "share_pct": 0.01,
+        "top_terms": [
+          "witch",
+          "twitch",
+          "golden",
+          "episode",
+          "show",
+          "make",
+          "netflix",
+          "zone",
+          "zombies",
+          "zombie",
+          "zerologon",
+          "zero"
+        ],
+        "avg_sentiment_score": -0.467,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 100.0
+        },
+        "top_brands": {
+          "Twitch": 1,
+          "Netflix": 1
+        },
+        "sample_posts": [
+          {
+            "text": "Today I was the witch of #twitch \ud83d\udc9c\ud83d\udda4 https://t.co/cvwDsdp3Mj",
+            "sentiment_label": "Negative",
+            "brand_name": "Twitch"
+          },
+          {
+            "text": "when will #Netflix make a Umineko no Naku Koro ni Episode 3 Banquet of the Golden Witch show dfsdfgfsdgs",
+            "sentiment_label": "Negative",
+            "brand_name": "Netflix"
+          }
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "name": "Search, Digital Marketing & Android",
+        "category": "Search & AdTech",
+        "color": "#0ea5e9",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "singapore",
+          "flutter",
+          "hindi",
+          "google pay",
+          "tech technews",
+          "technology tech",
+          "beta",
+          "pay",
+          "technews",
+          "open",
+          "india",
+          "available"
+        ],
+        "avg_sentiment_score": -0.103,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 100.0
+        },
+        "top_brands": {
+          "Google": 1
+        },
+        "sample_posts": [
+          {
+            "text": "#Google Pay Flutter is now #available in open #beta in India and Singapore in Hindi  #technology #tech #TechNews https://t.co/NXhix1FsBw",
+            "sentiment_label": "Negative",
+            "brand_name": "Google"
+          }
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "name": "E-Commerce, Prime & Retail Deals",
+        "category": "Retail & E-Commerce",
+        "color": "#f59e0b",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "unlock",
+          "tags",
+          "markets",
+          "win amazon",
+          "gold",
+          "buying",
+          "contest",
+          "digital",
+          "through",
+          "win",
+          "join",
+          "app"
+        ],
+        "avg_sentiment_score": 0.296,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Amazon": 1
+        },
+        "sample_posts": [
+          {
+            "text": "@FinservMARKETS \u23e9Buying digital gold through finserv markets app  #UnlockGold #Unlock #Contest #win #Amazon #tags  #FinservMARKETS  @FinservMARKETS \u23e9 Join @satyapaljain_86 @Soniyaskjain1 @Dazzlingcutie1 @KpParmar98 @sandeep0_07 @deora_gunjan @anuj121 @chauhan_hemesh @SanjayJ45449140 @gouravlz",
+            "sentiment_label": "Positive",
+            "brand_name": "Amazon"
+          }
+        ]
+      },
+      {
+        "cluster_id": 5,
+        "name": "E-Commerce, Prime & Retail Deals",
+        "category": "Retail & E-Commerce",
+        "color": "#f59e0b",
+        "count": 36,
+        "share_pct": 0.14,
+        "top_terms": [
+          "quibi amazon",
+          "amazon disney",
+          "netflix quibi",
+          "quibi",
+          "pez outlaw",
+          "pez",
+          "outlaw",
+          "disney",
+          "amazon",
+          "netflix",
+          "disney amazon",
+          "asylum apple"
+        ],
+        "avg_sentiment_score": -0.032,
+        "sentiment_distribution": {
+          "positive": 8.3,
+          "neutral": 77.8,
+          "negative": 13.9
+        },
+        "top_brands": {
+          "Netflix": 16,
+          "Apple": 12,
+          "Amazon": 8
+        },
+        "sample_posts": [
+          {
+            "text": "Pez Outlaw, \"Notes From The Asylum\" #Apple #Disney #Amazon #Netflix: The Care n Feeding of Your Dreams #Netflix #quibi ... https://t.co/kd7rnfNdv9",
+            "sentiment_label": "Positive",
+            "brand_name": "Amazon"
+          },
+          {
+            "text": "Pez Outlaw, \"Notes From The Asylum\" #Apple #Disney #Amazon #Netflix: Chuckwagon Dreams #Netflix #quibi #Disney #Amazon https://t.co/bWh5faF3UJ",
+            "sentiment_label": "Positive",
+            "brand_name": "Apple"
+          },
+          {
+            "text": "Pez Outlaw, \"Notes From The Asylum\" #Apple #Disney #Amazon #Netflix: Chuckwagon Dreams #Netflix #quibi #Disney #Amazon https://t.co/bWh5faF3UJ",
+            "sentiment_label": "Positive",
+            "brand_name": "Apple"
+          }
+        ]
+      },
+      {
+        "cluster_id": 6,
+        "name": "Topic Cluster #7 (Dare & Worse)",
+        "category": "Specialized Discussion",
+        "color": "#3b82f6",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "dare",
+          "worse",
+          "console",
+          "change",
+          "play",
+          "back",
+          "please",
+          "make",
+          "how",
+          "google",
+          "zero",
+          "zenimax media"
+        ],
+        "avg_sentiment_score": 0.415,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Google": 1
+        },
+        "sample_posts": [
+          {
+            "text": "#Google how dare you make play console worse ! Please change it back !!!!",
+            "sentiment_label": "Positive",
+            "brand_name": "Google"
+          }
+        ]
+      },
+      {
+        "cluster_id": 7,
+        "name": "Topic Cluster #8 (Another & Satellites)",
+        "category": "Specialized Discussion",
+        "color": "#f43f5e",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "another",
+          "satellites",
+          "dollar",
+          "bonus",
+          "package",
+          "wild",
+          "claim",
+          "government",
+          "speed",
+          "beta",
+          "public",
+          "ask"
+        ],
+        "avg_sentiment_score": 0.25,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Tesla": 1
+        },
+        "sample_posts": [
+          {
+            "text": "Another day, another wild claim from #ElonMusk  \ud83e\udd25 #Starlink  has enough satellites in orbit to launch a public beta of its high-speed internet service.  His ask? More #Taxpayer Subsidies &amp; #Government handouts   Musk has a $55 Billion dollar bonus package at Profitless #Tesla \ud83e\udd14",
+            "sentiment_label": "Positive",
+            "brand_name": "Tesla"
+          }
+        ]
+      }
+    ],
+    "9": [
+      {
+        "cluster_id": 0,
+        "name": "Topic Cluster #1 (European & Translate)",
+        "category": "Specialized Discussion",
+        "color": "#8b5cf6",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "european",
+          "translate",
+          "female",
+          "exist",
+          "algorithms",
+          "tells",
+          "users",
+          "google",
+          "its",
+          "zero",
+          "zenimax media",
+          "zenimax"
+        ],
+        "avg_sentiment_score": 0.0,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 100.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Google": 1
+        },
+        "sample_posts": [
+          {
+            "text": "Female historians and male nurses do not exist, Google Translate tells its European users   #Google #Bias #Algorithms #AI  cc @MiaD @NoelleSilver_ @JoanBajorek @SpirosMargaris @pierrepinna @therednickm   https://t.co/OKwQBz95uY via @algorithmwatch https://t.co/lxoOnHEWV4",
+            "sentiment_label": "Neutral",
+            "brand_name": "Google"
+          }
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "name": "Gaming & Live Stream Communities",
+        "category": "Gaming & Esports",
+        "color": "#8b5cf6",
+        "count": 24447,
+        "share_pct": 97.86,
+        "top_terms": [
+          "google",
+          "netflix",
+          "twitch",
+          "youtube",
+          "apple",
+          "microsoft",
+          "amazon",
+          "tesla",
+          "iphone",
+          "live",
+          "how",
+          "video"
+        ],
+        "avg_sentiment_score": 0.151,
+        "sentiment_distribution": {
+          "positive": 44.4,
+          "neutral": 38.1,
+          "negative": 17.5
+        },
+        "top_brands": {
+          "Twitch": 3455,
+          "Apple": 3353,
+          "Netflix": 3340,
+          "Google": 2998
+        },
+        "sample_posts": [
+          {
+            "text": "RT @mention RT @mention In my next life I'm coming back as an iPad 2. Women can't keep their hands off this thing. #SXSW",
+            "sentiment_label": "Positive",
+            "brand_name": "iPad"
+          },
+          {
+            "text": ".@USAirways thanks!",
+            "sentiment_label": "Positive",
+            "brand_name": "US Airways"
+          },
+          {
+            "text": "Yay! RT @mention Apple is opening up a temp store in Austin for #SXSW {link} via @mention #iPad2\ufffd\u06dd",
+            "sentiment_label": "Positive",
+            "brand_name": "Apple"
+          }
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "name": "Smartphones, iOS & Apple Devices",
+        "category": "Consumer Electronics",
+        "color": "#06b6d4",
+        "count": 3,
+        "share_pct": 0.01,
+        "top_terms": [
+          "phone",
+          "phone case",
+          "iphone samsung",
+          "protection",
+          "cute",
+          "shop",
+          "case",
+          "samsung",
+          "than",
+          "want",
+          "iphone",
+          "abstract"
+        ],
+        "avg_sentiment_score": 0.026,
+        "sentiment_distribution": {
+          "positive": 33.3,
+          "neutral": 66.7,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Apple": 3
+        },
+        "sample_posts": [
+          {
+            "text": "https://t.co/492MwrSyny Want more than just a #cute phone case for phone protection ?  Shop Now #iphone  #samsung #cellular",
+            "sentiment_label": "Positive",
+            "brand_name": "Apple"
+          },
+          {
+            "text": "Do you need a new phone case? Of course you do! May I suggest a phone case with some abstract art on it?  https://t.co/n5jt13g5Mx #redbubble #redbubbleartist #RedBubbleshop #phone #case #phonecases #iphone #samsung #android #alcoholink #abstractart #art #colors #artist #abstract",
+            "sentiment_label": "Neutral",
+            "brand_name": "Apple"
+          },
+          {
+            "text": "What phone do you guys use? #cellphones #iphone #samsung #LG",
+            "sentiment_label": "Neutral",
+            "brand_name": "Apple"
+          }
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "name": "Topic Cluster #4 (Each Other & Each)",
+        "category": "Specialized Discussion",
+        "color": "#ec4899",
+        "count": 2,
+        "share_pct": 0.01,
+        "top_terms": [
+          "each other",
+          "each",
+          "welcome",
+          "everyone",
+          "other",
+          "twitch twitchstreamer",
+          "xbox",
+          "twitchstreamer",
+          "twitch",
+          "zombies",
+          "zombie",
+          "zerologon"
+        ],
+        "avg_sentiment_score": 0.718,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Twitch": 2
+        },
+        "sample_posts": [
+          {
+            "text": "Everyone is welcome, just be respectful of each other \ud83d\ude0a #survivornation #survivornationfamily #survivornationgaming #ohanawolfpackoriginal #xbox #xboxstreamer #twitch #twitchstreamer #RunWithTheWolves #bindingofisaac https://t.co/YyHx5esa8U",
+            "sentiment_label": "Positive",
+            "brand_name": "Twitch"
+          },
+          {
+            "text": "Everyone is welcome, just be respectful of each other \ud83d\ude0a #survivornation #survivornationfamily #survivornationgaming #ohanawolfpackoriginal #xbox #xboxstreamer #twitch #twitchstreamer #RunWithTheWolves #FORHONOR https://t.co/NDixl1jp5c",
+            "sentiment_label": "Positive",
+            "brand_name": "Twitch"
+          }
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "name": "Search, Digital Marketing & Android",
+        "category": "Search & AdTech",
+        "color": "#0ea5e9",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "seo",
+          "marketing strategy",
+          "landscape",
+          "effective",
+          "transformation",
+          "digitaltransformation",
+          "gone",
+          "bing",
+          "continues",
+          "strategy",
+          "past",
+          "though"
+        ],
+        "avg_sentiment_score": 0.599,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Google": 1
+        },
+        "sample_posts": [
+          {
+            "text": "In the past years, though the digital landscape has gone through a dramatic transformation, SEO continues to be an important and effective marketing strategy.  #Bing #DigitalMarketing #digitaltransformation #Google #SearchEngineOptimisation #SEO #SERP #str https://t.co/TuEWFTMfdt",
+            "sentiment_label": "Positive",
+            "brand_name": "Google"
+          }
+        ]
+      },
+      {
+        "cluster_id": 5,
+        "name": "Content Creators & Video Channels",
+        "category": "Creator Economy",
+        "color": "#3b82f6",
+        "count": 521,
+        "share_pct": 2.09,
+        "top_terms": [
+          "subscribe dreamordie",
+          "dreamordie",
+          "body check",
+          "youtube subscribe",
+          "check youtube",
+          "body",
+          "subscribe",
+          "check",
+          "youtube",
+          "zerologon",
+          "zero",
+          "zenimax media"
+        ],
+        "avg_sentiment_score": 0.0,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 100.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Youtube": 521
+        },
+        "sample_posts": [
+          {
+            "text": "@its_kayls 'BODY' OUT NOW!! \ud83d\udd25\ud83d\udd25 CHECK IT OUT ON #YOUTUBE &amp; SUBSCRIBE #DreamOrDie : https://t.co/PKrwVbtZOn",
+            "sentiment_label": "Neutral",
+            "brand_name": "Youtube"
+          },
+          {
+            "text": "@iam_scopeman 'BODY' OUT NOW!! \ud83d\udd25\ud83d\udd25 CHECK IT OUT ON #YOUTUBE &amp; SUBSCRIBE #DreamOrDie : https://t.co/PKrwVbtZOn",
+            "sentiment_label": "Neutral",
+            "brand_name": "Youtube"
+          },
+          {
+            "text": "@sanoumedecin 'BODY' OUT NOW!! \ud83d\udd25\ud83d\udd25 CHECK IT OUT ON #YOUTUBE &amp; SUBSCRIBE #DreamOrDie : https://t.co/PKrwVbtZOn",
+            "sentiment_label": "Neutral",
+            "brand_name": "Youtube"
+          }
+        ]
+      },
+      {
+        "cluster_id": 6,
+        "name": "Topic Cluster #7 (Biz & Switzerland)",
+        "category": "Specialized Discussion",
+        "color": "#3b82f6",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "biz",
+          "switzerland",
+          "chips",
+          "promises",
+          "license",
+          "once again",
+          "arm",
+          "gpu",
+          "once",
+          "keep",
+          "model",
+          "again"
+        ],
+        "avg_sentiment_score": 0.382,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Nvidia": 1
+        },
+        "sample_posts": [
+          {
+            "text": "#Nvidia promises once again to let #Arm keep its Switzerland-of-chips biz model \u2013 and even license some Nv #GPU tech https://t.co/YdiRahtfui",
+            "sentiment_label": "Positive",
+            "brand_name": "Nvidia"
+          }
+        ]
+      },
+      {
+        "cluster_id": 7,
+        "name": "Content Creators & Video Channels",
+        "category": "Creator Economy",
+        "color": "#3b82f6",
+        "count": 4,
+        "share_pct": 0.02,
+        "top_terms": [
+          "off",
+          "shame",
+          "youtube",
+          "zoom",
+          "zoo",
+          "zone",
+          "zombies",
+          "zombie",
+          "zerologon",
+          "zero",
+          "zenimax media",
+          "zenimax"
+        ],
+        "avg_sentiment_score": -0.119,
+        "sentiment_distribution": {
+          "positive": 25.0,
+          "neutral": 25.0,
+          "negative": 50.0
+        },
+        "top_brands": {
+          "Delta": 1,
+          "American": 1,
+          "Youtube": 1,
+          "Netflix": 1
+        },
+        "sample_posts": [
+          {
+            "text": "@JetBlue TA off site at #thelodge. Should be a fun day. @YeniettElswood @AndrewBiga @CodyCleverly @HeidiMacey @motherpollock",
+            "sentiment_label": "Positive",
+            "brand_name": "Delta"
+          },
+          {
+            "text": "Whoever took Parks and Recreation off of #Netflix, your moms a hoe. \ud83d\ude11",
+            "sentiment_label": "Neutral",
+            "brand_name": "Netflix"
+          },
+          {
+            "text": "Joel Osteen Shame Off You 2015 https://t.co/5dJNYJneRe via #YouTube",
+            "sentiment_label": "Negative",
+            "brand_name": "Youtube"
+          }
+        ]
+      },
+      {
+        "cluster_id": 8,
+        "name": "Topic Cluster #9 (License & Drivers)",
+        "category": "Specialized Discussion",
+        "color": "#14b8a6",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "license",
+          "drivers",
+          "fly",
+          "friday",
+          "morning",
+          "month",
+          "little",
+          "using",
+          "over",
+          "zombies",
+          "zombie",
+          "zerologon"
+        ],
+        "avg_sentiment_score": 0.0,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 100.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Virgin America": 1
+        },
+        "sample_posts": [
+          {
+            "text": "@VirginAmerica my drivers license is expired by a little over a month. Can I fly Friday morning using my expired license?",
+            "sentiment_label": "Neutral",
+            "brand_name": "Virgin America"
+          }
+        ]
+      }
+    ],
+    "10": [
+      {
+        "cluster_id": 0,
+        "name": "Customer Support & Flight Operations",
+        "category": "Customer Experience",
+        "color": "#f43f5e",
+        "count": 4,
+        "share_pct": 0.02,
+        "top_terms": [
+          "credit",
+          "flight",
+          "flightled flight",
+          "bank",
+          "apply",
+          "given",
+          "flightled",
+          "cancelled flightled",
+          "weeks",
+          "travel",
+          "cancelled",
+          "another"
+        ],
+        "avg_sentiment_score": -1.0,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 100.0
+        },
+        "top_brands": {
+          "United": 2,
+          "Delta": 1,
+          "American": 1
+        },
+        "sample_posts": [
+          {
+            "text": "@united you Cancelled Flightled my flight without notification?",
+            "sentiment_label": "Negative",
+            "brand_name": "United"
+          },
+          {
+            "text": "@JetBlue - He Cancelled Flightled a flight &amp; was given 2 weeks to apply travel bank credit to another flight &amp; credit was transferable",
+            "sentiment_label": "Negative",
+            "brand_name": "Delta"
+          },
+          {
+            "text": "@united my flight Cancelled Flightled new flight 5012 hopefully will not.",
+            "sentiment_label": "Negative",
+            "brand_name": "United"
+          }
+        ]
+      },
+      {
+        "cluster_id": 1,
+        "name": "Gaming & Live Stream Communities",
+        "category": "Gaming & Esports",
+        "color": "#8b5cf6",
+        "count": 24955,
+        "share_pct": 99.9,
+        "top_terms": [
+          "google",
+          "netflix",
+          "youtube",
+          "twitch",
+          "apple",
+          "microsoft",
+          "amazon",
+          "tesla",
+          "iphone",
+          "live",
+          "check",
+          "subscribe"
+        ],
+        "avg_sentiment_score": 0.148,
+        "sentiment_distribution": {
+          "positive": 43.5,
+          "neutral": 39.4,
+          "negative": 17.1
+        },
+        "top_brands": {
+          "Youtube": 3505,
+          "Twitch": 3457,
+          "Apple": 3355,
+          "Netflix": 3339
+        },
+        "sample_posts": [
+          {
+            "text": ".@USAirways thanks!",
+            "sentiment_label": "Positive",
+            "brand_name": "US Airways"
+          },
+          {
+            "text": "Very excited about this. Marissa Mayer of Google. #SXSW #sxtxstate  {link}",
+            "sentiment_label": "Positive",
+            "brand_name": "Google"
+          },
+          {
+            "text": "@united Leaving soon. Thanks!",
+            "sentiment_label": "Positive",
+            "brand_name": "United"
+          }
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "name": "Search, Digital Marketing & Android",
+        "category": "Search & AdTech",
+        "color": "#0ea5e9",
+        "count": 15,
+        "share_pct": 0.06,
+        "top_terms": [
+          "blastfm limited",
+          "blastfm",
+          "limited google",
+          "limited",
+          "google",
+          "zombies",
+          "zombie",
+          "zerologon",
+          "zero",
+          "zenimax media",
+          "zenimax",
+          "zen"
+        ],
+        "avg_sentiment_score": -0.237,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 100.0
+        },
+        "top_brands": {
+          "Google": 15
+        },
+        "sample_posts": [
+          {
+            "text": "BlastFM Limited on #Google https://t.co/WWlF76kPRg",
+            "sentiment_label": "Negative",
+            "brand_name": "Google"
+          },
+          {
+            "text": "BlastFM Limited on #Google https://t.co/ywgvtzpzBY",
+            "sentiment_label": "Negative",
+            "brand_name": "Google"
+          },
+          {
+            "text": "BlastFM Limited on #Google https://t.co/ywgvtzpzBY",
+            "sentiment_label": "Negative",
+            "brand_name": "Google"
+          }
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "name": "Content Creators & Video Channels",
+        "category": "Creator Economy",
+        "color": "#3b82f6",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "cool",
+          "outlaw",
+          "youtube channel",
+          "coming",
+          "got",
+          "channel",
+          "some",
+          "youtube",
+          "zombie",
+          "zerologon",
+          "zero",
+          "zenimax media"
+        ],
+        "avg_sentiment_score": 0.318,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Youtube": 1
+        },
+        "sample_posts": [
+          {
+            "text": "I\u2019ve got a cool #youtube channel with some #outlaw context coming \ud83d\udd25\ud83d\udd25\ud83d\udd25\ud83d\udd25 https://t.co/1Mg4uXLwdQ",
+            "sentiment_label": "Positive",
+            "brand_name": "Youtube"
+          }
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "name": "Topic Cluster #5 (Unless & Tells)",
+        "category": "Specialized Discussion",
+        "color": "#10b981",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "unless",
+          "tells",
+          "hubiehalloween",
+          "different",
+          "doesn",
+          "someone",
+          "look",
+          "even",
+          "fun",
+          "right",
+          "netflix",
+          "zerologon"
+        ],
+        "avg_sentiment_score": -0.156,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 100.0
+        },
+        "top_brands": {
+          "Netflix": 1
+        },
+        "sample_posts": [
+          {
+            "text": "Unless someone tells me different #HubieHalloween is right out. It doesn't even look like fun to mock.  #Netflix #HardPass https://t.co/FVQaChhNcv",
+            "sentiment_label": "Negative",
+            "brand_name": "Netflix"
+          }
+        ]
+      },
+      {
+        "cluster_id": 5,
+        "name": "Entertainment & Video Streaming",
+        "category": "Digital Media & OTT",
+        "color": "#ec4899",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "hulu netflix",
+          "superhero",
+          "reactions",
+          "hbomax",
+          "hulu",
+          "top",
+          "netflix",
+          "zombies",
+          "zombie",
+          "zerologon",
+          "zero",
+          "zenimax media"
+        ],
+        "avg_sentiment_score": 0.202,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Netflix": 1
+        },
+        "sample_posts": [
+          {
+            "text": "Top: Gal Gadot \"FUNNIEST\" Reactions https://t.co/2lRetku9hF #galgadot #Cleopatra #wonderwoman #superhero #godsofegypt #np #hulu #netflix #hbomax SoupKitch TV",
+            "sentiment_label": "Positive",
+            "brand_name": "Netflix"
+          }
+        ]
+      },
+      {
+        "cluster_id": 6,
+        "name": "Enterprise Cloud & Infrastructure",
+        "category": "Enterprise & Cloud",
+        "color": "#6366f1",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "msteams",
+          "ignite",
+          "posted",
+          "collaboration",
+          "announces",
+          "microsoft teams",
+          "teams",
+          "updates",
+          "microsoft",
+          "zombies",
+          "zombie",
+          "zerologon"
+        ],
+        "avg_sentiment_score": 0.0,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 100.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Microsoft": 1
+        },
+        "sample_posts": [
+          {
+            "text": "Just Posted: #Microsoft Quietly Announces SBA for @MicrosoftTeams at Ignite Microsoft Teams updates from @MS_Ignite 2020 https://t.co/YrtPB8moN0  #ucoms #ucnews #collaboration #teamcollaboration #MSTeams",
+            "sentiment_label": "Neutral",
+            "brand_name": "Microsoft"
+          }
+        ]
+      },
+      {
+        "cluster_id": 7,
+        "name": "Topic Cluster #8 (Juicy & Locations)",
+        "category": "Specialized Discussion",
+        "color": "#f43f5e",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "juicy",
+          "locations",
+          "trance",
+          "dfw",
+          "drops",
+          "exciting",
+          "texas",
+          "red",
+          "line",
+          "try",
+          "shop",
+          "stop"
+        ],
+        "avg_sentiment_score": 0.831,
+        "sentiment_distribution": {
+          "positive": 100.0,
+          "neutral": 0.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Apple": 1
+        },
+        "sample_posts": [
+          {
+            "text": "Do you like #SaltNicotine? Try our line 6 Drops with exciting flavors like #CyberGrind, #Trance and #BreakBeat which tastes like a juicy red #Apple \ud83c\udf4e. Stop by one of DFW Vapors 6 #Texas \ud83e\udd20 locations or shop online today! #WhileSuppliesLast #DFWVapor #Vaping #Vape \ud83c\udf2c\ud83d\udca8 https://t.co/Hm0iu8IPUs",
+            "sentiment_label": "Positive",
+            "brand_name": "Apple"
+          }
+        ]
+      },
+      {
+        "cluster_id": 8,
+        "name": "E-Commerce, Prime & Retail Deals",
+        "category": "Retail & E-Commerce",
+        "color": "#f59e0b",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "abstract",
+          "anthology",
+          "lyrics",
+          "amazon kindleunlimited",
+          "sundaymotivation",
+          "weird",
+          "scifi",
+          "writing",
+          "poetry",
+          "kindleunlimited",
+          "author",
+          "reading"
+        ],
+        "avg_sentiment_score": 0.0,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 100.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Amazon": 1
+        },
+        "sample_posts": [
+          {
+            "text": "Ava and the Demon Slayer by Seth Kinstle  #halloween #author #poetry #horror #anthology #books #reading #writing #shortstories #scifi #lyrics #SundayMotivation #songwriting #weird #artist #abstract #amazon #kindleunlimited    https://t.co/2htc26Vy5J via @amazon",
+            "sentiment_label": "Neutral",
+            "brand_name": "Amazon"
+          }
+        ]
+      },
+      {
+        "cluster_id": 9,
+        "name": "Topic Cluster #10 (Latest Version & Laptop)",
+        "category": "Specialized Discussion",
+        "color": "#a855f7",
+        "count": 1,
+        "share_pct": 0.0,
+        "top_terms": [
+          "latest version",
+          "laptop",
+          "version",
+          "need",
+          "latest",
+          "installed",
+          "general",
+          "install",
+          "desktop",
+          "powerbi",
+          "pre",
+          "running"
+        ],
+        "avg_sentiment_score": 0.0,
+        "sentiment_distribution": {
+          "positive": 0.0,
+          "neutral": 100.0,
+          "negative": 0.0
+        },
+        "top_brands": {
+          "Microsoft": 1
+        },
+        "sample_posts": [
+          {
+            "text": "General requirements: All delegates need a laptop running Windows OS (BYO Laptop), Delegates will need to be able to download and install the latest version of Power BI Desktop on their laptop, or need to have the latest version pre-installed.   #digital #powerbi #microsoft #bi",
+            "sentiment_label": "Neutral",
+            "brand_name": "Microsoft"
+          }
+        ]
+      }
+    ]
+  }
+}

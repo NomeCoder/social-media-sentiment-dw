@@ -108,17 +108,29 @@ export async function fetchModelMetrics() {
   return res.json();
 }
 
-export async function fetchTopicClusters() {
-  const res = await fetch(`${API_BASE}/topics/clusters`);
+export async function fetchTopicClusters(k = null) {
+  const url = k ? `${API_BASE}/topics/clusters?k=${k}` : `${API_BASE}/topics/clusters`;
+  const res = await fetch(url);
   if (!res.ok) throw new Error('Failed to fetch topic clusters');
   return res.json();
 }
 
-export async function predictPostTopic(text) {
-  const res = await fetch(`${API_BASE}/topics/predict`, {
+export async function fetchElbowCurve() {
+  const res = await fetch(`${API_BASE}/topics/elbow`);
+  if (!res.ok) throw new Error('Failed to fetch elbow curve');
+  return res.json();
+}
+
+export async function predictPostTopic(text, k = null) {
+  const body = { text };
+  if (k !== null && k !== undefined) {
+    body.k = k;
+  }
+  const url = k ? `${API_BASE}/topics/predict?k=${k}` : `${API_BASE}/topics/predict`;
+  const res = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text }),
+    body: JSON.stringify(body),
   });
   if (!res.ok) throw new Error('Failed to predict topic');
   return res.json();

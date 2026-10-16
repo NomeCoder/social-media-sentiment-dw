@@ -16,14 +16,33 @@ def test_topic_clusters_endpoint():
     assert "sentiment_distribution" in first_cluster
     assert len(first_cluster["top_terms"]) > 0
 
+def test_topic_clusters_with_k_param():
+    for k_val in [1, 3, 6, 10]:
+        response = client.get(f"/api/topics/clusters?k={k_val}")
+        assert response.status_code == 200
+        data = response.json()
+        assert data["selected_k"] == k_val
+        assert len(data["clusters"]) == k_val
+
+def test_topic_elbow_endpoint():
+    response = client.get("/api/topics/elbow")
+    assert response.status_code == 200
+    data = response.json()
+    assert "elbow_curve" in data
+    assert len(data["elbow_curve"]) == 10
+    assert data["elbow_curve"][0]["k"] == 1
+    assert data["elbow_curve"][-1]["k"] == 10
+
 def test_topic_prediction_endpoint():
-    # Test Netflix content prediction
-    response = client.post("/api/topics/predict", json={
+    # Test Netflix content prediction with k=4
+    response = client.post("/api/topics/predict?k=4", json={
         "text": "Watching the brand new season of Stranger Things on Netflix, so good!"
     })
     assert response.status_code == 200
     data = response.json()
+    assert data["k"] == 4
     assert "predicted_cluster_id" in data
+    assert 0 <= data["predicted_cluster_id"] < 4
     assert "topic_name" in data
     assert data["similarity_score"] > 0
 
