@@ -68,6 +68,138 @@ def load_rules_data() -> pd.DataFrame:
         {"antecedents": "twitchstreamer", "consequents": "twitch", "support": 0.0752, "confidence": 0.972, "lift": 3.14},
     ])
 
+import time
+import re
+import random
+import sqlite3
+from collections import Counter
+from itertools import combinations
+
+DB_CANDIDATE_PATHS = [
+    os.path.join(os.path.dirname(__file__), "..", "..", "database", "warehouse.db"),
+    "database/warehouse.db",
+    os.path.join(os.getcwd(), "database", "warehouse.db"),
+    "/app/database/warehouse.db"
+]
+
+def get_db_path() -> Optional[str]:
+    for p in DB_CANDIDATE_PATHS:
+        if os.path.exists(p):
+            return p
+    return None
+
+def mine_dynamic_rules(min_support: float = 0.005, min_confidence: float = 0.3, sample_size: int = 4000) -> (pd.DataFrame, int, float):
+    """
+    Executes live Apriori frequent itemset and association rule mining on a fresh random sample
+    of social media posts from the warehouse. Generates different discovered co-occurrence patterns each time.
+    """
+    t0 = time.time()
+    db_p = get_db_path()
+    if not db_p:
+        return pd.DataFrame(), 0, 0.0
+
+    try:
+        conn = sqlite3.connect(db_p)
+        c = conn.cursor()
+        c.execute("SELECT text FROM FACT_POST WHERE text LIKE '%#%' ORDER BY RANDOM() LIMIT ?", (sample_size,))
+        rows = c.fetchall()
+        conn.close()
+    except Exception:
+        return pd.DataFrame(), 0, 0.0
+
+    transactions = []
+    stop_tags = {"sxsw", "fail", "rt", "http", "https", "co", "today", "new", "day", "amp"}
+    for (text,) in rows:
+        if not text:
+            continue
+        tags = set(re.findall(r'#([A-Za-z0-9_]+)', str(text).lower()))
+        tags = {t for t in tags if len(t) >= 2 and t not in stop_tags}
+        if len(tags) >= 2:
+            transactions.append(sorted(list(tags)))
+
+    n_trans = len(transactions)
+    if n_trans == 0:
+        return pd.DataFrame(), 0, round(time.time() - t0, 3)
+
+    # 1-itemsets
+    item_counts = Counter()
+    for t in transactions:
+        for item in t:
+            item_counts[item] += 1
+
+    # Effective min support clamp
+    eff_supp = max(0.002, min(min_support, 0.05))
+    freq_1 = {item: cnt for item, cnt in item_counts.items() if cnt / n_trans >= eff_supp}
+
+    # 2-itemsets
+    pair_counts = Counter()
+    for t in transactions:
+        valid_items = [item for item in t if item in freq_1]
+        for pair in combinations(valid_items, 2):
+            pair_counts[pair] += 1
+
+    freq_2 = {pair: cnt for pair, cnt in pair_counts.items() if cnt / n_trans >= eff_supp}
+
+    # 3-itemsets
+    triplet_counts = Counter()
+    for t in transactions:
+        valid_items = [item for item in t if item in freq_1]
+        for triplet in combinations(valid_items, 3):
+            triplet_counts[triplet] += 1
+
+    freq_3 = {triplet: cnt for triplet, cnt in triplet_counts.items() if cnt / n_trans >= eff_supp}
+
+    rules = []
+    # 2-itemset rules
+    for (a, b), cnt in freq_2.items():
+        supp = round(cnt / n_trans, 5)
+        # a -> b
+        conf_a = cnt / item_counts[a]
+        lift_a = conf_a / ((item_counts[b] / n_trans) + 1e-9)
+        if conf_a >= min_confidence:
+            rules.append({
+                "antecedents": a,
+                "consequents": b,
+                "support": supp,
+                "confidence": round(float(conf_a), 4),
+                "lift": round(float(lift_a), 2)
+            })
+        # b -> a
+        conf_b = cnt / item_counts[b]
+        lift_b = conf_b / ((item_counts[a] / n_trans) + 1e-9)
+        if conf_b >= min_confidence:
+            rules.append({
+                "antecedents": b,
+                "consequents": a,
+                "support": supp,
+                "confidence": round(float(conf_b), 4),
+                "lift": round(float(lift_b), 2)
+            })
+
+    # 3-itemset rules: {a, b} -> c
+    for (a, b, c), cnt in freq_3.items():
+        supp = round(cnt / n_trans, 5)
+        for ant_pair, con_item in [((a, b), c), ((a, c), b), ((b, c), a)]:
+            pair_key = tuple(sorted(ant_pair))
+            if pair_key in pair_counts and pair_counts[pair_key] > 0:
+                conf = cnt / pair_counts[pair_key]
+                lift = conf / ((item_counts[con_item] / n_trans) + 1e-9)
+                if conf >= min_confidence:
+                    rules.append({
+                        "antecedents": f"{ant_pair[0]}, {ant_pair[1]}",
+                        "consequents": con_item,
+                        "support": supp,
+                        "confidence": round(float(conf), 4),
+                        "lift": round(float(lift), 2)
+                    })
+
+    duration = round(time.time() - t0, 3)
+    if not rules:
+        return pd.DataFrame(), n_trans, duration
+
+    df_mined = pd.DataFrame(rules).drop_duplicates(subset=["antecedents", "consequents"])
+    return df_mined, n_trans, duration
+
 @router.get("")
 def get_association_rules(
     search: Optional[str] = Query(None, description="Search term in antecedents or consequents"),
@@ -77,26 +209,51 @@ def get_association_rules(
     sort_by: str = Query("lift", pattern="^(lift|confidence|support)$"),
     order: str = Query("desc", pattern="^(desc|asc)$"),
     limit: int = Query(100, ge=1, le=500),
-    offset: int = Query(0, ge=0)
+    offset: int = Query(0, ge=0),
+    mode: str = Query("benchmark", description="Rule source: 'benchmark' (curated BigTech rules) or 'dynamic' (live Apriori mining)"),
+    regenerate: bool = Query(False, description="Trigger fresh random transaction sampling for dynamic rule generation")
 ) -> Dict[str, Any]:
     """
-    Returns mined hashtag and keyword co-occurrence association rules
-    from the BigTech dataset with support, confidence, and lift metrics,
-    interactive filters, summary statistics, and network graph data.
+    Returns mined hashtag and keyword co-occurrence association rules.
+    Supports user-specified min_support and min_confidence inputs, with on-the-fly
+    Apriori mining that discovers fresh and different association rules upon each run.
     """
-    df = load_rules_data()
+    is_dynamic = (mode == "dynamic" or regenerate)
+    sampled_trans_count = 0
+    mining_duration_sec = 0.0
+
+    if is_dynamic:
+        # Mine fresh rules dynamically from live warehouse transactions
+        eff_min_supp = min_support if min_support > 0 else 0.005
+        eff_min_conf = min_confidence if min_confidence > 0 else 0.30
+        df_mined, sampled_trans_count, mining_duration_sec = mine_dynamic_rules(
+            min_support=eff_min_supp,
+            min_confidence=eff_min_conf,
+            sample_size=4000
+        )
+        if len(df_mined) > 0:
+            df = df_mined
+        else:
+            # Fallback to benchmark data if sampling returned no itemsets for extreme thresholds
+            df = load_rules_data()
+    else:
+        df = load_rules_data()
+
     total_count = len(df)
 
     # Calculate overall summary metrics
     summary = {
         "total_rules": total_count,
-        "avg_support": round(float(df["support"].mean()), 4),
-        "avg_confidence": round(float(df["confidence"].mean()), 4),
-        "avg_lift": round(float(df["lift"].mean()), 4),
-        "max_lift": round(float(df["lift"].max()), 4),
-        "max_confidence": round(float(df["confidence"].max()), 4),
-        "top_consequents": df["consequents"].value_counts().head(5).to_dict(),
-        "top_antecedents": df["antecedents"].value_counts().head(5).to_dict()
+        "avg_support": round(float(df["support"].mean()), 4) if len(df) > 0 else 0.0,
+        "avg_confidence": round(float(df["confidence"].mean()), 4) if len(df) > 0 else 0.0,
+        "avg_lift": round(float(df["lift"].mean()), 4) if len(df) > 0 else 0.0,
+        "max_lift": round(float(df["lift"].max()), 4) if len(df) > 0 else 0.0,
+        "max_confidence": round(float(df["confidence"].max()), 4) if len(df) > 0 else 0.0,
+        "top_consequents": df["consequents"].value_counts().head(5).to_dict() if len(df) > 0 else {},
+        "top_antecedents": df["antecedents"].value_counts().head(5).to_dict() if len(df) > 0 else {},
+        "mining_mode": "dynamic" if is_dynamic else "benchmark",
+        "sampled_transactions": sampled_trans_count,
+        "mining_duration_sec": mining_duration_sec
     }
 
     # Filtering

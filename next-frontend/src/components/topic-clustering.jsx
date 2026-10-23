@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 import { 
   Network, Sparkles, Tag, PieChart as PieIcon, BarChart2, 
   Send, RefreshCw, Layers, CheckCircle2, ArrowRight, MessageSquare,
-  Sliders, Activity, Info, Zap, ChevronRight, HelpCircle
+  Sliders, Activity, Info, Zap, ChevronRight, HelpCircle,
+  GitCompare, Scale, Split, Check
 } from "lucide-react";
 import { 
   BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, 
@@ -28,10 +29,18 @@ const SAMPLE_POSTS = [
 export default function TopicClustering() {
   const [data, setData] = useState(null);
   const [selectedK, setSelectedK] = useState(6);
+  const [inputK, setInputK] = useState("6");
   const [selectedClusterId, setSelectedClusterId] = useState(0);
   const [loading, setLoading] = useState(true);
   const [showElbowCard, setShowElbowCard] = useState(true);
   
+  // Interactive Comparison Options state (user chooses options)
+  const [comparisonMode, setComparisonMode] = useState("cluster_vs_cluster"); // "cluster_vs_cluster" | "k_granularity"
+  const [compareClusterA, setCompareClusterA] = useState(0);
+  const [compareClusterB, setCompareClusterB] = useState(1);
+  const [compareKA, setCompareKA] = useState(3);
+  const [compareKB, setCompareKB] = useState(6);
+
   // Live inference state
   const [customText, setCustomText] = useState("");
   const [predicting, setPredicting] = useState(false);
@@ -48,10 +57,13 @@ export default function TopicClustering() {
       setData(res);
       const defaultK = res.default_k || 6;
       setSelectedK(defaultK);
+      setInputK(String(defaultK));
       const kStr = String(defaultK);
       const currentList = res.k_clusters?.[kStr] || res.clusters || [];
       if (currentList.length > 0) {
         setSelectedClusterId(currentList[0].cluster_id);
+        setCompareClusterA(0);
+        setCompareClusterB(currentList.length > 1 ? 1 : 0);
       }
     } catch (err) {
       console.error("Failed to load topic clusters:", err);
@@ -60,18 +72,24 @@ export default function TopicClustering() {
     }
   };
 
-  // Handle changing k (from pills, slider, or elbow chart click)
+  // Handle changing k (from user input field, pills, slider, or elbow chart click)
   const handleSelectK = (newK) => {
-    const kNum = Math.max(1, Math.min(10, parseInt(newK, 10)));
+    const parsed = parseInt(newK, 10);
+    const kNum = isNaN(parsed) ? 6 : Math.max(1, Math.min(10, parsed));
     setSelectedK(kNum);
+    setInputK(String(kNum));
     
     // Reset selected cluster to the first one of this k
     const kStr = String(kNum);
     const clustersForK = data?.k_clusters?.[kStr] || [];
     if (clustersForK.length > 0) {
       setSelectedClusterId(clustersForK[0].cluster_id);
+      setCompareClusterA(0);
+      setCompareClusterB(clustersForK.length > 1 ? 1 : 0);
     } else {
       setSelectedClusterId(0);
+      setCompareClusterA(0);
+      setCompareClusterB(0);
     }
     
     // Clear previous prediction when k changes so user re-tests with new centroids
@@ -186,7 +204,33 @@ export default function TopicClustering() {
                 Select or drag k to instantly inspect how KMeans partitions social conversations into semantic clusters
               </CardDescription>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
+              {/* Direct User Input for k Value */}
+              <div className="flex items-center gap-2 rounded-xl border border-sky-400/40 bg-slate-950 p-1.5 text-xs shadow-inner">
+                <span className="pl-1 text-xs font-semibold text-sky-300">User Input k:</span>
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
+                  value={inputK}
+                  onChange={(e) => setInputK(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handleSelectK(inputK);
+                    }
+                  }}
+                  className="w-14 rounded-lg border border-sky-500/30 bg-slate-900 px-2 py-1 text-center font-mono text-sm font-bold text-white focus:border-sky-400 focus:outline-none focus:ring-1 focus:ring-sky-400"
+                  placeholder="1-10"
+                />
+                <Button
+                  size="sm"
+                  onClick={() => handleSelectK(inputK)}
+                  className="h-7 bg-sky-500 hover:bg-sky-400 text-slate-950 px-2.5 text-xs font-bold shadow"
+                >
+                  Set k
+                </Button>
+              </div>
+
               <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-slate-950 px-3 py-1.5 text-xs">
                 <span className="text-slate-400">Active k:</span>
                 <span className="font-mono text-base font-bold text-sky-400">{selectedK}</span>
@@ -645,6 +689,368 @@ export default function TopicClustering() {
               </BarChart>
             </ResponsiveContainer>
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Interactive Cluster Comparison (User Chooses Option) */}
+      <Card className="border-indigo-500/30 bg-slate-900/90 shadow-2xl">
+        <CardHeader className="pb-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <div className="flex items-center gap-2">
+                <Badge variant="outline" className="border-indigo-500/40 bg-indigo-500/10 text-indigo-300">
+                  <GitCompare className="mr-1.5 h-3.5 w-3.5" /> Interactive Comparison Engine
+                </Badge>
+                <Badge variant="outline" className="border-emerald-500/30 text-emerald-300 text-xs">
+                  User Configurable
+                </Badge>
+              </div>
+              <CardTitle className="mt-2 text-xl font-bold text-white flex items-center gap-2">
+                Comparison Using Clustering
+              </CardTitle>
+              <CardDescription>
+                Select your preferred comparison mode and choose options below to perform side-by-side comparative analysis
+              </CardDescription>
+            </div>
+
+            {/* Mode Selector Buttons */}
+            <div className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-slate-950 p-1">
+              <button
+                onClick={() => setComparisonMode("cluster_vs_cluster")}
+                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
+                  comparisonMode === "cluster_vs_cluster"
+                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <Scale className="h-3.5 w-3.5" />
+                Cluster vs Cluster
+              </button>
+              <button
+                onClick={() => setComparisonMode("k_granularity")}
+                className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
+                  comparisonMode === "k_granularity"
+                    ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <Split className="h-3.5 w-3.5" />
+                Granularity (kA vs kB)
+              </button>
+            </div>
+          </div>
+        </CardHeader>
+
+        <CardContent className="space-y-6">
+          {/* Mode 1: Cluster vs Cluster */}
+          {comparisonMode === "cluster_vs_cluster" && (() => {
+            const clusterA = clusters.find((c) => c.cluster_id === compareClusterA) || clusters[0] || {};
+            const clusterB = clusters.find((c) => c.cluster_id === compareClusterB) || clusters[1] || clusters[0] || {};
+            const sentDiff = ((clusterA.avg_sentiment_score || 0) - (clusterB.avg_sentiment_score || 0)).toFixed(3);
+            const volumeDiff = ((clusterA.count || 0) - (clusterB.count || 0)).toLocaleString();
+
+            const compBarData = [
+              {
+                metric: "Positive %",
+                [clusterA.name || "Cluster A"]: clusterA.sentiment_distribution?.positive || 0,
+                [clusterB.name || "Cluster B"]: clusterB.sentiment_distribution?.positive || 0,
+              },
+              {
+                metric: "Neutral %",
+                [clusterA.name || "Cluster A"]: clusterA.sentiment_distribution?.neutral || 0,
+                [clusterB.name || "Cluster B"]: clusterB.sentiment_distribution?.neutral || 0,
+              },
+              {
+                metric: "Negative %",
+                [clusterA.name || "Cluster A"]: clusterA.sentiment_distribution?.negative || 0,
+                [clusterB.name || "Cluster B"]: clusterB.sentiment_distribution?.negative || 0,
+              },
+              {
+                metric: "Share %",
+                [clusterA.name || "Cluster A"]: clusterA.share_pct || 0,
+                [clusterB.name || "Cluster B"]: clusterB.share_pct || 0,
+              },
+            ];
+
+            return (
+              <div className="space-y-6">
+                {/* User Dropdown Selectors */}
+                <div className="grid grid-cols-1 gap-4 rounded-xl border border-white/10 bg-slate-950/70 p-4 sm:grid-cols-2">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-sky-400 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-sky-400"></span> Choose Option 1 (Cluster A):
+                    </label>
+                    <select
+                      value={compareClusterA}
+                      onChange={(e) => setCompareClusterA(Number(e.target.value))}
+                      className="w-full rounded-lg border border-white/10 bg-slate-900 p-2.5 text-xs font-semibold text-white outline-none focus:border-sky-400 cursor-pointer"
+                    >
+                      {clusters.map((c) => (
+                        <option key={c.cluster_id} value={c.cluster_id} className="bg-slate-900 text-white">
+                          Cluster #{c.cluster_id + 1}: {c.name} ({c.share_pct}%)
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-amber-400"></span> Choose Option 2 (Cluster B):
+                    </label>
+                    <select
+                      value={compareClusterB}
+                      onChange={(e) => setCompareClusterB(Number(e.target.value))}
+                      className="w-full rounded-lg border border-white/10 bg-slate-900 p-2.5 text-xs font-semibold text-white outline-none focus:border-amber-400 cursor-pointer"
+                    >
+                      {clusters.map((c) => (
+                        <option key={c.cluster_id} value={c.cluster_id} className="bg-slate-900 text-white">
+                          Cluster #{c.cluster_id + 1}: {c.name} ({c.share_pct}%)
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Head to Head Side-by-Side Cards */}
+                <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                  {/* Option 1 Details */}
+                  <div className="rounded-xl border border-sky-500/30 bg-slate-950/70 p-5 space-y-4 shadow-lg">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <Badge className="border-sky-500/40 bg-sky-500/10 text-sky-300">
+                          Option 1 &middot; Cluster #{clusterA.cluster_id + 1}
+                        </Badge>
+                        <h4 className="mt-2 text-lg font-bold text-white">{clusterA.name}</h4>
+                        <p className="text-xs text-slate-400">{clusterA.category}</p>
+                      </div>
+                      <div className="text-right">
+                        <span className="font-mono text-lg font-bold text-sky-400">{clusterA.count?.toLocaleString()}</span>
+                        <p className="text-[11px] text-slate-500">{clusterA.share_pct}% of total corpus</p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2 border-y border-white/5 py-3 text-center text-xs">
+                      <div>
+                        <span className="text-slate-400 block text-[10px]">Avg Polarity</span>
+                        <span className={`font-bold font-mono ${clusterA.avg_sentiment_score > 0 ? "text-emerald-400" : "text-rose-400"}`}>
+                          {clusterA.avg_sentiment_score > 0 ? `+${clusterA.avg_sentiment_score}` : clusterA.avg_sentiment_score}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-slate-400 block text-[10px]">Positive Share</span>
+                        <span className="font-bold text-emerald-400">{clusterA.sentiment_distribution?.positive}%</span>
+                      </div>
+                      <div>
+                        <span className="text-slate-400 block text-[10px]">Negative Share</span>
+                        <span className="font-bold text-rose-400">{clusterA.sentiment_distribution?.negative}%</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="text-xs text-slate-400 block mb-1.5 font-medium">Top Keywords:</span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {clusterA.top_terms?.slice(0, 6).map((term) => (
+                          <span key={term} className="rounded-md border border-white/5 bg-slate-900 px-2 py-0.5 text-xs text-slate-300 font-mono">
+                            #{term}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="text-xs text-slate-400 block mb-1.5 font-medium">Leading Brands:</span>
+                      <div className="flex flex-wrap gap-2 text-xs">
+                        {clusterA.top_brands && Object.entries(clusterA.top_brands).map(([b, count]) => (
+                          <span key={b} className="rounded-md bg-sky-950/40 border border-sky-500/20 px-2 py-1 text-sky-300 font-semibold">
+                            {b}: {count.toLocaleString()}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Option 2 Details */}
+                  <div className="rounded-xl border border-amber-500/30 bg-slate-950/70 p-5 space-y-4 shadow-lg">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <Badge className="border-amber-500/40 bg-amber-500/10 text-amber-300">
+                          Option 2 &middot; Cluster #{clusterB.cluster_id + 1}
+                        </Badge>
+                        <h4 className="mt-2 text-lg font-bold text-white">{clusterB.name}</h4>
+                        <p className="text-xs text-slate-400">{clusterB.category}</p>
+                      </div>
+                      <div className="text-right">
+                        <span className="font-mono text-lg font-bold text-amber-400">{clusterB.count?.toLocaleString()}</span>
+                        <p className="text-[11px] text-slate-500">{clusterB.share_pct}% of total corpus</p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2 border-y border-white/5 py-3 text-center text-xs">
+                      <div>
+                        <span className="text-slate-400 block text-[10px]">Avg Polarity</span>
+                        <span className={`font-bold font-mono ${clusterB.avg_sentiment_score > 0 ? "text-emerald-400" : "text-rose-400"}`}>
+                          {clusterB.avg_sentiment_score > 0 ? `+${clusterB.avg_sentiment_score}` : clusterB.avg_sentiment_score}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-slate-400 block text-[10px]">Positive Share</span>
+                        <span className="font-bold text-emerald-400">{clusterB.sentiment_distribution?.positive}%</span>
+                      </div>
+                      <div>
+                        <span className="text-slate-400 block text-[10px]">Negative Share</span>
+                        <span className="font-bold text-rose-400">{clusterB.sentiment_distribution?.negative}%</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="text-xs text-slate-400 block mb-1.5 font-medium">Top Keywords:</span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {clusterB.top_terms?.slice(0, 6).map((term) => (
+                          <span key={term} className="rounded-md border border-white/5 bg-slate-900 px-2 py-0.5 text-xs text-slate-300 font-mono">
+                            #{term}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="text-xs text-slate-400 block mb-1.5 font-medium">Leading Brands:</span>
+                      <div className="flex flex-wrap gap-2 text-xs">
+                        {clusterB.top_brands && Object.entries(clusterB.top_brands).map(([b, count]) => (
+                          <span key={b} className="rounded-md bg-amber-950/40 border border-amber-500/20 px-2 py-1 text-amber-300 font-semibold">
+                            {b}: {count.toLocaleString()}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Head to Head Recharts Bar Chart */}
+                <div className="rounded-xl border border-white/10 bg-slate-950/40 p-4">
+                  <div className="mb-3 flex items-center justify-between text-xs">
+                    <span className="font-semibold text-white">Head-to-Head Metric Variance</span>
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-2.5 w-2.5 rounded-full bg-sky-400"></span>
+                        <span className="text-slate-300">{clusterA.name?.substring(0, 18)}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-2.5 w-2.5 rounded-full bg-amber-400"></span>
+                        <span className="text-slate-300">{clusterB.name?.substring(0, 18)}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="h-56 w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={compBarData} margin={{ top: 10, right: 20, left: 0, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" />
+                        <XAxis dataKey="metric" stroke="#94a3b8" fontSize={11} />
+                        <YAxis stroke="#94a3b8" fontSize={11} />
+                        <Tooltip
+                          contentStyle={{ backgroundColor: "#0f172a", borderColor: "rgba(255,255,255,0.1)", borderRadius: "8px" }}
+                        />
+                        <Bar dataKey={clusterA.name || "Cluster A"} fill="#38bdf8" radius={[4, 4, 0, 0]} />
+                        <Bar dataKey={clusterB.name || "Cluster B"} fill="#f59e0b" radius={[4, 4, 0, 0]} />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* Mode 2: Granularity (kA vs kB) */}
+          {comparisonMode === "k_granularity" && (() => {
+            const listA = data?.k_clusters?.[String(compareKA)] || [];
+            const listB = data?.k_clusters?.[String(compareKB)] || [];
+            const inertiaA = elbowCurve.find((item) => item.k === compareKA)?.inertia || 0;
+            const inertiaB = elbowCurve.find((item) => item.k === compareKB)?.inertia || 0;
+
+            return (
+              <div className="space-y-6">
+                {/* User Dropdown Selectors for k */}
+                <div className="grid grid-cols-1 gap-4 rounded-xl border border-white/10 bg-slate-950/70 p-4 sm:grid-cols-2">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-purple-400 flex items-center gap-1.5">
+                      Choose Granularity Option A (kA):
+                    </label>
+                    <select
+                      value={compareKA}
+                      onChange={(e) => setCompareKA(Number(e.target.value))}
+                      className="w-full rounded-lg border border-white/10 bg-slate-900 p-2.5 text-xs font-semibold text-white outline-none focus:border-purple-400 cursor-pointer"
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((kVal) => (
+                        <option key={kVal} value={kVal} className="bg-slate-900 text-white">
+                          kA = {kVal} Clusters ({kVal <= 3 ? "Macro" : kVal <= 6 ? "Balanced" : "Micro"})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                      Choose Granularity Option B (kB):
+                    </label>
+                    <select
+                      value={compareKB}
+                      onChange={(e) => setCompareKB(Number(e.target.value))}
+                      className="w-full rounded-lg border border-white/10 bg-slate-900 p-2.5 text-xs font-semibold text-white outline-none focus:border-emerald-400 cursor-pointer"
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((kVal) => (
+                        <option key={kVal} value={kVal} className="bg-slate-900 text-white">
+                          kB = {kVal} Clusters ({kVal <= 3 ? "Macro" : kVal <= 6 ? "Balanced" : "Micro"})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Side-by-Side Granularity Metrics */}
+                <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                  <div className="rounded-xl border border-purple-500/30 bg-slate-950/60 p-5 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <Badge className="border-purple-500/40 bg-purple-500/10 text-purple-300">
+                        kA = {compareKA} Topics
+                      </Badge>
+                      <span className="text-xs text-slate-400">WCSS Inertia: <strong className="text-white font-mono">{inertiaA.toLocaleString()}</strong></span>
+                    </div>
+                    <div className="space-y-2 mt-2">
+                      {listA.map((c) => (
+                        <div key={c.cluster_id} className="flex items-center justify-between rounded-lg border border-white/5 bg-slate-900/80 p-2.5 text-xs">
+                          <div className="flex items-center gap-2">
+                            <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: c.color || "#a855f7" }} />
+                            <span className="font-medium text-white">{c.name}</span>
+                          </div>
+                          <span className="font-mono text-slate-400">{c.share_pct}%</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="rounded-xl border border-emerald-500/30 bg-slate-950/60 p-5 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <Badge className="border-emerald-500/40 bg-emerald-500/10 text-emerald-300">
+                        kB = {compareKB} Topics
+                      </Badge>
+                      <span className="text-xs text-slate-400">WCSS Inertia: <strong className="text-white font-mono">{inertiaB.toLocaleString()}</strong></span>
+                    </div>
+                    <div className="space-y-2 mt-2">
+                      {listB.map((c) => (
+                        <div key={c.cluster_id} className="flex items-center justify-between rounded-lg border border-white/5 bg-slate-900/80 p-2.5 text-xs">
+                          <div className="flex items-center gap-2">
+                            <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: c.color || "#10b981" }} />
+                            <span className="font-medium text-white">{c.name}</span>
+                          </div>
+                          <span className="font-mono text-slate-400">{c.share_pct}%</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
         </CardContent>
       </Card>
 

@@ -20,31 +20,40 @@ export default function AssociationRules() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Filters
+  // User Inputs & Mining Controls
   const [search, setSearch] = useState("");
+  const [minSupport, setMinSupport] = useState(0.5); // 0.5% default user input
+  const [minConfidence, setMinConfidence] = useState(30); // 30% default user input
   const [minLift, setMinLift] = useState(0);
-  const [minConfidence, setMinConfidence] = useState(0);
   const [sortBy, setSortBy] = useState("lift");
+  const [miningMode, setMiningMode] = useState("dynamic"); // "dynamic" (live Apriori) or "benchmark"
+  const [runCount, setRunCount] = useState(1);
   const [page, setPage] = useState(1);
   const pageSize = 15;
 
   useEffect(() => {
-    loadRules();
-  }, [search, minLift, minConfidence, sortBy]);
+    loadRules(false);
+  }, [search, minLift, sortBy, miningMode]);
 
-  const loadRules = async () => {
+  const loadRules = async (isRegenerate = false) => {
     setLoading(true);
     try {
       const res = await fetchAssociationRules({
         search: search.trim() || undefined,
+        min_support: minSupport > 0 ? Number((minSupport / 100).toFixed(4)) : undefined,
+        min_confidence: minConfidence > 0 ? Number((minConfidence / 100).toFixed(4)) : undefined,
         min_lift: minLift > 0 ? minLift : undefined,
-        min_confidence: minConfidence > 0 ? minConfidence / 100 : undefined,
         sort_by: sortBy,
         order: "desc",
         limit: 150,
+        mode: miningMode,
+        regenerate: isRegenerate,
       });
       setData(res);
       setPage(1);
+      if (isRegenerate) {
+        setRunCount((prev) => prev + 1);
+      }
     } catch (err) {
       console.error("Failed to load association rules:", err);
     } finally {
@@ -243,67 +252,141 @@ export default function AssociationRules() {
               </CardDescription>
             </div>
 
-            {/* Filter controls */}
-            <div className="flex flex-wrap items-center gap-3">
-              {/* Search */}
-              <div className="relative">
-                <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-500" />
-                <input
-                  type="text"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Filter hashtags (e.g. apple, cloud, deal)..."
-                  className="h-9 w-60 rounded-lg border border-white/10 bg-slate-950 pl-9 pr-3 text-xs text-slate-200 outline-none focus:border-amber-400/50"
-                />
-              </div>
-
-              {/* Min Lift */}
-              <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950 px-3 py-1.5 text-xs text-slate-300">
-                <SlidersHorizontal className="h-3.5 w-3.5 text-slate-400" />
-                <span>Min Lift:</span>
-                <select
-                  value={minLift}
-                  onChange={(e) => setMinLift(Number(e.target.value))}
-                  className="bg-transparent font-bold text-amber-400 outline-none cursor-pointer"
-                >
-                  <option value={0} className="bg-slate-900">All (&gt; 0x)</option>
-                  <option value={2} className="bg-slate-900">&gt; 2.0x</option>
-                  <option value={5} className="bg-slate-900">&gt; 5.0x</option>
-                  <option value={10} className="bg-slate-900">&gt; 10.0x</option>
-                  <option value={20} className="bg-slate-900">&gt; 20.0x</option>
-                </select>
-              </div>
-
-              {/* Min Confidence */}
-              <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950 px-3 py-1.5 text-xs text-slate-300">
-                <span>Min Conf:</span>
-                <select
-                  value={minConfidence}
-                  onChange={(e) => setMinConfidence(Number(e.target.value))}
-                  className="bg-transparent font-bold text-sky-400 outline-none cursor-pointer"
-                >
-                  <option value={0} className="bg-slate-900">0%</option>
-                  <option value={50} className="bg-slate-900">&gt; 50%</option>
-                  <option value={70} className="bg-slate-900">&gt; 70%</option>
-                  <option value={90} className="bg-slate-900">&gt; 90%</option>
-                </select>
-              </div>
-
-              {/* Sort By */}
-              <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-950 px-3 py-1.5 text-xs text-slate-300">
-                <span>Sort:</span>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="bg-transparent font-bold text-purple-400 outline-none cursor-pointer"
-                >
-                  <option value="lift" className="bg-slate-900">Lift</option>
-                  <option value="confidence" className="bg-slate-900">Confidence</option>
-                  <option value="support" className="bg-slate-900">Support</option>
-                </select>
-              </div>
+            {/* Mode Switcher */}
+            <div className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-slate-950 p-1">
+              <button
+                onClick={() => setMiningMode("dynamic")}
+                className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
+                  miningMode === "dynamic"
+                    ? "bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                Live Apriori Mining
+              </button>
+              <button
+                onClick={() => setMiningMode("benchmark")}
+                className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
+                  miningMode === "benchmark"
+                    ? "bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                BigTech Benchmark
+              </button>
             </div>
           </div>
+
+          {/* User Input Controls Deck */}
+          <div className="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-white/10 bg-slate-950/70 p-3.5">
+            {/* Search */}
+            <div className="relative">
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-500" />
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search hashtag (e.g. apple, cloud, deal)..."
+                className="h-9 w-52 rounded-lg border border-white/10 bg-slate-900 pl-9 pr-3 text-xs text-slate-200 outline-none focus:border-amber-400/50"
+              />
+            </div>
+
+            {/* User Input: Min Support */}
+            <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-slate-900 px-3 py-1.5 text-xs">
+              <span className="font-semibold text-slate-300">User Input Support:</span>
+              <div className="flex items-center gap-1">
+                <input
+                  type="number"
+                  step="0.1"
+                  min="0.1"
+                  max="15.0"
+                  value={minSupport}
+                  onChange={(e) => setMinSupport(Math.max(0.05, parseFloat(e.target.value) || 0))}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") loadRules(miningMode === "dynamic");
+                  }}
+                  className="w-14 rounded border border-white/20 bg-slate-950 px-1.5 py-0.5 text-center font-mono font-bold text-amber-400 focus:outline-none focus:border-amber-400"
+                />
+                <span className="text-amber-400 font-mono font-bold">%</span>
+              </div>
+            </div>
+
+            {/* User Input: Min Confidence */}
+            <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-slate-900 px-3 py-1.5 text-xs">
+              <span className="font-semibold text-slate-300">User Input Confidence:</span>
+              <div className="flex items-center gap-1">
+                <input
+                  type="number"
+                  step="5"
+                  min="5"
+                  max="100"
+                  value={minConfidence}
+                  onChange={(e) => setMinConfidence(Math.max(1, parseFloat(e.target.value) || 0))}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") loadRules(miningMode === "dynamic");
+                  }}
+                  className="w-14 rounded border border-white/20 bg-slate-950 px-1.5 py-0.5 text-center font-mono font-bold text-sky-400 focus:outline-none focus:border-sky-400"
+                />
+                <span className="text-sky-400 font-mono font-bold">%</span>
+              </div>
+            </div>
+
+            {/* Min Lift */}
+            <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-900 px-3 py-1.5 text-xs text-slate-300">
+              <SlidersHorizontal className="h-3.5 w-3.5 text-slate-400" />
+              <span>Min Lift:</span>
+              <select
+                value={minLift}
+                onChange={(e) => setMinLift(Number(e.target.value))}
+                className="bg-transparent font-bold text-purple-400 outline-none cursor-pointer"
+              >
+                <option value={0} className="bg-slate-900">All (&gt; 0x)</option>
+                <option value={2} className="bg-slate-900">&gt; 2.0x</option>
+                <option value={5} className="bg-slate-900">&gt; 5.0x</option>
+                <option value={10} className="bg-slate-900">&gt; 10.0x</option>
+                <option value={20} className="bg-slate-900">&gt; 20.0x</option>
+              </select>
+            </div>
+
+            {/* Sort By */}
+            <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-slate-900 px-3 py-1.5 text-xs text-slate-300">
+              <span>Sort:</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="bg-transparent font-bold text-emerald-400 outline-none cursor-pointer"
+              >
+                <option value="lift" className="bg-slate-900">Lift</option>
+                <option value="confidence" className="bg-slate-900">Confidence</option>
+                <option value="support" className="bg-slate-900">Support</option>
+              </select>
+            </div>
+
+            {/* Generate Different Rules Button */}
+            <Button
+              onClick={() => loadRules(true)}
+              disabled={loading}
+              className="ml-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs h-9 px-3.5 shadow-md flex items-center gap-1.5"
+            >
+              <RefreshCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} />
+              {loading ? "Mining Live Rules..." : `Mine New Rules (Run #${runCount + 1})`}
+            </Button>
+          </div>
+
+          {/* Status feedback bar for dynamic runs */}
+          {summary.mining_mode === "dynamic" && (
+            <div className="mt-3 flex flex-wrap items-center justify-between rounded-lg border border-amber-500/30 bg-amber-950/20 px-3.5 py-2 text-xs">
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-amber-400" />
+                <span className="text-amber-200">
+                  <strong>Dynamic Run #{runCount}:</strong> Discovered <strong>{summary.total_rules} rules</strong> from <strong>{summary.sampled_transactions?.toLocaleString() || "3,400"} sampled transactions</strong> in <strong>{summary.mining_duration_sec || "0.3"}s</strong>.
+                </span>
+              </div>
+              <span className="text-[11px] text-amber-300/80 italic">
+                * Fresh transaction sample drawn on each run — generating different rule sets each time!
+              </span>
+            </div>
+          )}
         </CardHeader>
 
         <CardContent>

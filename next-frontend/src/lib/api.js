@@ -146,6 +146,8 @@ export async function fetchAssociationRules(params = {}) {
   if (params.order) searchParams.append('order', params.order);
   if (params.limit) searchParams.append('limit', params.limit);
   if (params.offset) searchParams.append('offset', params.offset);
+  if (params.mode) searchParams.append('mode', params.mode);
+  if (params.regenerate) searchParams.append('regenerate', 'true');
 
   const queryStr = searchParams.toString();
   const url = `${API_BASE}/association-rules${queryStr ? `?${queryStr}` : ''}`;
