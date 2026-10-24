@@ -15,6 +15,15 @@ def test_topic_clusters_endpoint():
     assert "top_terms" in first_cluster
     assert "sentiment_distribution" in first_cluster
     assert len(first_cluster["top_terms"]) > 0
+    # Verify 3D cluster centroid fields
+    assert "centroid_3d" in first_cluster
+    assert len(first_cluster["centroid_3d"]) == 3
+    assert "radius_3d" in first_cluster
+    assert "points_3d" in data
+    assert len(data["points_3d"]) > 0
+    first_point = data["points_3d"][0]
+    assert "x" in first_point and "y" in first_point and "z" in first_point
+    assert "initial_x" in first_point and "initial_y" in first_point and "initial_z" in first_point
 
 def test_topic_clusters_with_k_param():
     for k_val in [1, 3, 6, 10]:
@@ -23,6 +32,8 @@ def test_topic_clusters_with_k_param():
         data = response.json()
         assert data["selected_k"] == k_val
         assert len(data["clusters"]) == k_val
+        assert "points_3d" in data
+        assert len(data["points_3d"]) > 0
 
 def test_topic_elbow_endpoint():
     response = client.get("/api/topics/elbow")
@@ -45,6 +56,8 @@ def test_topic_prediction_endpoint():
     assert 0 <= data["predicted_cluster_id"] < 4
     assert "topic_name" in data
     assert data["similarity_score"] > 0
+    assert "coords_3d" in data
+    assert len(data["coords_3d"]) == 3
 
 def test_association_rules_endpoint():
     response = client.get("/api/association-rules?limit=10")

@@ -222,6 +222,8 @@ class TopicPredictor:
         self.models_dict = None
         self.kmeans_default = None
         self.metadata = None
+        self.svd_3d = None
+        self.scaler_params = None
         self._load()
 
     def _load(self):
@@ -254,6 +256,21 @@ class TopicPredictor:
             if not self.kmeans_default and os.path.exists(k_p):
                 try:
                     self.kmeans_default = joblib.load(k_p)
+                except Exception:
+                    pass
+
+            svd_p = os.path.join(d, "topic_svd_3d.pkl")
+            if not self.svd_3d and os.path.exists(svd_p):
+                try:
+                    self.svd_3d = joblib.load(svd_p)
+                except Exception:
+                    pass
+
+            scaler_p = os.path.join(d, "topic_svd_scaler.json")
+            if not self.scaler_params and os.path.exists(scaler_p):
+                try:
+                    with open(scaler_p, "r", encoding="utf-8") as f:
+                        self.scaler_params = json.load(f)
                 except Exception:
                     pass
 
@@ -302,7 +319,9 @@ class TopicPredictor:
                 "category": c0.get("category"),
                 "color": c0.get("color"),
                 "similarity_score": 0.5,
-                "top_terms": c0.get("top_terms", [])
+                "top_terms": c0.get("top_terms", []),
+                "coords_3d": [0.0, 0.0, 0.0],
+                "target_centroid_3d": c0.get("centroid_3d", [0.0, 0.0, 0.0])
             }
 
         vec = self.vectorizer.transform([cleaned])
@@ -317,6 +336,21 @@ class TopicPredictor:
 
         cluster_info = next((c for c in clusters_list if c["cluster_id"] == cluster_id), None)
 
+        # 3D spatial projection of the query post
+        coords_3d = None
+        if self.svd_3d is not None and self.scaler_params is not None:
+            try:
+                raw_3d = self.svd_3d.transform(vec)[0]
+                min_vals = np.array(self.scaler_params["min_vals"])
+                ranges = np.array(self.scaler_params["ranges"])
+                scale_factor = float(self.scaler_params.get("scale_factor", 90.0))
+                scaled = ((raw_3d - min_vals) / ranges - 0.5) * scale_factor
+                coords_3d = [round(float(scaled[0]), 2), round(float(scaled[1]), 2), round(float(scaled[2]), 2)]
+            except Exception:
+                coords_3d = None
+
+        target_centroid_3d = cluster_info.get("centroid_3d") if cluster_info else None
+
         return {
             "text": text,
             "cleaned_text": cleaned,
@@ -326,7 +360,9 @@ class TopicPredictor:
             "category": cluster_info["category"] if cluster_info else "Social Media",
             "color": cluster_info["color"] if cluster_info else "#38bdf8",
             "similarity_score": round(sim, 3),
-            "top_terms": cluster_info["top_terms"] if cluster_info else []
+            "top_terms": cluster_info["top_terms"] if cluster_info else [],
+            "coords_3d": coords_3d,
+            "target_centroid_3d": target_centroid_3d
         }
 
 if __name__ == "__main__":

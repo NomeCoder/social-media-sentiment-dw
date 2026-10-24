@@ -39,6 +39,8 @@ class TopicPredictResponse(BaseModel):
     color: str
     similarity_score: float
     top_terms: List[str]
+    coords_3d: Optional[List[float]] = None
+    target_centroid_3d: Optional[List[float]] = None
 
 @router.get("/clusters")
 def get_topic_clusters(
@@ -46,7 +48,7 @@ def get_topic_clusters(
 ):
     """
     Returns unsupervised topic clusters for any selected k value (1 to 10),
-    along with the Elbow method inertia curve and multi-k cluster profiles.
+    along with the Elbow method inertia curve, 3D point cloud, and multi-k cluster profiles.
     """
     data = load_topic_metadata()
     
@@ -61,7 +63,8 @@ def get_topic_clusters(
             "available_k": data.get("available_k", list(range(1, 11))),
             "elbow_curve": data.get("elbow_curve", []),
             "clusters": clusters_for_k,
-            "k_clusters": data.get("k_clusters", {})
+            "k_clusters": data.get("k_clusters", {}),
+            "points_3d": data.get("points_3d", [])
         }
     
     return data
@@ -91,7 +94,7 @@ def predict_topic(
     if not request.text or not request.text.strip():
         raise HTTPException(status_code=400, detail="Text cannot be empty.")
     
-    target_k = k or request.k or 6
+    target_k = k if isinstance(k, int) else (request.k or 6)
     predictor = TopicPredictor.get_instance()
     result = predictor.predict_topic(request.text, k=target_k)
     return result

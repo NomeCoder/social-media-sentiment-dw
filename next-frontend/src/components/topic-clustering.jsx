@@ -5,7 +5,7 @@ import {
   Network, Sparkles, Tag, PieChart as PieIcon, BarChart2, 
   Send, RefreshCw, Layers, CheckCircle2, ArrowRight, MessageSquare,
   Sliders, Activity, Info, Zap, ChevronRight, HelpCircle,
-  GitCompare, Scale, Split, Check
+  GitCompare, Scale, Split, Check, Orbit, Box
 } from "lucide-react";
 import { 
   BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, 
@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { fetchTopicClusters, predictPostTopic } from "@/lib/api";
+import Cluster3DVisualizer from "./cluster-3d-visualizer";
 
 const SAMPLE_POSTS = [
   "Watching the entire new season of Stranger Things on Netflix tonight, totally obsessed!",
@@ -33,6 +34,7 @@ export default function TopicClustering() {
   const [selectedClusterId, setSelectedClusterId] = useState(0);
   const [loading, setLoading] = useState(true);
   const [showElbowCard, setShowElbowCard] = useState(true);
+  const [clusteringView, setClusteringView] = useState("all"); // "all" | "3d_only" | "2d_only"
   
   // Interactive Comparison Options state (user chooses options)
   const [comparisonMode, setComparisonMode] = useState("cluster_vs_cluster"); // "cluster_vs_cluster" | "k_granularity"
@@ -420,13 +422,76 @@ export default function TopicClustering() {
         </Card>
       )}
 
-      {/* Cluster Cards Grid for Chosen k */}
-      <div>
-        <div className="mb-3 flex items-center justify-between">
-          <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <Layers className="h-5 w-5 text-sky-400" />
-            Generated Topic Clusters for k = {selectedK}
-          </h3>
+      {/* View Switcher Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-slate-900/70 p-2.5 backdrop-blur-xl">
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            onClick={() => setClusteringView("all")}
+            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition-all ${
+              clusteringView === "all"
+                ? "bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 font-bold"
+                : "border border-white/10 bg-slate-950/80 text-slate-300 hover:text-white"
+            }`}
+          >
+            <Orbit className="h-4 w-4 text-sky-300 animate-spin-slow" />
+            Full Suite (3D Visualizer + 2D Metrics)
+          </button>
+          <button
+            onClick={() => setClusteringView("3d_only")}
+            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition-all ${
+              clusteringView === "3d_only"
+                ? "bg-gradient-to-r from-purple-600 to-sky-500 text-white shadow-lg shadow-purple-500/25 font-bold"
+                : "border border-white/10 bg-slate-950/80 text-slate-300 hover:text-white"
+            }`}
+          >
+            <Box className="h-4 w-4 text-purple-300" />
+            3D Spatial Universe Only
+          </button>
+          <button
+            onClick={() => setClusteringView("2d_only")}
+            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition-all ${
+              clusteringView === "2d_only"
+                ? "bg-sky-600 text-white shadow-lg shadow-sky-600/25 font-bold"
+                : "border border-white/10 bg-slate-950/80 text-slate-300 hover:text-white"
+            }`}
+          >
+            <BarChart2 className="h-4 w-4 text-sky-400" />
+            2D Cards & Charts Only
+          </button>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Badge variant="outline" className="border-sky-500/40 bg-sky-500/10 text-sky-300 text-xs font-mono">
+            500 Posts Mapped in 3D SVD Space
+          </Badge>
+          <Badge variant="outline" className="border-purple-500/40 bg-purple-500/10 text-purple-300 text-xs font-mono">
+            Live Formation Engine Active
+          </Badge>
+        </div>
+      </div>
+
+      {/* 3D Formation Visualizer Component */}
+      {(clusteringView === "all" || clusteringView === "3d_only") && (
+        <Cluster3DVisualizer
+          clusters={clusters}
+          points={data?.points_3d || []}
+          selectedK={selectedK}
+          onSelectCluster={(cId) => setSelectedClusterId(cId)}
+          activeClusterId={selectedClusterId}
+          latestPrediction={prediction}
+        />
+      )}
+
+      {/* 2D Analytical Breakdown */}
+      {(clusteringView === "all" || clusteringView === "2d_only") && (
+        <>
+          {/* Cluster Cards Grid for Chosen k */}
+          <div>
+            <div className="mb-3 flex items-center justify-between">
+              <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                <Layers className="h-5 w-5 text-sky-400" />
+                Generated Topic Clusters for k = {selectedK}
+              </h3>
           <span className="text-xs text-slate-400">
             Showing {clusters.length} clusters &middot; Click any card for detailed deep-dive
           </span>
@@ -691,6 +756,8 @@ export default function TopicClustering() {
           </div>
         </CardContent>
       </Card>
+      </>
+      )}
 
       {/* Interactive Cluster Comparison (User Chooses Option) */}
       <Card className="border-indigo-500/30 bg-slate-900/90 shadow-2xl">
