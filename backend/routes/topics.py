@@ -64,7 +64,8 @@ def get_topic_clusters(
             "elbow_curve": data.get("elbow_curve", []),
             "clusters": clusters_for_k,
             "k_clusters": data.get("k_clusters", {}),
-            "points_3d": data.get("points_3d", [])
+            "points_3d": data.get("points_3d", []),
+            "clustering_accuracy": data.get("clustering_accuracy", {})
         }
     
     return data

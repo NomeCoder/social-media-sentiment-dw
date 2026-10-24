@@ -24,6 +24,10 @@ def test_topic_clusters_endpoint():
     first_point = data["points_3d"][0]
     assert "x" in first_point and "y" in first_point and "z" in first_point
     assert "initial_x" in first_point and "initial_y" in first_point and "initial_z" in first_point
+    # Verify clustering accuracy fields
+    assert "clustering_accuracy" in data
+    assert data["clustering_accuracy"]["overall_accuracy_pct"] > 65.0
+    assert "accuracy_purity" in first_cluster
 
 def test_topic_clusters_with_k_param():
     for k_val in [1, 3, 6, 10]:
@@ -34,6 +38,8 @@ def test_topic_clusters_with_k_param():
         assert len(data["clusters"]) == k_val
         assert "points_3d" in data
         assert len(data["points_3d"]) > 0
+        assert "clustering_accuracy" in data
+        assert "k_metrics" in data["clustering_accuracy"]
 
 def test_topic_elbow_endpoint():
     response = client.get("/api/topics/elbow")
